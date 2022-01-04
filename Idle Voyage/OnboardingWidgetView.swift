@@ -88,7 +88,7 @@ struct OnboardingWidgetView: View {
         .foregroundColor(.white)
         .padding()
         .frame(width: 200, height: 200)
-        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "00481a"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading))
+        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading))
         .cornerRadius(40)
        
         

@@ -46,7 +46,7 @@ struct VoyageCardView: View {
         .foregroundColor(.white)
         .padding()
         .frame(width: 300, height: 400)
-        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "F9ED32"), Color.init(hex: "EE2A7B"), Color.init(hex: "002AFF")]), startPoint: .bottomLeading, endPoint: .topTrailing))
+        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "013026"), Color.init(hex: "133769"), Color.init(hex: "210535"), Color.init(hex: "000000")]), startPoint: .bottomLeading, endPoint: .topTrailing))
         .cornerRadius(30)
         
     }
