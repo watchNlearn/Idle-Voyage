@@ -14,20 +14,8 @@ struct ContentView: View {
         Color.init(hex: "081448")
         .ignoresSafeArea()
         .overlay(
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 16) {
-//                ForEach(0 ..< 5) { item in
-//                    VoyageCardView()
-//                }
-                VoyageCardView()
-                Spacer()
-                VoyageCardView2()
-                Spacer()
-                VoyageCardView3()
-
-            }
-            .padding()
-        })
+            InitialView()
+        )
         
     }
     

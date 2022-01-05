@@ -11,7 +11,6 @@ struct VoyageCardView: View {
     let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
 
     @State var shouldAnimate = false
-    @State var shouldSwitchShip = false
     @State var shipImage: String = getShipImage()
     @State var leftOffset: CGFloat = -200
     @State var rightOffset: CGFloat = 200

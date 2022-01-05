@@ -21,6 +21,9 @@
 		0B44F6FA27844E3E00EE0B33 /* OnboardingWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F6F927844E3E00EE0B33 /* OnboardingWidgetView.swift */; };
 		0B44F6FC2784EBB000EE0B33 /* OnboardingWidgetPbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F6FB2784EBAF00EE0B33 /* OnboardingWidgetPbar.swift */; };
 		0B44F6FE2784F50F00EE0B33 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F6FD2784F50F00EE0B33 /* Extensions.swift */; };
+		0B44F70027850D1E00EE0B33 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F6FF27850D1E00EE0B33 /* OnboardingView.swift */; };
+		0B44F70227850D5C00EE0B33 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F70127850D5C00EE0B33 /* InitialView.swift */; };
+		0B44F7062785365500EE0B33 /* VoyageCardView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F7052785365500EE0B33 /* VoyageCardView4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		0B44F6F927844E3E00EE0B33 /* OnboardingWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWidgetView.swift; sourceTree = "<group>"; };
 		0B44F6FB2784EBAF00EE0B33 /* OnboardingWidgetPbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWidgetPbar.swift; sourceTree = "<group>"; };
 		0B44F6FD2784F50F00EE0B33 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0B44F6FF27850D1E00EE0B33 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		0B44F70127850D5C00EE0B33 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		0B44F7052785365500EE0B33 /* VoyageCardView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoyageCardView4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,16 +114,13 @@
 		0B44F6C42783C1B700EE0B33 /* Idle Voyage */ = {
 			isa = PBXGroup;
 			children = (
+				0B44F70427850DE900EE0B33 /* Onboarding */,
 				0B44F6C52783C1B700EE0B33 /* Idle_VoyageApp.swift */,
 				0B44F6C72783C1B700EE0B33 /* ContentView.swift */,
+				0B44F70127850D5C00EE0B33 /* InitialView.swift */,
 				0B44F6C92783C1B900EE0B33 /* Assets.xcassets */,
 				0B44F6CB2783C1B900EE0B33 /* Preview Content */,
 				0B44F6EF2783E20900EE0B33 /* LoadingView.swift */,
-				0B44F6F12783E4DE00EE0B33 /* VoyageCardView.swift */,
-				0B44F6F327843E8700EE0B33 /* VoyageCardView2.swift */,
-				0B44F6F527844C5500EE0B33 /* VoyageCardView3.swift */,
-				0B44F6F927844E3E00EE0B33 /* OnboardingWidgetView.swift */,
-				0B44F6FB2784EBAF00EE0B33 /* OnboardingWidgetPbar.swift */,
 				0B44F6FD2784F50F00EE0B33 /* Extensions.swift */,
 			);
 			path = "Idle Voyage";
@@ -146,6 +149,28 @@
 				0B44F6E22783C1B900EE0B33 /* Idle_VoyageUITestsLaunchTests.swift */,
 			);
 			path = "Idle VoyageUITests";
+			sourceTree = "<group>";
+		};
+		0B44F70327850DCF00EE0B33 /* VoyageCards */ = {
+			isa = PBXGroup;
+			children = (
+				0B44F6F12783E4DE00EE0B33 /* VoyageCardView.swift */,
+				0B44F6F327843E8700EE0B33 /* VoyageCardView2.swift */,
+				0B44F6F527844C5500EE0B33 /* VoyageCardView3.swift */,
+				0B44F7052785365500EE0B33 /* VoyageCardView4.swift */,
+			);
+			path = VoyageCards;
+			sourceTree = "<group>";
+		};
+		0B44F70427850DE900EE0B33 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0B44F6FF27850D1E00EE0B33 /* OnboardingView.swift */,
+				0B44F6F927844E3E00EE0B33 /* OnboardingWidgetView.swift */,
+				0B44F6FB2784EBAF00EE0B33 /* OnboardingWidgetPbar.swift */,
+				0B44F70327850DCF00EE0B33 /* VoyageCards */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,9 +303,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B44F7062785365500EE0B33 /* VoyageCardView4.swift in Sources */,
+				0B44F70227850D5C00EE0B33 /* InitialView.swift in Sources */,
 				0B44F6C82783C1B700EE0B33 /* ContentView.swift in Sources */,
 				0B44F6FE2784F50F00EE0B33 /* Extensions.swift in Sources */,
 				0B44F6FC2784EBB000EE0B33 /* OnboardingWidgetPbar.swift in Sources */,
+				0B44F70027850D1E00EE0B33 /* OnboardingView.swift in Sources */,
 				0B44F6F627844C5500EE0B33 /* VoyageCardView3.swift in Sources */,
 				0B44F6C62783C1B700EE0B33 /* Idle_VoyageApp.swift in Sources */,
 				0B44F6FA27844E3E00EE0B33 /* OnboardingWidgetView.swift in Sources */,
