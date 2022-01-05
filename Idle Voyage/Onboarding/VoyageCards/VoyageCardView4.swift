@@ -28,9 +28,13 @@ struct VoyageCardView4: View {
                     }
                 }) {
                     HStack{
-                        Text("Start Voyage")
+                        Text(currentTime)
                             .font(.headline)
                             .padding(.horizontal)
+                            .onReceive(timer) { _ in
+                                currentTime = getCurrentDateFormat()
+                            }
+                            .frame(maxWidth: .infinity)
                         Image(uiImage: "🚀".image()!)
                     }
                     .padding()
@@ -39,16 +43,11 @@ struct VoyageCardView4: View {
                 .background(Color.green)
                 .cornerRadius(10)
             }
-            Text(currentTime)
-                .font(.subheadline)
-                .fontWeight(.medium)
-                .onReceive(timer) { _ in
-                    currentTime = getCurrentDateFormat()
-                }
-           
-            Text("Save the date, Theres no going back now!")
+            Text("Fasten your seatbelts! Tap the green button to start your voyage.")
                 .opacity(0.7)
                 
+
+            
         }
         .foregroundColor(.white)
         .padding()
@@ -64,7 +63,7 @@ private func getCurrentDateFormat() -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MM/dd/yy hh:mm:ss"
     let time = dateFormatter.string(from: date)
-    return "Current Time: " + time
+    return "Launch Time: " + time
 }
 
 

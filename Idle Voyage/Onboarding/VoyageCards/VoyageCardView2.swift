@@ -32,6 +32,9 @@ struct VoyageCardView2: View {
             Text("434,959.835 mi/h")
                 .font(.subheadline)
                 .fontWeight(.light)
+            Text("0.064% c")
+                .font(.subheadline)
+                .fontWeight(.light)
                 
         }
         .foregroundColor(.white)
