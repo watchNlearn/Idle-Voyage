@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct InitialView: View {
+    //should grab from userdefaults eventually
     @State var showingOnboarding = true
     
     var body: some View {
         // If user hasn't done onboarding
         if showingOnboarding {
             OnboardingView(valueFromInitialView: $showingOnboarding)
+                .transition(.backslide)
+                
         }
         // Otherwise show home
         else {
@@ -30,14 +33,6 @@ struct InitialView: View {
 //        InitialView()
 //    }
 //}
-struct AddView: View {
-    @Binding var isPresented: Bool
 
-    var body: some View {
-        Button("Dismiss") {
-            isPresented = false
-        }
-    }
-}
 
 

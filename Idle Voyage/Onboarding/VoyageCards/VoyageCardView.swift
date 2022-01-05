@@ -56,9 +56,9 @@ func getShipImage() -> String {
     return ships.randomElement()!
 }
 
-struct VoyageCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        VoyageCardView()
-    }
-}
+//struct VoyageCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VoyageCardView()
+//    }
+//}
 

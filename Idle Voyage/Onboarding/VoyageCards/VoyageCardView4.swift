@@ -10,32 +10,41 @@ import SwiftUI
 struct VoyageCardView4: View {
     // Binding from prev view
     @Binding var valueFromOnboardingView : Bool
-
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var currentTime = getCurrentDateFormat()
+    
+    
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
-            Text("Here we go!")
+            Text("Here we go...")
                 .font(.title)
                 .fontWeight(.bold)
             HStack(alignment: .center, spacing: 8) {
                 Button(action: {
                     //  TODO: save to UserDefaults
                     // Button press update value
-                    valueFromOnboardingView = false
+                    withAnimation {
+                        valueFromOnboardingView = false
+                    }
                 }) {
-                  HStack{
-                    Text("Start Voyage")
-                    .padding(.horizontal)
-                      Image(uiImage: "🚀".image()!)
-                  }
-                  .padding()
+                    HStack{
+                        Text("Start Voyage")
+                            .font(.headline)
+                            .padding(.horizontal)
+                        Image(uiImage: "🚀".image()!)
+                    }
+                    .padding()
                 }
                 .foregroundColor(Color.white)
                 .background(Color.green)
                 .cornerRadius(10)
             }
-            Text("03/24/22 11:34:19")
+            Text(currentTime)
                 .font(.subheadline)
                 .fontWeight(.medium)
+                .onReceive(timer) { _ in
+                    currentTime = getCurrentDateFormat()
+                }
            
             Text("Save the date, Theres no going back now!")
                 .opacity(0.7)
@@ -49,6 +58,16 @@ struct VoyageCardView4: View {
         .cornerRadius(30)
     }
 }
+
+private func getCurrentDateFormat() -> String {
+    let date = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM/dd/yy hh:mm:ss"
+    let time = dateFormatter.string(from: date)
+    return "Current Time: " + time
+}
+
+
 
 //struct VoyageCardView4_Previews: PreviewProvider {
 //    static var previews: some View {

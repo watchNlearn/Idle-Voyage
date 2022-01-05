@@ -24,9 +24,10 @@ struct OnboardingView: View {
                 VoyageCardView3()
                 Spacer()
                 VoyageCardView4(valueFromOnboardingView: $valueFromInitialView)
-
+                
             }
             .padding()
+            
         }
     }
 }
