@@ -11,7 +11,7 @@ struct VoyageCardView: View {
     let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
 
     @State var shouldAnimate = false
-    @State var shipImage: String = getShipImage()
+    @State var shipImage: String = getShipImageString()
     @State var leftOffset: CGFloat = -200
     @State var rightOffset: CGFloat = 200
     var body: some View {
@@ -27,10 +27,10 @@ struct VoyageCardView: View {
                     self.shouldAnimate = true
                 }
                 .onReceive(timer) {_ in
-                    self.shipImage = getShipImage()
+                    self.shipImage = getShipImageString()
                 }
                 .onTapGesture {
-                    self.shipImage = getShipImage()
+                    self.shipImage = getShipImageString()
                 }
                 
                 
@@ -51,9 +51,9 @@ struct VoyageCardView: View {
     }
 }
 
-func getShipImage() -> String {
+private func getShipImageString() -> String {
     let ships = ["🚀","🛸","🛰️"]
-    return ships.randomElement()!
+    return ships.randomElement() ?? "🚀"
 }
 
 //struct VoyageCardView_Previews: PreviewProvider {
