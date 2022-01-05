@@ -18,11 +18,12 @@ struct VoyageCardView4: View {
                 .fontWeight(.bold)
             HStack(alignment: .center, spacing: 8) {
                 Button(action: {
+                    //  TODO: save to UserDefaults
                     // Button press update value
                     valueFromOnboardingView = false
                 }) {
                   HStack{
-                    Text("This is a button")
+                    Text("Start Voyage")
                     .padding(.horizontal)
                       Image(uiImage: "🚀".image()!)
                   }
@@ -32,15 +33,19 @@ struct VoyageCardView4: View {
                 .background(Color.green)
                 .cornerRadius(10)
             }
+            Text("03/24/22 11:34:19")
+                .font(.subheadline)
+                .fontWeight(.medium)
            
-            Text("Tap the green button to liftoff")
+            Text("Save the date, Theres no going back now!")
                 .opacity(0.7)
                 
         }
         .foregroundColor(.white)
         .padding()
         .frame(width: 300, height: 400)
-        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "04040c"), Color.init(hex: "908390"), Color.init(hex: "496c99"), Color.init(hex: "14140c"), Color.init(hex: "141530")]), startPoint: .topTrailing, endPoint: .leading))
+        .background(RadialGradient(colors: [ Color.init(hex: "3E54E8"),Color.init(hex: "3E66F9"),Color.init(hex: "212354"), Color.init(hex: "000000"), Color.init(hex: "000000")], center: .bottomLeading, startRadius: 0, endRadius: 400))
+        
         .cornerRadius(30)
     }
 }
