@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct InitialView: View {
+    
+    
     //should grab from userdefaults eventually
     @State var showingOnboarding = true
     

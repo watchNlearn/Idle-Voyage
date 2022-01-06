@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct Idle_VoyageApp: App {
+    
+    @StateObject private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

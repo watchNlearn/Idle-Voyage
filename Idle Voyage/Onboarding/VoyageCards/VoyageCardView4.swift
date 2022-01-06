@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct VoyageCardView4: View {
+    // Get out environment and users
+    @Environment(\.managedObjectContext) var moc
+    // We may not even have to create a fetch request
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
+    
     // Binding from prev view
     @Binding var valueFromOnboardingView : Bool
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -23,6 +28,24 @@ struct VoyageCardView4: View {
                 Button(action: {
                     //  TODO: save to UserDefaults
                     // Button press update value
+                    if user.isEmpty {
+                        let newUser = User(context: moc)
+                        newUser.uid = UUID()
+                        newUser.voyageStartDate = Date()
+                        newUser.shipPref = "rocket"
+                        newUser.unitPref = "km"
+                        newUser.progress = 0.0
+                        newUser.distanceInKm = 0
+                        newUser.elapsedTime = 0
+                        newUser.speedInKm = 700000
+                        newUser.startDate = Date().timeIntervalSince1970
+                        try? moc.save()
+                    } else {
+                        print("This shouldnt be happening! User should be saved already")
+                        //print(user.first?.startDate)
+                    }
+                    
+                    
                     withAnimation {
                         valueFromOnboardingView = false
                     }

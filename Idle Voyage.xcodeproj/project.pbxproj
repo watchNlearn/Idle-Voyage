@@ -24,6 +24,9 @@
 		0B44F70027850D1E00EE0B33 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F6FF27850D1E00EE0B33 /* OnboardingView.swift */; };
 		0B44F70227850D5C00EE0B33 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F70127850D5C00EE0B33 /* InitialView.swift */; };
 		0B44F7062785365500EE0B33 /* VoyageCardView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F7052785365500EE0B33 /* VoyageCardView4.swift */; };
+		0B44F70B2787916200EE0B33 /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F7092787916200EE0B33 /* UserData.xcdatamodeld */; };
+		0B44F70D2787955200EE0B33 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F70C2787955200EE0B33 /* DataController.swift */; };
+		0B44F70F27879FFA00EE0B33 /* SpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F70E27879FFA00EE0B33 /* SpaceData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		0B44F6FF27850D1E00EE0B33 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0B44F70127850D5C00EE0B33 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		0B44F7052785365500EE0B33 /* VoyageCardView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoyageCardView4.swift; sourceTree = "<group>"; };
+		0B44F70A2787916200EE0B33 /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
+		0B44F70C2787955200EE0B33 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		0B44F70E27879FFA00EE0B33 /* SpaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,9 @@
 				0B44F6CB2783C1B900EE0B33 /* Preview Content */,
 				0B44F6EF2783E20900EE0B33 /* LoadingView.swift */,
 				0B44F6FD2784F50F00EE0B33 /* Extensions.swift */,
+				0B44F7092787916200EE0B33 /* UserData.xcdatamodeld */,
+				0B44F70C2787955200EE0B33 /* DataController.swift */,
+				0B44F70E27879FFA00EE0B33 /* SpaceData.swift */,
 			);
 			path = "Idle Voyage";
 			sourceTree = "<group>";
@@ -303,12 +312,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B44F70B2787916200EE0B33 /* UserData.xcdatamodeld in Sources */,
 				0B44F7062785365500EE0B33 /* VoyageCardView4.swift in Sources */,
 				0B44F70227850D5C00EE0B33 /* InitialView.swift in Sources */,
 				0B44F6C82783C1B700EE0B33 /* ContentView.swift in Sources */,
+				0B44F70F27879FFA00EE0B33 /* SpaceData.swift in Sources */,
 				0B44F6FE2784F50F00EE0B33 /* Extensions.swift in Sources */,
 				0B44F6FC2784EBB000EE0B33 /* OnboardingWidgetPbar.swift in Sources */,
 				0B44F70027850D1E00EE0B33 /* OnboardingView.swift in Sources */,
+				0B44F70D2787955200EE0B33 /* DataController.swift in Sources */,
 				0B44F6F627844C5500EE0B33 /* VoyageCardView3.swift in Sources */,
 				0B44F6C62783C1B700EE0B33 /* Idle_VoyageApp.swift in Sources */,
 				0B44F6FA27844E3E00EE0B33 /* OnboardingWidgetView.swift in Sources */,
@@ -643,6 +655,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0B44F7092787916200EE0B33 /* UserData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0B44F70A2787916200EE0B33 /* UserData.xcdatamodel */,
+			);
+			currentVersion = 0B44F70A2787916200EE0B33 /* UserData.xcdatamodel */;
+			path = UserData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0B44F6BA2783C1B700EE0B33 /* Project object */;
 }
