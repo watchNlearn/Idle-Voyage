@@ -12,6 +12,7 @@ struct Idle_VoyageApp: App {
     
     @StateObject private var dataController = DataController()
     
+    // Upon app load we want to load up our data controller
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -8,6 +8,8 @@
 import Foundation
 import CoreData
 
+
+// Our main data controller to be used throughout the app, we have a container for UserData that has our user
 class DataController: ObservableObject {
     let container = NSPersistentContainer(name: "UserData")
     

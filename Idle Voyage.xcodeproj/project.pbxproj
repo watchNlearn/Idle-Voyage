@@ -120,12 +120,12 @@
 		0B44F6C42783C1B700EE0B33 /* Idle Voyage */ = {
 			isa = PBXGroup;
 			children = (
-				0B44F70427850DE900EE0B33 /* Onboarding */,
 				0B44F6C52783C1B700EE0B33 /* Idle_VoyageApp.swift */,
 				0B44F6C72783C1B700EE0B33 /* ContentView.swift */,
 				0B44F70127850D5C00EE0B33 /* InitialView.swift */,
 				0B44F6C92783C1B900EE0B33 /* Assets.xcassets */,
 				0B44F6CB2783C1B900EE0B33 /* Preview Content */,
+				0B44F70427850DE900EE0B33 /* Onboarding */,
 				0B44F6EF2783E20900EE0B33 /* LoadingView.swift */,
 				0B44F6FD2784F50F00EE0B33 /* Extensions.swift */,
 				0B44F7092787916200EE0B33 /* UserData.xcdatamodeld */,
