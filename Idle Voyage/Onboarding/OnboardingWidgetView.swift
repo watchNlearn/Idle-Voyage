@@ -109,4 +109,12 @@ func getTimeString(interval: Int) -> String {
     let formattedString = formatter.string(from: TimeInterval(interval))!
     return formattedString
 }
+func getTimeStringSec(interval: Int) -> String {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.day, .hour, .minute, .second]
+    formatter.unitsStyle = .abbreviated
+
+    let formattedString = formatter.string(from: TimeInterval(interval))!
+    return formattedString
+}
 
