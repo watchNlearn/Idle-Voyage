@@ -9,21 +9,43 @@ import SwiftUI
 
 struct HomeView: View {
     
+//    if user.isEmpty {
+//        let newUser = User(context: moc)
+//        newUser.uid = UUID()
+//        newUser.voyageStartDate = Date()
+//        // Options: rocket, satellite, ufo (default is rocket)
+//        newUser.shipPref = "rocket"
+//        newUser.unitPref = "km"
+//        newUser.progress = 0.0
+//        newUser.distanceInKm = 0
+//        newUser.elapsedTime = 0
+//        newUser.speedInKm = 700000
+//        newUser.startDate = Date().timeIntervalSince1970
+//        try? moc.save()
+//    } else {
+//        print("This shouldnt be happening! User should be saved already")
+//        //print(user.first?.startDate)
+//    }
+    // Get out environment and users
+    @Environment(\.managedObjectContext) var moc
+    // We may not even have to create a fetch request
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     
-    // My dummy progress bar value
-    @State var shipImage: String = getShipImageString()
+    
+    @State var shipImage: String = getShipImageString(desc: "ufo")
     
     @State var progressValue: Float = 0.68
     let distanceInKm = 1433600000 // this is saturns from the sun!
-//    let speedPerSecKm = 11666.6666667
+//    let speedPerSecKm = 11666.6666667 Type '()' cannot conform to 'View'
     let speedPerSecKm = 11675.6564657
 
     
     @State var distanceTravelled: Double = 1433600000
     
     var body: some View {
+        let currentUser = user.first!
         VStack {
             HStack(alignment: .center) {
                 VStack(alignment: .leading){
@@ -41,7 +63,7 @@ struct HomeView: View {
                         .frame(alignment: .leading)
                         .padding(.trailing, 10)
                     HStack {
-                        Text(String(distanceTravelled.rounded(toPlaces: 1)) )
+                        Text(String(user.first!.distanceInKm.rounded(toPlaces: 1)))
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
@@ -51,6 +73,8 @@ struct HomeView: View {
                             .cornerRadius(6)
                             .onReceive(timer) { _ in
                                 self.distanceTravelled += speedPerSecKm
+                                currentUser.distanceInKm += speedPerSecKm
+                                try? moc.save()
                             }
                         Text("km")
                             .font(.subheadline)
@@ -97,7 +121,7 @@ struct HomeView: View {
                                     .fontWeight(.thin)
                                     .frame(alignment: .leading)
                                     .padding(.trailing, 10)
-                                Text(getTimeStringSec(interval: 4424283))
+                                Text(getTimeStringSec(interval: Int(user.first!.elapsedTime)))
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
                                     .frame(alignment: .leading)
@@ -105,6 +129,10 @@ struct HomeView: View {
                                     .padding(.trailing, 4)
                                     .background(Color.blue)
                                     .cornerRadius(6)
+                                    .onReceive(timer) { _ in
+                                        currentUser.elapsedTime += 1
+                                        try? moc.save()
+                                    }
                             }
                             .padding(.bottom, 5)
                             Text("Launch Date")
@@ -112,7 +140,7 @@ struct HomeView: View {
                                 .fontWeight(.thin)
                                 .frame(alignment: .leading)
                                 .padding(.trailing, 10)
-                            Text(" 02/14/22 12:45:01 ")
+                            Text(getCurrentDateFormat(atTime: user.first!.voyageStartDate!))
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                                 .padding(.leading, 4)
@@ -174,13 +202,14 @@ struct HomeView: View {
                 }
                 // MARK: SHIP IMAGE
                 VStack {
-                    Image(uiImage: shipImage.image()!)
+                    Image(uiImage: getShipImageString(desc: user.first!.shipPref!).image()!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 100)
                         .frame(width: 100)
                         .onTapGesture {
-                            self.shipImage = getShipImageString()
+//                            self.shipImage = getShipImageString(desc: "ufo")
+//                            try? moc.save()
                         }
                 }
                 
@@ -227,11 +256,11 @@ struct HomeView: View {
     
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+//}
 //  Radial doesn't work because it isn't a LinearGradient how to return type Linear or Radial?
 //RadialGradient(colors: [ Color.init(hex: "3E54E8"),Color.init(hex: "3E66F9"),Color.init(hex: "212354"), Color.init(hex: "000000"), Color.init(hex: "000000")], center: .bottomLeading, startRadius: 0, endRadius: 400),
 //  Kinda made it a linear gradient below?
@@ -246,7 +275,26 @@ private func getRandomGradient() -> LinearGradient {
     return gradients.randomElement()!
 }
 
-private func getShipImageString() -> String {
-    let ships = ["🚀","🛸","🛰️"]
-    return ships.randomElement() ?? "🚀"
+//        // Options: rocket, satellite, ufo (default is rocket)
+private func getShipImageString(desc: String) -> String {
+    switch desc {
+    case "rocket":
+        return "🚀"
+    case "satellite":
+        return "🛰️"
+    case "ufo":
+        return "🛸"
+    default:
+        return "🚀"
+    }
+    //    let ships = ["🚀","🛰️","🛸"]
+    //    return ships.randomElement() ?? "🚀"
+}
+
+private func getCurrentDateFormat(atTime: Date) -> String {
+    let date = atTime
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM/dd/yy hh:mm:ss"
+    let time = dateFormatter.string(from: date)
+    return time
 }
