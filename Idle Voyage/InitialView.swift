@@ -25,6 +25,8 @@ struct InitialView: View {
             Button(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/) {
                 showingOnboarding = true
             }
+            HomeView()
+            
         }
 
     }

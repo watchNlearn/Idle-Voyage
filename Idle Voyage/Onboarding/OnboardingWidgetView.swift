@@ -40,7 +40,7 @@ struct OnboardingWidgetView: View {
                             .frame(alignment: .leading)
                             .padding(.bottom, 5)
                             .padding(.trailing, 5)
-                        Text("Approach:")
+                        Text("Approach")
                             .font(.headline)
                             .fontWeight(.bold)
                             .frame(alignment: .leading)
