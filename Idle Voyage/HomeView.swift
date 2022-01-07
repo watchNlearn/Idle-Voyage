@@ -8,16 +8,27 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    
     // My dummy progress bar value
     @State var shipImage: String = getShipImageString()
-
+    
     @State var progressValue: Float = 0.68
     let distanceInKm = 1433600000 // this is saturns from the sun!
+//    let speedPerSecKm = 11666.6666667
+    let speedPerSecKm = 11675.6564657
+
+    
+    @State var distanceTravelled: Double = 1433600000
+    
     var body: some View {
         VStack {
-            // stats + emoji
             HStack(alignment: .center) {
                 VStack(alignment: .leading){
+                    
+                    // MARK: DISTANCE
                     Text("Distance")
                         .font(.title)
                         .fontWeight(.bold)
@@ -30,30 +41,32 @@ struct HomeView: View {
                         .frame(alignment: .leading)
                         .padding(.trailing, 10)
                     HStack {
-                        Text("5894824797")
+                        Text(String(distanceTravelled.rounded(toPlaces: 1)) )
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
-                            .padding(.leading, 4)
-                            .padding(.trailing, 4)
+                            .padding(.leading, 8)
+                            .padding(.trailing, 8)
                             .background(Color.orange)
                             .cornerRadius(6)
+                            .onReceive(timer) { _ in
+                                self.distanceTravelled += speedPerSecKm
+                            }
                         Text("km")
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
                             .padding(.leading, 4)
-
+                        
                     }
                     .padding(.bottom, 5)
-
                     Text("Remaining")
                         .font(.headline)
                         .fontWeight(.thin)
                         .frame(alignment: .leading)
                         .padding(.trailing, 10)
                     HStack {
-                        Text("482391")
+                        Text("0")
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
@@ -66,10 +79,10 @@ struct HomeView: View {
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
                             .padding(.leading, 4)
-
                     }
                     .padding(.bottom, 40)
                     
+                    // MARK: TIME
                     Group {
                         VStack(alignment: .leading) {
                             Text("Time")
@@ -94,8 +107,6 @@ struct HomeView: View {
                                     .cornerRadius(6)
                             }
                             .padding(.bottom, 5)
-
-                            
                             Text("Launch Date")
                                 .font(.headline)
                                 .fontWeight(.thin)
@@ -111,10 +122,9 @@ struct HomeView: View {
                                 .cornerRadius(6)
                         }
                         .padding(.bottom, 40)
-
-                        
                     }
                     Group {
+                        // MARK: LEAVING
                         VStack(alignment: .leading) {
                             Text("Leaving")
                                 .foregroundColor(.white)
@@ -130,12 +140,6 @@ struct HomeView: View {
                                 .background(Color.purple)
                                 .frame(alignment: .center)
                                 .cornerRadius(6)
-                            
-                            //                                Image(uiImage: "🌎".image()!)
-                            //                                    .resizable()
-                            //                                    .aspectRatio(contentMode: .fit)
-                            //                                    .frame(height: 25)
-                            //                                    .frame(width: 25)
                             Text("You may know this place...")
                                 .font(.subheadline)
                                 .fontWeight(.thin)
@@ -143,6 +147,7 @@ struct HomeView: View {
                                 .padding(.bottom, 40)
                                 .padding(.trailing, 10)
                         }
+                        // MARK: LEAVING
                         VStack(alignment: .leading) {
                             Text("Approaching")
                                 .foregroundColor(.white)
@@ -150,8 +155,6 @@ struct HomeView: View {
                                 .fontWeight(.bold)
                                 .frame(alignment: .leading)
                                 .padding(.trailing, 10)
-                            
-                            
                             Text("Saturn")
                                 .font(.headline)
                                 .fontWeight(.semibold)
@@ -160,14 +163,6 @@ struct HomeView: View {
                                 .padding(.trailing, 4)
                                 .background(Color.green)
                                 .cornerRadius(6)
-
-
-                            //                                Image(uiImage: "🪐".image()!)
-                            //                                    .resizable()
-                            //                                    .aspectRatio(contentMode: .fit)
-                            //                                    .frame(height: 25)
-                            //                                    .frame(width: 25)
-                            
                             Text("Rings... Lots of them")
                                 .font(.subheadline)
                                 .fontWeight(.thin)
@@ -175,12 +170,9 @@ struct HomeView: View {
                                 .padding(.bottom, 20)
                                 .padding(.trailing, 10)
                         }
-                        
                     }
-                    
-                    
-                    
                 }
+                // MARK: SHIP IMAGE
                 VStack {
                     Image(uiImage: shipImage.image()!)
                         .resizable()
@@ -192,30 +184,33 @@ struct HomeView: View {
                         }
                 }
                 
-               
+                
             }
             .padding()
             .frame(maxWidth: .infinity)
             .frame(maxHeight: .infinity)
+            
+            // MARK: PERCENT PROGRESS
             Text("68%")
                 .font(.headline)
                 .fontWeight(.semibold)
                 .foregroundColor(Color.yellow)
-                //.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            //.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             // Bottom planets + p bar
+            
+            
+            // MARK: PROGRESS BAR
             HStack {
                 Image(uiImage: "🌎".image()!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 50)
-                //                    .frame(maxWidth: .infinity)
                 OnboardingWidgetPbar(value: $progressValue).frame(maxWidth: .infinity)
                     .frame(height: 30)
                 Image(uiImage: "🪐".image()!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 50)
-                //                    .frame(maxWidth: .infinity)
             }
             
             
@@ -224,7 +219,8 @@ struct HomeView: View {
         .padding(10)
         .frame(maxWidth: 360)
         .frame(maxHeight: .infinity)
-        .background(getRandomGradient())
+//        .background(getRandomGradient())
+        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom))
         .cornerRadius(30)
         
     }
@@ -243,10 +239,10 @@ struct HomeView_Previews: PreviewProvider {
 
 private func getRandomGradient() -> LinearGradient {
     let gradients = [
-                    LinearGradient(gradient: Gradient(colors: [Color.init(hex: "013026"), Color.init(hex: "133769"), Color.init(hex: "210535"), Color.init(hex: "000000")]), startPoint: .bottomLeading, endPoint: .topTrailing),
-                     LinearGradient(gradient: Gradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "333136"), Color.init(hex: "6f6d72"), Color.init(hex: "001736")]), startPoint: .topTrailing, endPoint: .leading),
-                     LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom),
-                    LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"), Color.init(hex: "000000"), Color.init(hex: "212354"), Color.init(hex: "3E66F9"), Color.init(hex: "3E54E8")]), startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: UnitPoint(x: 0.1, y: 0.9))]
+        LinearGradient(gradient: Gradient(colors: [Color.init(hex: "013026"), Color.init(hex: "133769"), Color.init(hex: "210535"), Color.init(hex: "000000")]), startPoint: .bottomLeading, endPoint: .topTrailing),
+        LinearGradient(gradient: Gradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "333136"), Color.init(hex: "6f6d72"), Color.init(hex: "001736")]), startPoint: .topTrailing, endPoint: .leading),
+        LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom),
+        LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"), Color.init(hex: "000000"), Color.init(hex: "212354"), Color.init(hex: "3E66F9"), Color.init(hex: "3E54E8")]), startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: UnitPoint(x: 0.1, y: 0.9))]
     return gradients.randomElement()!
 }
 
