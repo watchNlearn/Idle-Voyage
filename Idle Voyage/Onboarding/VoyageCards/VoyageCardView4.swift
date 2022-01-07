@@ -32,6 +32,7 @@ struct VoyageCardView4: View {
                         let newUser = User(context: moc)
                         newUser.uid = UUID()
                         newUser.voyageStartDate = Date()
+                        // Options: rocket, satellite, ufo (default is rocket)
                         newUser.shipPref = "rocket"
                         newUser.unitPref = "km"
                         newUser.progress = 0.0

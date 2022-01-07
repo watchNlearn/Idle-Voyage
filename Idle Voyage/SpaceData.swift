@@ -10,8 +10,6 @@ import UIKit
 import SwiftUI
 
 
-
-
 struct SpaceObject {
     var name: String
     var distanceInKm: Double
