@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     // My dummy progress bar value
+    @State var shipImage: String = getShipImageString()
+
     @State var progressValue: Float = 0.68
     let distanceInKm = 1433600000 // this is saturns from the sun!
     var body: some View {
@@ -94,7 +96,7 @@ struct HomeView: View {
                     }
                     Group {
                         VStack(alignment: .leading) {
-                            Text("Last")
+                            Text("Leaving")
                                 .foregroundColor(.green)
                                 .font(.title)
                                 .fontWeight(.bold)
@@ -121,7 +123,7 @@ struct HomeView: View {
                                 .padding(.trailing, 10)
                         }
                         VStack(alignment: .leading) {
-                            Text("Next")
+                            Text("Approaching")
                                 .foregroundColor(.green)
                                 .font(.title)
                                 .fontWeight(.bold)
@@ -144,7 +146,7 @@ struct HomeView: View {
                                 .font(.subheadline)
                                 .fontWeight(.thin)
                                 .frame(alignment: .leading)
-                                .padding(.bottom, 40)
+                                .padding(.bottom, 20)
                                 .padding(.trailing, 10)
                         }
                         
@@ -154,12 +156,14 @@ struct HomeView: View {
                     
                 }
                 VStack {
-                    Image(uiImage: "🚀".image()!)
+                    Image(uiImage: shipImage.image()!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 100)
                         .frame(width: 100)
-                    
+                        .onTapGesture {
+                            self.shipImage = getShipImageString()
+                        }
                 }
                 
                
@@ -192,7 +196,7 @@ struct HomeView: View {
         }
         .foregroundColor(.white)
         .padding(10)
-        .frame(maxWidth: 380)
+        .frame(maxWidth: 360)
         .frame(maxHeight: .infinity)
         
         .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "013026"), Color.init(hex: "133769"), Color.init(hex: "210535"), Color.init(hex: "000000")]), startPoint: .bottomLeading, endPoint: .topTrailing))
@@ -206,4 +210,9 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
+}
+
+private func getShipImageString() -> String {
+    let ships = ["🚀","🛸","🛰️"]
+    return ships.randomElement() ?? "🚀"
 }
