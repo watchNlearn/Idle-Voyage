@@ -42,7 +42,11 @@ struct HomeView: View {
         
 //    let saturnDistanceInKm: Double = 1433600000 // this is saturns from the sun!
 //    let speedPerSecKm = 11666.6666667 Type '()' cannot conform to 'View'
-    let speedPerSecKm = 11675.6564657
+    // WRONG SPEED TESTING SPEED
+//    let speedPerSecKm = 11675.6564657
+//    let speedPerSecKm = 194.444444444
+        // USE THIS SPEED FOR SECONDS
+      let speedPerSecKm = 194.444444443
 
     
 //    @State var distanceTravelled: Double = 1433600000
@@ -181,7 +185,7 @@ struct HomeView: View {
                                 .fontWeight(.bold)
                                 .frame(alignment: .leading)
                                 .padding(.trailing, 10)
-                            Text(user.first!.leaving!)
+                            Text(getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).name)
                                 .font(.headline)
                                 .fontWeight(.semibold)
                                 .padding(.leading, 4)
@@ -189,7 +193,7 @@ struct HomeView: View {
                                 .background(Color.purple)
                                 .frame(alignment: .center)
                                 .cornerRadius(6)
-                            Text("You may know this place...")
+                            Text(getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).desc)
                                 .font(.subheadline)
                                 .fontWeight(.thin)
                                 .frame(alignment: .leading)
@@ -245,7 +249,7 @@ struct HomeView: View {
             
             // MARK: PERCENT PROGRESS
             let num = Double(user.first!.progress) * 100
-            Text(String(num.rounded(toPlaces: 2)) + "%")
+            Text(String(num.rounded(toPlaces: 3)) + "%")
                 .font(.headline)
                 .fontWeight(.semibold)
                 .foregroundColor(Color.white)
@@ -280,8 +284,9 @@ struct HomeView: View {
         .padding(10)
         .frame(maxWidth: 360)
         .frame(maxHeight: .infinity)
+        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"), Color.init(hex: "000000"), Color.init(hex: "212354"), Color.init(hex: "3E66F9"), Color.init(hex: "3E54E8")]), startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: UnitPoint(x: 0.1, y: 0.9)))
 //        .background(getRandomGradient())
-        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom))
+//        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom))
         .cornerRadius(30)
         // Used when app comes back into foreground from background (we need to update values, counters stop in background!)
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
@@ -379,6 +384,17 @@ func getNextSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceO
         if (i.distanceInKm > totalDistance) {
             nextSpaceObj = i
             break
+        }
+    }
+//    SpaceObject(name: "Moon", distanceInKm: 384400, image: Image(uiImage: "🌑".image()!), desc: "i smell cheese", description: "This is the Moon", type: .moon)
+    return nextSpaceObj
+}
+func getLastSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceObject {
+    let totalDistance = distance
+    var nextSpaceObj = SpaceObject(name: "Error", distanceInKm: 0, image: Image(""), desc: "Error", description: "Error", type: .other)
+    for i in spaceObjects {
+        if (i.distanceInKm < totalDistance) {
+            nextSpaceObj = i
         }
     }
 //    SpaceObject(name: "Moon", distanceInKm: 384400, image: Image(uiImage: "🌑".image()!), desc: "i smell cheese", description: "This is the Moon", type: .moon)
