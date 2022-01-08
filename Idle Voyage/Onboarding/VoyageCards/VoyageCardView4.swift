@@ -35,11 +35,16 @@ struct VoyageCardView4: View {
                         // Options: rocket, satellite, ufo (default is rocket)
                         newUser.shipPref = "rocket"
                         newUser.unitPref = "km"
+                        newUser.leaving = "Earth"
+                        newUser.approaching = "Saturn"
                         newUser.progress = 0.0
                         newUser.distanceInKm = 0
+                        newUser.distanceRemainInKm = 384400
                         newUser.elapsedTime = 0
                         newUser.speedInKm = 700000
                         newUser.startDate = Date().timeIntervalSince1970
+                        newUser.lastSaveDate = Date().timeIntervalSince1970
+
                         try? moc.save()
                     } else {
                         print("This shouldnt be happening! User should be saved already")
@@ -85,7 +90,7 @@ struct VoyageCardView4: View {
 private func getCurrentDateFormat() -> String {
     let date = Date()
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MM/dd/yy hh:mm:ss"
+    dateFormatter.dateFormat = "MM/dd/yy HH:mm:ss"
     let time = dateFormatter.string(from: date)
     return "Launch Time: " + time
 }

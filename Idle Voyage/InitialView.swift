@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct InitialView: View {
+    // We should on initial view load up and calculate differences
+    // Get out environment and users
+    @Environment(\.managedObjectContext) var moc
+    // We may not even have to create a fetch request
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     
     //should grab from userdefaults eventually
     @State var showingOnboarding = true
-    
+    // Speed
+    let speedPerSecKm = 11675.6564657
+
     var body: some View {
         // If user hasn't done onboarding
         if showingOnboarding {
@@ -25,11 +32,47 @@ struct InitialView: View {
             Button(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/) {
                 showingOnboarding = true
             }
+            
+            
             HomeView()
+                .onAppear {
+                    let currentUser = user.first!
+                    
+                    // Get start date in seconds
+                    let startDate = currentUser.startDate
+                    // Calulate elapsed time of journey thus far in seconds
+                    let elapsedTime = Date().timeIntervalSince1970 - startDate
+                    let elapsedTimeSinceSave = Date().timeIntervalSince1970 - currentUser.lastSaveDate
+
+                    // Update elapsed time
+                    currentUser.elapsedTime = elapsedTime
+                    print(elapsedTime)
+                    // Update TOTAL DISTANCE TRAVELED
+                    let elapsedTotalDistance = elapsedTime * speedPerSecKm
+                    print(elapsedTime)
+                    currentUser.distanceInKm = elapsedTotalDistance
+                    
+                    // Need to update this many KM on remaining
+                    let totalDistanceRemaining = currentUser.distanceRemainInKm
+                    let elapsedDistance = elapsedTimeSinceSave * speedPerSecKm
+                    var elapsedRemain = totalDistanceRemaining - elapsedDistance
+                    
+                    while (elapsedRemain < 0) {
+                        // Some sort of get next function
+                        var nextSpaceObjectDistance: Double = 420000
+                        elapsedRemain = nextSpaceObjectDistance - abs(elapsedRemain)
+                    }
+                    currentUser.distanceRemainInKm = elapsedRemain
+                    
+                    
+                }
             
         }
 
     }
+}
+func updateUser() {
+    
 }
 
 //struct InitialView_Previews: PreviewProvider {

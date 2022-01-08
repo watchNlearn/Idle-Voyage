@@ -16,7 +16,9 @@ struct HomeView: View {
 //        // Options: rocket, satellite, ufo (default is rocket)
 //        newUser.shipPref = "rocket"
 //        newUser.unitPref = "km"
-//        newUser.progress = 0.0
+//    newUser.leaving = "Earth"
+//    newUser.approaching = "Saturn"
+//       newUser.progress = 0.0
 //        newUser.distanceInKm = 0
 //        newUser.elapsedTime = 0
 //        newUser.speedInKm = 700000
@@ -42,7 +44,7 @@ struct HomeView: View {
     let speedPerSecKm = 11675.6564657
 
     
-    @State var distanceTravelled: Double = 1433600000
+//    @State var distanceTravelled: Double = 1433600000
     
     var body: some View {
         let currentUser = user.first!
@@ -72,7 +74,7 @@ struct HomeView: View {
                             .background(Color.orange)
                             .cornerRadius(6)
                             .onReceive(timer) { _ in
-                                self.distanceTravelled += speedPerSecKm
+//                                self.distanceTravelled += speedPerSecKm
                                 currentUser.distanceInKm += speedPerSecKm
                                 try? moc.save()
                             }
@@ -90,7 +92,7 @@ struct HomeView: View {
                         .frame(alignment: .leading)
                         .padding(.trailing, 10)
                     HStack {
-                        Text("0")
+                        Text(String(user.first!.distanceRemainInKm.rounded(toPlaces: 1)))
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
@@ -98,6 +100,21 @@ struct HomeView: View {
                             .padding(.trailing, 4)
                             .background(Color.orange)
                             .cornerRadius(6)
+                            .onReceive(timer) { _ in
+                                let distanceRemaining = user.first!.distanceRemainInKm.rounded(toPlaces: 1)
+                                if distanceRemaining > 11675.6564657 {
+                                    currentUser.distanceRemainInKm -= speedPerSecKm
+                                }
+                                else {
+                                    // the next distance until
+                                    currentUser.distanceRemainInKm = 0
+                                }
+                                if distanceRemaining == 0 {
+                                    // the next distance until
+                                    currentUser.distanceRemainInKm = 384400
+                                }
+                                try? moc.save()
+                            }
                         Text("km")
                             .font(.subheadline)
                             .fontWeight(.semibold)
@@ -131,6 +148,7 @@ struct HomeView: View {
                                     .cornerRadius(6)
                                     .onReceive(timer) { _ in
                                         currentUser.elapsedTime += 1
+                                        currentUser.lastSaveDate = Date().timeIntervalSince1970
                                         try? moc.save()
                                     }
                             }
@@ -160,7 +178,7 @@ struct HomeView: View {
                                 .fontWeight(.bold)
                                 .frame(alignment: .leading)
                                 .padding(.trailing, 10)
-                            Text("Earth")
+                            Text(user.first!.leaving!)
                                 .font(.headline)
                                 .fontWeight(.semibold)
                                 .padding(.leading, 4)
@@ -183,7 +201,7 @@ struct HomeView: View {
                                 .fontWeight(.bold)
                                 .frame(alignment: .leading)
                                 .padding(.trailing, 10)
-                            Text("Saturn")
+                            Text(user.first!.approaching!)
                                 .font(.headline)
                                 .fontWeight(.semibold)
                                 .frame(alignment: .leading)
@@ -251,9 +269,43 @@ struct HomeView: View {
 //        .background(getRandomGradient())
         .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom))
         .cornerRadius(30)
+        // Used when app comes back into foreground from background (we need to update values, counters stop in background!)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                    // your code
+            print("Here appearing")
+            let currentUser = user.first!
+            
+            // Get start date in seconds
+            let startDate = currentUser.startDate
+            // Calulate elapsed time of journey thus far in seconds
+            let elapsedTime = Date().timeIntervalSince1970 - startDate
+            let elapsedTimeSinceSave = Date().timeIntervalSince1970 - currentUser.lastSaveDate
+
+            // Update elapsed time
+            currentUser.elapsedTime = elapsedTime
+            print(elapsedTime)
+            // Update TOTAL DISTANCE TRAVELED
+            let elapsedTotalDistance = elapsedTime * speedPerSecKm
+            print(elapsedTime)
+            currentUser.distanceInKm = elapsedTotalDistance
+            
+            // Need to update this many KM on remaining
+            let totalDistanceRemaining = currentUser.distanceRemainInKm
+            let elapsedDistance = elapsedTimeSinceSave * speedPerSecKm
+            var elapsedRemain = totalDistanceRemaining - elapsedDistance
+            
+            while (elapsedRemain < 0) {
+                // Some sort of get next function
+                var nextSpaceObjectDistance: Double = 420000
+                elapsedRemain = nextSpaceObjectDistance - abs(elapsedRemain)
+            }
+            currentUser.distanceRemainInKm = elapsedRemain
+            
+            }
         
     }
-    
+        
+        
 }
 
 //struct HomeView_Previews: PreviewProvider {
@@ -294,7 +346,7 @@ private func getShipImageString(desc: String) -> String {
 private func getCurrentDateFormat(atTime: Date) -> String {
     let date = atTime
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MM/dd/yy hh:mm:ss"
+    dateFormatter.dateFormat = "MM/dd/yy HH:mm:ss"
     let time = dateFormatter.string(from: date)
     return time
 }
