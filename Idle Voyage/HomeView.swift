@@ -43,9 +43,9 @@ struct HomeView: View {
 //    let saturnDistanceInKm: Double = 1433600000 // this is saturns from the sun!
 //    let speedPerSecKm = 11666.6666667 Type '()' cannot conform to 'View'
     // WRONG SPEED TESTING SPEED
-//    let speedPerSecKm = 11675.6564657
+//    let speedPerSecKm = 1167500.6564657
 //    let speedPerSecKm = 194.444444444
-        // USE THIS SPEED FOR SECONDS
+        //PROD: USE THIS SPEED FOR SECONDS
       let speedPerSecKm = 194.444444443
 
     
@@ -107,7 +107,7 @@ struct HomeView: View {
                             .cornerRadius(6)
                             .onReceive(timer) { _ in
                                 let distanceRemaining = user.first!.distanceRemainInKm.rounded(toPlaces: 1)
-                                if distanceRemaining > 11675.6564657 {
+                                if distanceRemaining > speedPerSecKm {
                                     currentUser.distanceRemainInKm -= speedPerSecKm
                                 }
                                 else {
@@ -117,8 +117,8 @@ struct HomeView: View {
                                 if distanceRemaining == 0 {
                                     // the next distance until
                                     let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-
-                                    currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm
+//                                    nextSpaceObj.distanceInKm - user.first!.distanceInKm
+                                    currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - user.first!.distanceInKm
                                 }
                                 try? moc.save()
                             }
@@ -267,7 +267,9 @@ struct HomeView: View {
                     .frame(height: 30)
                     .onReceive(timer) { _ in
                         let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-                        let progress = 1 - (currentUser.distanceRemainInKm/nextSpaceObj.distanceInKm)
+                        let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                        
+                        let progress = 1 - (currentUser.distanceRemainInKm/(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm))
                         progressValue = Float(progress)
                         currentUser.progress = progressValue
                         try? moc.save()
@@ -313,6 +315,7 @@ struct HomeView: View {
             let elapsedDistance = elapsedTimeSinceSave * speedPerSecKm
             var elapsedRemain = totalDistanceRemaining - elapsedDistance
             let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+            let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
 
             // lets say elapsed remain is negative! User passed planet while app in background
             while (elapsedRemain < 0) {
@@ -324,9 +327,10 @@ struct HomeView: View {
             }
             currentUser.distanceRemainInKm = elapsedRemain
 //            let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-            let progress = 1 - (currentUser.distanceRemainInKm/nextSpaceObj.distanceInKm)
+            let progress = 1 - (currentUser.distanceRemainInKm/(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm))
             currentUser.progress = Float(progress)
             progressValue = Float(progress)
+            try? moc.save()
             }
         
     }
@@ -386,17 +390,26 @@ func getNextSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceO
             break
         }
     }
-//    SpaceObject(name: "Moon", distanceInKm: 384400, image: Image(uiImage: "🌑".image()!), desc: "i smell cheese", description: "This is the Moon", type: .moon)
+//    SpaceObject(name: "Moon", distanceInKm: 384400, image: Image(uiImage: "🌑".image()!), desc: "i smell cheese", description: "This is the Moon", type: .moon)\
+//    print("RETURNING NEXT: \(nextSpaceObj.name)")
+//    print("-------------")
+//    print("RETURNING DISTANCE: \(totalDistance)")
+//    print("-------------")
+
+    
+
     return nextSpaceObj
 }
 func getLastSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceObject {
     let totalDistance = distance
-    var nextSpaceObj = SpaceObject(name: "Error", distanceInKm: 0, image: Image(""), desc: "Error", description: "Error", type: .other)
+    var lastSpaceObj = SpaceObject(name: "Error", distanceInKm: 0, image: Image(""), desc: "Error", description: "Error", type: .other)
     for i in spaceObjects {
         if (i.distanceInKm < totalDistance) {
-            nextSpaceObj = i
+            lastSpaceObj = i
         }
     }
 //    SpaceObject(name: "Moon", distanceInKm: 384400, image: Image(uiImage: "🌑".image()!), desc: "i smell cheese", description: "This is the Moon", type: .moon)
-    return nextSpaceObj
+//    print("RETURNING Last: \(lastSpaceObj.name)")
+
+    return lastSpaceObj
 }
