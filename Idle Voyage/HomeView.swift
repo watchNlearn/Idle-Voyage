@@ -38,8 +38,9 @@ struct HomeView: View {
     
     @State var shipImage: String = getShipImageString(desc: "ufo")
     
-    @State var progressValue: Float = 0.68
-    let distanceInKm = 1433600000 // this is saturns from the sun!
+    @State var progressValue: Float = 0.0
+        
+//    let saturnDistanceInKm: Double = 1433600000 // this is saturns from the sun!
 //    let speedPerSecKm = 11666.6666667 Type '()' cannot conform to 'View'
     let speedPerSecKm = 11675.6564657
 
@@ -111,7 +112,9 @@ struct HomeView: View {
                                 }
                                 if distanceRemaining == 0 {
                                     // the next distance until
-                                    currentUser.distanceRemainInKm = 384400
+                                    let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+
+                                    currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm
                                 }
                                 try? moc.save()
                             }
@@ -238,10 +241,11 @@ struct HomeView: View {
             .frame(maxHeight: .infinity)
             
             // MARK: PERCENT PROGRESS
-            Text("68%")
+            let num = Double(user.first!.progress) * 100
+            Text(String(num.rounded(toPlaces: 2)) + "%")
                 .font(.headline)
                 .fontWeight(.semibold)
-                .foregroundColor(Color.yellow)
+                .foregroundColor(Color.white)
             //.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             // Bottom planets + p bar
             
@@ -254,6 +258,13 @@ struct HomeView: View {
                     .frame(height: 50)
                 OnboardingWidgetPbar(value: $progressValue).frame(maxWidth: .infinity)
                     .frame(height: 30)
+                    .onReceive(timer) { _ in
+                        let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                        let progress = 1 - (currentUser.distanceRemainInKm/nextSpaceObj.distanceInKm)
+                        progressValue = Float(progress)
+                        currentUser.progress = progressValue
+                        try? moc.save()
+                    }
                 Image(uiImage: "🪐".image()!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -283,24 +294,31 @@ struct HomeView: View {
 
             // Update elapsed time
             currentUser.elapsedTime = elapsedTime
-            print(elapsedTime)
+//            print(elapsedTime)
             // Update TOTAL DISTANCE TRAVELED
             let elapsedTotalDistance = elapsedTime * speedPerSecKm
-            print(elapsedTime)
+//            print(elapsedTime)
             currentUser.distanceInKm = elapsedTotalDistance
             
             // Need to update this many KM on remaining
             let totalDistanceRemaining = currentUser.distanceRemainInKm
             let elapsedDistance = elapsedTimeSinceSave * speedPerSecKm
             var elapsedRemain = totalDistanceRemaining - elapsedDistance
-            
+            let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+
+            // lets say elapsed remain is negative! User passed planet while app in background
             while (elapsedRemain < 0) {
                 // Some sort of get next function
-                var nextSpaceObjectDistance: Double = 420000
-                elapsedRemain = nextSpaceObjectDistance - abs(elapsedRemain)
+//                let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                // get the next space obj - abs val of remain
+                // repeat loop if neg
+                elapsedRemain = nextSpaceObj.distanceInKm - abs(elapsedRemain)
             }
             currentUser.distanceRemainInKm = elapsedRemain
-            
+//            let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+            let progress = 1 - (currentUser.distanceRemainInKm/nextSpaceObj.distanceInKm)
+            currentUser.progress = Float(progress)
+            progressValue = Float(progress)
             }
         
     }
@@ -349,4 +367,17 @@ private func getCurrentDateFormat(atTime: Date) -> String {
     dateFormatter.dateFormat = "MM/dd/yy HH:mm:ss"
     let time = dateFormatter.string(from: date)
     return time
+}
+
+func getNextSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceObject {
+    let totalDistance = distance
+    var nextSpaceObj = SpaceObject(name: "Error", distanceInKm: 0, image: Image(""), desc: "Error", description: "Error", type: .other)
+    for i in spaceObjects {
+        if (i.distanceInKm > totalDistance) {
+            nextSpaceObj = i
+            break
+        }
+    }
+//    SpaceObject(name: "Moon", distanceInKm: 384400, image: Image(uiImage: "🌑".image()!), desc: "i smell cheese", description: "This is the Moon", type: .moon)
+    return nextSpaceObj
 }

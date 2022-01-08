@@ -46,25 +46,31 @@ struct InitialView: View {
 
                     // Update elapsed time
                     currentUser.elapsedTime = elapsedTime
-                    print(elapsedTime)
+//                    print(elapsedTime)
                     // Update TOTAL DISTANCE TRAVELED
                     let elapsedTotalDistance = elapsedTime * speedPerSecKm
-                    print(elapsedTime)
+//                    print(elapsedTime)
                     currentUser.distanceInKm = elapsedTotalDistance
                     
                     // Need to update this many KM on remaining
                     let totalDistanceRemaining = currentUser.distanceRemainInKm
                     let elapsedDistance = elapsedTimeSinceSave * speedPerSecKm
                     var elapsedRemain = totalDistanceRemaining - elapsedDistance
-                    
+                    let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+
+                    // lets say elapsed remain is negative! User passed planet while app in background
                     while (elapsedRemain < 0) {
                         // Some sort of get next function
-                        var nextSpaceObjectDistance: Double = 420000
-                        elapsedRemain = nextSpaceObjectDistance - abs(elapsedRemain)
+//                        let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                        // get the next space obj - abs val of remain
+                        // repeat loop if neg
+                        elapsedRemain = nextSpaceObj.distanceInKm - abs(elapsedRemain)
                     }
                     currentUser.distanceRemainInKm = elapsedRemain
-                    
-                    
+//                    let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                    let progress = 1 - (currentUser.distanceRemainInKm/nextSpaceObj.distanceInKm)
+                    currentUser.progress = Float(progress)
+                    try? moc.save()
                 }
             
         }
