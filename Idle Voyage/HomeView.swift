@@ -204,7 +204,10 @@ struct HomeView: View {
                                 .fontWeight(.bold)
                                 .frame(alignment: .leading)
                                 .padding(.trailing, 10)
-                            Text(user.first!.approaching!)
+                            //            let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+//                            Text(user.first!.approaching!) <- was originally not sure if i need this anymore
+
+                            Text(getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).name)
                                 .font(.headline)
                                 .fontWeight(.semibold)
                                 .frame(alignment: .leading)
@@ -212,7 +215,7 @@ struct HomeView: View {
                                 .padding(.trailing, 4)
                                 .background(Color.green)
                                 .cornerRadius(6)
-                            Text("Rings... Lots of them")
+                            Text(getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).desc)
                                 .font(.subheadline)
                                 .fontWeight(.thin)
                                 .frame(alignment: .leading)
