@@ -43,7 +43,7 @@ struct HomeView: View {
 //    let saturnDistanceInKm: Double = 1433600000 // this is saturns from the sun!
 //    let speedPerSecKm = 11666.6666667 Type '()' cannot conform to 'View'
     // WRONG SPEED TESTING SPEED
-//    let speedPerSecKm = 1167500.6564657
+//    let speedPerSecKm = 2675000.6564657
 //    let speedPerSecKm = 194.444444444
         //PROD: USE THIS SPEED FOR SECONDS
       let speedPerSecKm = 194.444444443
@@ -70,7 +70,7 @@ struct HomeView: View {
                         .frame(alignment: .leading)
                         .padding(.trailing, 10)
                     HStack {
-                        Text(String(user.first!.distanceInKm.rounded(toPlaces: 1)))
+                        Text(String(user.first!.distanceInKm.rounded(toPlaces: 1).formattedWithSeparator))
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
@@ -81,7 +81,7 @@ struct HomeView: View {
                             .onReceive(timer) { _ in
 //                                self.distanceTravelled += speedPerSecKm
                                 currentUser.distanceInKm += speedPerSecKm
-                                try? moc.save()
+\                                try? moc.save()
                             }
                         Text("km")
                             .font(.subheadline)
@@ -97,7 +97,7 @@ struct HomeView: View {
                         .frame(alignment: .leading)
                         .padding(.trailing, 10)
                     HStack {
-                        Text(String(user.first!.distanceRemainInKm.rounded(toPlaces: 1)))
+                        Text(String(user.first!.distanceRemainInKm.rounded(toPlaces: 1).formattedWithSeparator))
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
@@ -106,7 +106,7 @@ struct HomeView: View {
                             .background(Color.orange)
                             .cornerRadius(6)
                             .onReceive(timer) { _ in
-                                let distanceRemaining = user.first!.distanceRemainInKm.rounded(toPlaces: 1)
+                                let distanceRemaining = user.first!.distanceRemainInKm
                                 if distanceRemaining > speedPerSecKm {
                                     currentUser.distanceRemainInKm -= speedPerSecKm
                                 }
@@ -115,10 +115,12 @@ struct HomeView: View {
                                     currentUser.distanceRemainInKm = 0
                                 }
                                 if distanceRemaining == 0 {
-                                    // the next distance until
+                                    // the next distance until//
+                                    let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
                                     let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
 //                                    nextSpaceObj.distanceInKm - user.first!.distanceInKm
-                                    currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - user.first!.distanceInKm
+                                    print(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm)
+                                    currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm
                                 }
                                 try? moc.save()
                             }
@@ -299,14 +301,14 @@ struct HomeView: View {
             // Get start date in seconds
             let startDate = currentUser.startDate
             // Calulate elapsed time of journey thus far in seconds
-            let elapsedTime = Date().timeIntervalSince1970 - startDate
-            let elapsedTimeSinceSave = Date().timeIntervalSince1970 - currentUser.lastSaveDate
+            let elapsedTime = Date().timeIntervalSince1970 - startDate // time since start time
+            let elapsedTimeSinceSave = Date().timeIntervalSince1970 - currentUser.lastSaveDate // time since last save date
 
             // Update elapsed time
             currentUser.elapsedTime = elapsedTime
 //            print(elapsedTime)
             // Update TOTAL DISTANCE TRAVELED
-            let elapsedTotalDistance = elapsedTime * speedPerSecKm
+            let elapsedTotalDistance = elapsedTime * speedPerSecKm // Total distance traveled
 //            print(elapsedTime)
             currentUser.distanceInKm = elapsedTotalDistance
             
@@ -323,8 +325,9 @@ struct HomeView: View {
 //                let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
                 // get the next space obj - abs val of remain
                 // repeat loop if neg
-                elapsedRemain = nextSpaceObj.distanceInKm - abs(elapsedRemain)
+                elapsedRemain = (nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm) - abs(elapsedRemain)
             }
+            print("Elapsed remain: \(elapsedRemain)")
             currentUser.distanceRemainInKm = elapsedRemain
 //            let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
             let progress = 1 - (currentUser.distanceRemainInKm/(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm))

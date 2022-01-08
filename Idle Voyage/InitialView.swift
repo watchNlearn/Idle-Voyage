@@ -18,7 +18,7 @@ struct InitialView: View {
     //should grab from userdefaults eventually
     @State var showingOnboarding = true
     // testing speed
-//    let speedPerSecKm = 1167500.6564657
+//    let speedPerSecKm = 2675000.6564657
     //PROD: USE THIS SPEED FOR SECONDS
     let speedPerSecKm = 194.444444443
     var body: some View {
@@ -66,7 +66,7 @@ struct InitialView: View {
 //                        let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
                         // get the next space obj - abs val of remain
                         // repeat loop if neg
-                        elapsedRemain = nextSpaceObj.distanceInKm - abs(elapsedRemain)
+                        elapsedRemain = (nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm) - abs(elapsedRemain)
                     }
                     currentUser.distanceRemainInKm = elapsedRemain
 //                    let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
