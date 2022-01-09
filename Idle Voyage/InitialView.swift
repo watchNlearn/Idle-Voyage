@@ -43,15 +43,17 @@ struct InitialView: View {
                     let startDate = currentUser.startDate
                     // Calulate elapsed time of journey thus far in seconds
                     let elapsedTime = Date().timeIntervalSince1970 - startDate
-                    let elapsedTimeSinceSave = Date().timeIntervalSince1970 - currentUser.lastSaveDate
-
                     // Update elapsed time
                     currentUser.elapsedTime = elapsedTime
+                    
+                    let elapsedTimeSinceSave = Date().timeIntervalSince1970 - currentUser.lastSaveDate
+
+                    
 //                    print(elapsedTime)
                     // Update TOTAL DISTANCE TRAVELED
                     let elapsedTotalDistance = elapsedTime * speedPerSecKm
 //                    print(elapsedTime)
-                    currentUser.distanceInKm = elapsedTotalDistance
+                    currentUser.distanceInKm += elapsedTotalDistance
                     
                     // Need to update this many KM on remaining
                     let totalDistanceRemaining = currentUser.distanceRemainInKm

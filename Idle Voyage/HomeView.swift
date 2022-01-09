@@ -81,7 +81,7 @@ struct HomeView: View {
                             .onReceive(timer) { _ in
 //                                self.distanceTravelled += speedPerSecKm
                                 currentUser.distanceInKm += speedPerSecKm
-\                                try? moc.save()
+                                try? moc.save()
                             }
                         Text("km")
                             .font(.subheadline)
@@ -292,6 +292,7 @@ struct HomeView: View {
 //        .background(getRandomGradient())
 //        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom))
         .cornerRadius(30)
+        // Maybe we need to do
         // Used when app comes back into foreground from background (we need to update values, counters stop in background!)
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     // your code
@@ -302,15 +303,16 @@ struct HomeView: View {
             let startDate = currentUser.startDate
             // Calulate elapsed time of journey thus far in seconds
             let elapsedTime = Date().timeIntervalSince1970 - startDate // time since start time
-            let elapsedTimeSinceSave = Date().timeIntervalSince1970 - currentUser.lastSaveDate // time since last save date
-
             // Update elapsed time
             currentUser.elapsedTime = elapsedTime
+            
+            let elapsedTimeSinceSave = Date().timeIntervalSince1970 - currentUser.lastSaveDate // time since last save date
+
 //            print(elapsedTime)
             // Update TOTAL DISTANCE TRAVELED
             let elapsedTotalDistance = elapsedTime * speedPerSecKm // Total distance traveled
 //            print(elapsedTime)
-            currentUser.distanceInKm = elapsedTotalDistance
+            currentUser.distanceInKm += elapsedTotalDistance
             
             // Need to update this many KM on remaining
             let totalDistanceRemaining = currentUser.distanceRemainInKm
