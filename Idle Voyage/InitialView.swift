@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InitialView: View {
+//    @Environment(\.scenePhase) var scenePhase
     // We should on initial view load up and calculate differences
     // Get out environment and users
     @Environment(\.managedObjectContext) var moc
@@ -37,52 +38,29 @@ struct InitialView: View {
             
             HomeView()
                 .onAppear {
+                    print("On Appear")
                     let currentUser = user.first!
-                    
-                    // Get start date in seconds
-                    let startDate = currentUser.startDate
-                    // Calulate elapsed time of journey thus far in seconds
-                    let elapsedTime = Date().timeIntervalSince1970 - startDate
-                    // Update elapsed time
-                    currentUser.elapsedTime = elapsedTime
-                    
-                    let elapsedTimeSinceSave = Date().timeIntervalSince1970 - currentUser.lastSaveDate
-
-                    
-//                    print(elapsedTime)
-                    // Update TOTAL DISTANCE TRAVELED
-                    let elapsedTotalDistance = elapsedTime * speedPerSecKm
-//                    print(elapsedTime)
-                    currentUser.distanceInKm += elapsedTotalDistance
-                    
-                    // Need to update this many KM on remaining
-                    let totalDistanceRemaining = currentUser.distanceRemainInKm
-                    let elapsedDistance = elapsedTimeSinceSave * speedPerSecKm
-                    var elapsedRemain = totalDistanceRemaining - elapsedDistance
+                    let lastSaveDate = currentUser.lastSaveDate
+                    let elapsedTime = Date().timeIntervalSince1970 - lastSaveDate
+                    let elapsedDistance = speedPerSecKm * elapsedTime
                     let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-                    let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-
-                    // lets say elapsed remain is negative! User passed planet while app in background
-                    while (elapsedRemain < 0) {
-                        // Some sort of get next function
-//                        let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-                        // get the next space obj - abs val of remain
-                        // repeat loop if neg
-                        elapsedRemain = (nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm) - abs(elapsedRemain)
-                    }
-                    currentUser.distanceRemainInKm = elapsedRemain
-//                    let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-                    let progress = 1 - (currentUser.distanceRemainInKm/(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm))
+                    
+                    currentUser.elapsedTime += elapsedTime
+                    
+                    currentUser.distanceInKm += elapsedDistance
+                    
+                    
+                    currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - currentUser.distanceInKm
+                    
+                    let progress = 1 - (currentUser.distanceRemainInKm/(currentUser.distanceInKm - nextSpaceObj.distanceInKm))
                     currentUser.progress = Float(progress)
                     try? moc.save()
+                    
                 }
             
         }
 
     }
-}
-func updateUser() {
-    
 }
 
 //struct InitialView_Previews: PreviewProvider {

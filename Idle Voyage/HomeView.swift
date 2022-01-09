@@ -294,48 +294,34 @@ struct HomeView: View {
         .cornerRadius(30)
         // Maybe we need to do
         // Used when app comes back into foreground from background (we need to update values, counters stop in background!)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+                    // your code
+            print("Entering background save time")
+            let currentUser = user.first!
+            currentUser.lastSaveDate = Date().timeIntervalSince1970
+            try? moc.save()
+            }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     // your code
-            print("Here appearing")
+            print("Entering foreground update")
             let currentUser = user.first!
-            
-            // Get start date in seconds
-            let startDate = currentUser.startDate
-            // Calulate elapsed time of journey thus far in seconds
-            let elapsedTime = Date().timeIntervalSince1970 - startDate // time since start time
-            // Update elapsed time
-            currentUser.elapsedTime = elapsedTime
-            
-            let elapsedTimeSinceSave = Date().timeIntervalSince1970 - currentUser.lastSaveDate // time since last save date
-
-//            print(elapsedTime)
-            // Update TOTAL DISTANCE TRAVELED
-            let elapsedTotalDistance = elapsedTime * speedPerSecKm // Total distance traveled
-//            print(elapsedTime)
-            currentUser.distanceInKm += elapsedTotalDistance
-            
-            // Need to update this many KM on remaining
-            let totalDistanceRemaining = currentUser.distanceRemainInKm
-            let elapsedDistance = elapsedTimeSinceSave * speedPerSecKm
-            var elapsedRemain = totalDistanceRemaining - elapsedDistance
+            let lastSaveDate = currentUser.lastSaveDate
+            let elapsedTime = Date().timeIntervalSince1970 - lastSaveDate
+            let elapsedDistance = speedPerSecKm * elapsedTime
             let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-            let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-
-            // lets say elapsed remain is negative! User passed planet while app in background
-            while (elapsedRemain < 0) {
-                // Some sort of get next function
-//                let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-                // get the next space obj - abs val of remain
-                // repeat loop if neg
-                elapsedRemain = (nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm) - abs(elapsedRemain)
-            }
-            print("Elapsed remain: \(elapsedRemain)")
-            currentUser.distanceRemainInKm = elapsedRemain
-//            let spaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-            let progress = 1 - (currentUser.distanceRemainInKm/(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm))
+            
+            currentUser.elapsedTime += elapsedTime
+            
+            currentUser.distanceInKm += elapsedDistance
+            
+            
+            currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - currentUser.distanceInKm
+            
+            let progress = 1 - (currentUser.distanceRemainInKm/(currentUser.distanceInKm - nextSpaceObj.distanceInKm))
             currentUser.progress = Float(progress)
             progressValue = Float(progress)
             try? moc.save()
+        
             }
         
     }
