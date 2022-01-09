@@ -116,11 +116,11 @@ struct HomeView: View {
                                 }
                                 if distanceRemaining == 0 {
                                     // the next distance until//
-                                    let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                                    //let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
                                     let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
 //                                    nextSpaceObj.distanceInKm - user.first!.distanceInKm
-                                    print(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm)
-                                    currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm
+                                    //print(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm)
+                                    currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - currentUser.distanceInKm
                                 }
                                 try? moc.save()
                             }
