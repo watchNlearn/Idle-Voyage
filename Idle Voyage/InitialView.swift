@@ -40,16 +40,21 @@ struct InitialView: View {
                 .onAppear {
                     print("On Appear")
                     let currentUser = user.first!
-                    let lastSaveDate = currentUser.lastSaveDate
-                    let elapsedTime = Date().timeIntervalSince1970 - lastSaveDate
-                    let elapsedDistance = speedPerSecKm * elapsedTime
+                    
+                    let startDate = currentUser.startDate
+                    //let lastSaveDate = currentUser.lastSaveDate
+                    
+                    //let elapsedTimeSinceSave = Date().timeIntervalSince1970 - lastSaveDate
+                    let totalElapsedTime = Date().timeIntervalSince1970 - startDate
+                    
+                    let elapsedDistance = speedPerSecKm * totalElapsedTime
+                    
+                    currentUser.elapsedTime = totalElapsedTime // Update our entire elapsed time 35 1
+                    
+                    currentUser.distanceInKm = elapsedDistance
+                    
                     let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-                    
-                    currentUser.elapsedTime += elapsedTime
-                    
-                    currentUser.distanceInKm += elapsedDistance
-                    
-                    
+
                     currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - currentUser.distanceInKm
                     
                     let progress = 1 - (currentUser.distanceRemainInKm/(currentUser.distanceInKm - nextSpaceObj.distanceInKm))

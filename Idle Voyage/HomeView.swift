@@ -294,6 +294,8 @@ struct HomeView: View {
         .cornerRadius(30)
         // Maybe we need to do
         // Used when app comes back into foreground from background (we need to update values, counters stop in background!)
+        // May not even have to do this because the last save date doesnt even matter we can just always calculate total elapsed time by
+        // getting current time - start date
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
                     // your code
             print("Entering background save time")
@@ -305,16 +307,21 @@ struct HomeView: View {
                     // your code
             print("Entering foreground update")
             let currentUser = user.first!
-            let lastSaveDate = currentUser.lastSaveDate
-            let elapsedTime = Date().timeIntervalSince1970 - lastSaveDate
-            let elapsedDistance = speedPerSecKm * elapsedTime
+            
+            let startDate = currentUser.startDate
+            //let lastSaveDate = currentUser.lastSaveDate
+            
+            //let elapsedTimeSinceSave = Date().timeIntervalSince1970 - lastSaveDate
+            let totalElapsedTime = Date().timeIntervalSince1970 - startDate
+            
+            let elapsedDistance = speedPerSecKm * totalElapsedTime
+            
+            currentUser.elapsedTime = totalElapsedTime // Update our entire elapsed time 35 1
+            
+            currentUser.distanceInKm = elapsedDistance
+            
             let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-            
-            currentUser.elapsedTime += elapsedTime
-            
-            currentUser.distanceInKm += elapsedDistance
-            
-            
+
             currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - currentUser.distanceInKm
             
             let progress = 1 - (currentUser.distanceRemainInKm/(currentUser.distanceInKm - nextSpaceObj.distanceInKm))
