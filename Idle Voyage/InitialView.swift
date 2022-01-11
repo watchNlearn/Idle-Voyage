@@ -67,10 +67,10 @@ struct InitialView: View {
                 .fill(Color.white)
                 .frame(width: 6, height: 6)
                 .position(x: 0, y: 400)
-                .offset(x: shouldAnimate ? -850 : 800)
-                .offset(y: shouldAnimate ? 800 : -850)
+                .offset(x: shouldAnimate ? -880 : 880)
+                .offset(y: shouldAnimate ? 880 : -880)
             
-                .animation(Animation.easeInOut(duration: 2.33).repeatForever(autoreverses: false).delay(5.42),value: shouldAnimate ? -850 : 800)
+                .animation(Animation.easeInOut(duration: 2.93).repeatForever(autoreverses: false).delay(4.72),value: shouldAnimate ? -880 : 880)
                 .onAppear {
                     self.shouldAnimate = true
                 }
@@ -96,7 +96,7 @@ struct InitialView: View {
                 .offset(x: shouldAnimate ? -1200 : 1200)
                 .offset(y: shouldAnimate ? 1200 : -1200)
 
-                .animation(Animation.easeInOut(duration: 4.7).repeatForever(autoreverses: false).delay(2.2),value: shouldAnimate ? -1200 : 1200)
+                .animation(Animation.easeInOut(duration: 4.7).repeatForever(autoreverses: false).delay(2.28),value: shouldAnimate ? -1200 : 1200)
                 .onAppear {
                     self.shouldAnimate = true
                 }
