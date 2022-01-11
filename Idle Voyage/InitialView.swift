@@ -15,8 +15,8 @@ struct InitialView: View {
     // We may not even have to create a fetch request
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
-    @State var leftOffset: CGFloat = -600
-    @State var rightOffset: CGFloat = 600
+    @State var leftOffset: CGFloat = -1000
+    @State var rightOffset: CGFloat = 1000
     @State var shouldAnimate = false
 
     //should grab from userdefaults eventually
@@ -39,17 +39,82 @@ struct InitialView: View {
 //            }
             Circle()
                 .fill(Color.white)
-                .frame(width: 10, height: 10)
-                .position(x: 0, y: 400)
-                .offset(x: shouldAnimate ? rightOffset : leftOffset)
-                .offset(y: shouldAnimate ? rightOffset : leftOffset)
+                .frame(width: 6, height: 6)
+                
+                .position(x: 0, y: 80)
+                .offset(x: shouldAnimate ? -1900 : 1900)
+                .offset(y: shouldAnimate ? 1900 : -1900)
             
-                .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: false),value: shouldAnimate ? rightOffset : leftOffset)
+                .animation(Animation.easeInOut(duration: 10.87).repeatForever(autoreverses: false).delay(19.64),value: shouldAnimate ? -1900 : 1900)
+                .onAppear {
+                    self.shouldAnimate = true
+                }
+                .zIndex(1)
+            Circle()
+                .fill(Color.white)
+                .frame(width: 6, height: 6)
+                
+                .position(x: 0, y: 200)
+                .offset(x: shouldAnimate ? -1000 : 1000)
+                .offset(y: shouldAnimate ? 1000 : -1000)
+            
+                .animation(Animation.easeInOut(duration: 3.26).repeatForever(autoreverses: false).delay(7.64),value: shouldAnimate ? -1000 : 1000)
+                .onAppear {
+                    self.shouldAnimate = true
+                }
+                .zIndex(1)
+            Circle()
+                .fill(Color.white)
+                .frame(width: 6, height: 6)
+                .position(x: 0, y: 400)
+                .offset(x: shouldAnimate ? -850 : 800)
+                .offset(y: shouldAnimate ? 800 : -850)
+            
+                .animation(Animation.easeInOut(duration: 2.33).repeatForever(autoreverses: false).delay(5.42),value: shouldAnimate ? -850 : 800)
+                .onAppear {
+                    self.shouldAnimate = true
+                }
+                .zIndex(1)
+            Circle()
+                .fill(Color.white)
+                .frame(width: 6, height: 6)
+
+                .position(x: 0, y: 528)
+                .offset(x: shouldAnimate ? -1800 : 1800)
+                .offset(y: shouldAnimate ? 1800 : -1800)
+
+                .animation(Animation.easeInOut(duration: 7.87).repeatForever(autoreverses: false).delay(4.1),value: shouldAnimate ? -1800 : 1800)
+                .onAppear {
+                    self.shouldAnimate = true
+                }
+                .zIndex(1)
+            Circle()
+                .fill(Color.white)
+                .frame(width: 6, height: 6)
+
+                .position(x: 0, y: 670)
+                .offset(x: shouldAnimate ? -1200 : 1200)
+                .offset(y: shouldAnimate ? 1200 : -1200)
+
+                .animation(Animation.easeInOut(duration: 4.7).repeatForever(autoreverses: false).delay(2.2),value: shouldAnimate ? -1200 : 1200)
                 .onAppear {
                     self.shouldAnimate = true
                 }
                 .zIndex(1)
             
+            Circle()
+                .fill(Color.white)
+                .frame(width: 6, height: 6)
+
+                .position(x: 0, y: 933)
+                .offset(x: shouldAnimate ? -1200 : 1200)
+                .offset(y: shouldAnimate ? 1200 : -1200)
+
+                .animation(Animation.easeInOut(duration: 5.73).repeatForever(autoreverses: false).delay(11),value: shouldAnimate ? -1200 : 1200)
+                .onAppear {
+                    self.shouldAnimate = true
+                }
+                .zIndex(1)
             
             HomeView()
                 .onAppear {
