@@ -32,7 +32,8 @@ struct HomeView: View {
     @Environment(\.managedObjectContext) var moc
     // We may not even have to create a fetch request
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    // Tolerance 0.1 to give some wiggle room
+    let timer = Timer.publish(every: 1, tolerance: 0.1, on: .main, in: .common).autoconnect()
 
     
     
@@ -288,7 +289,16 @@ struct HomeView: View {
         .padding(10)
         .frame(maxWidth: 360)
         .frame(maxHeight: .infinity)
-        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"), Color.init(hex: "000000"), Color.init(hex: "212354"), Color.init(hex: "3E66F9"), Color.init(hex: "3E54E8")]), startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: UnitPoint(x: 0.1, y: 0.9)))
+        .background(Color.clear)
+//        .background(LinearGradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")], startPoint: .topLeading, endPoint: .bottomTrailing)
+//                        .hueRotation(.degrees(animateGradient ? 120 : 0))
+//                        .ignoresSafeArea()
+//                        .onAppear {
+//            withAnimation(.easeInOut(duration: 10.0).repeatForever(autoreverses: true)) {
+//                                animateGradient.toggle()
+//                            }
+//                    })
+        //.background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"), Color.init(hex: "000000"), Color.init(hex: "212354"), Color.init(hex: "3E66F9"), Color.init(hex: "3E54E8")]), startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: UnitPoint(x: 0.1, y: 0.9)))
 //        .background(getRandomGradient())
 //        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom))
         .cornerRadius(30)

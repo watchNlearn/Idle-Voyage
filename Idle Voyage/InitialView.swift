@@ -15,7 +15,10 @@ struct InitialView: View {
     // We may not even have to create a fetch request
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
-    
+    @State var leftOffset: CGFloat = -600
+    @State var rightOffset: CGFloat = 600
+    @State var shouldAnimate = false
+
     //should grab from userdefaults eventually
     @State var showingOnboarding = true
     // testing speed
@@ -31,9 +34,21 @@ struct InitialView: View {
         }
         // Otherwise show home
         else {
-            Button(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/) {
-                showingOnboarding = true
-            }
+//            Button(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/) {
+//                showingOnboarding = true
+//            }
+            Circle()
+                .fill(Color.white)
+                .frame(width: 10, height: 10)
+                .position(x: 0, y: 400)
+                .offset(x: shouldAnimate ? rightOffset : leftOffset)
+                .offset(y: shouldAnimate ? rightOffset : leftOffset)
+            
+                .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: false),value: shouldAnimate ? rightOffset : leftOffset)
+                .onAppear {
+                    self.shouldAnimate = true
+                }
+                .zIndex(1)
             
             
             HomeView()

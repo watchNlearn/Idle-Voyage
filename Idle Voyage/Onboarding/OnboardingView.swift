@@ -12,23 +12,28 @@ struct OnboardingView: View {
     @Binding var valueFromInitialView : Bool
 
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 16) {
-//                ForEach(0 ..< 5) { item in
-//                    VoyageCardView()
-//                }
-                VoyageCardView()
-                Spacer()
-                VoyageCardView2()
-                Spacer()
-                VoyageCardView3()
-                Spacer()
-                VoyageCardView4(valueFromOnboardingView: $valueFromInitialView)
+        VStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+    //                ForEach(0 ..< 5) { item in
+    //                    VoyageCardView()
+    //                }
+                    VoyageCardView()
+                    Spacer()
+                    VoyageCardView2()
+                    Spacer()
+                    VoyageCardView3()
+                    Spacer()
+                    VoyageCardView4(valueFromOnboardingView: $valueFromInitialView)
+                    
+                }
+                .padding()
                 
             }
-            .padding()
-            
         }
+        .frame(maxWidth: .infinity)
+        .frame(maxHeight: .infinity)
+        
     }
 }
 
