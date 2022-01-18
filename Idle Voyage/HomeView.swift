@@ -262,7 +262,7 @@ struct HomeView: View {
             
             // MARK: PROGRESS BAR
             HStack {
-                Image(uiImage: "🌎".image()!)
+                Image(uiImage: getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 50)
@@ -277,7 +277,7 @@ struct HomeView: View {
                         currentUser.progress = progressValue
                         try? moc.save()
                     }
-                Image(uiImage: "🪐".image()!)
+                Image(uiImage: getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 50)

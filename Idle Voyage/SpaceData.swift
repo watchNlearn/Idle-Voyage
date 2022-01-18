@@ -13,7 +13,7 @@ import SwiftUI
 struct SpaceObject {
     var name: String
     var distanceInKm: Double
-    var image: Image
+    var image: UIImage
     var desc: String
     var description: String
     var type: SpaceTypes
@@ -28,18 +28,18 @@ enum SpaceTypes {
 }
 
 
-var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: Image(uiImage: "🌎".image()!), desc: "You may know this place...", description: "This is the earth", type: .planet),
-                    SpaceObject(name: "Venus", distanceInKm: 41400000, image: Image(""), desc: "Hot hot...", description: "This is Venus", type: .planet),
-                    SpaceObject(name: "Mars", distanceInKm: 78340000, image: Image(""), desc: "... Aliens", description: "This is Mars", type: .planet),
-                    SpaceObject(name: "Mercury", distanceInKm: 91691000, image: Image(""), desc: "FIRE", description: "This is Mercury", type: .planet),
-                    SpaceObject(name: "Sun", distanceInKm: 150000000, image: Image(""), desc: "Sunblock?", description: "This is the Sun", type: .star),
-                    SpaceObject(name: "Jupiter", distanceInKm: 628730000, image: Image(""), desc: "HUGE", description: "This is Jupiter", type: .planet),
-                    SpaceObject(name: "Saturn", distanceInKm: 1275000000, image: Image(uiImage: "🪐".image()!), desc: "Rings... lots of them", description: "This is Saturn", type: .planet),
-                    SpaceObject(name: "Uranus", distanceInKm: 2723950000, image: Image(""), desc: "ahahaha", description: "This is Uranus",type: .planet),
-                    SpaceObject(name: "Neptune", distanceInKm: 4351400000, image: Image(""), desc: "oo pretty", description: "This is Neptune",type: .planet),
-                    SpaceObject(name: "Pluto", distanceInKm: 5890000000, image: Image(""), desc: "not sure either", description: "This is Pluto", type: .planet),
-                    SpaceObject(name: "Moon", distanceInKm: 384400, image: Image(uiImage: "🌑".image()!), desc: "No cheese here", description: "This is the Moon", type: .moon),
-                    SpaceObject(name: "Kuiper Belt", distanceInKm: 4338338250.0390005, image: Image(""), desc: "no way home", description: "This is the Kuiper Belt", type: .other)]
+var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".image()!, desc: "You may know this place...", description: "This is the earth", type: .planet),
+                    SpaceObject(name: "Venus", distanceInKm: 41400000, image: "🌕".image()!, desc: "Hot hot...", description: "This is Venus", type: .planet),
+                    SpaceObject(name: "Mars", distanceInKm: 78340000, image: "🔴".image()!, desc: "... Aliens", description: "This is Mars", type: .planet),
+                    SpaceObject(name: "Mercury", distanceInKm: 91691000, image: "🌒".image()!, desc: "FIRE", description: "This is Mercury", type: .planet),
+                    SpaceObject(name: "Sun", distanceInKm: 150000000, image: "☀️".image()!, desc: "Sunblock?", description: "This is the Sun", type: .star),
+                    SpaceObject(name: "Jupiter", distanceInKm: 628730000, image: "🌖".image()!, desc: "HUGE", description: "This is Jupiter", type: .planet),
+                    SpaceObject(name: "Saturn", distanceInKm: 1275000000, image: "🪐".image()!, desc: "Rings... lots of them", description: "This is Saturn", type: .planet),
+                    SpaceObject(name: "Uranus", distanceInKm: 2723950000, image: "🌑".image()!, desc: "ahahaha", description: "This is Uranus",type: .planet),
+                    SpaceObject(name: "Neptune", distanceInKm: 4351400000, image: "🔵".image()!, desc: "oo pretty", description: "This is Neptune",type: .planet),
+                    SpaceObject(name: "Pluto", distanceInKm: 5890000000, image: "🟣".image()!, desc: "not sure either", description: "This is Pluto", type: .planet),
+                    SpaceObject(name: "Moon", distanceInKm: 384400, image: "🌙".image()!, desc: "No cheese here", description: "This is the Moon", type: .moon),
+                    SpaceObject(name: "Kuiper Belt", distanceInKm: 4338338250.0390005, image: "🪨".image()!, desc: "no way home", description: "This is the Kuiper Belt", type: .other)]
 
 // Sorted by distance from decreasing to increasing
 var spaceObjectsSorted = spaceObjects.sorted(by: { $0.distanceInKm < $1.distanceInKm })
@@ -52,7 +52,7 @@ var spaceObjectsSorted = spaceObjects.sorted(by: { $0.distanceInKm < $1.distance
 
 func getNextSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceObject {
     let totalDistance = distance
-    var nextSpaceObj = SpaceObject(name: "Error", distanceInKm: 0, image: Image(""), desc: "Error", description: "Error", type: .other)
+    var nextSpaceObj = SpaceObject(name: "Error", distanceInKm: 0, image: "🌑".image()!, desc: "Error", description: "Error", type: .other)
     for i in spaceObjects {
         if (i.distanceInKm > totalDistance) {
             nextSpaceObj = i
@@ -71,7 +71,7 @@ func getNextSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceO
 }
 func getLastSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceObject {
     let totalDistance = distance
-    var lastSpaceObj = SpaceObject(name: "Error", distanceInKm: 0, image: Image(""), desc: "Error", description: "Error", type: .other)
+    var lastSpaceObj = SpaceObject(name: "Error", distanceInKm: 0, image: "🌑".image()!, desc: "Error", description: "Error", type: .other)
     for i in spaceObjects {
         if (i.distanceInKm < totalDistance) {
             lastSpaceObj = i
