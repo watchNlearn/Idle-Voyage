@@ -116,6 +116,7 @@ struct InitialView: View {
                 }
                 .zIndex(1)
             
+            
             HomeView()
                 .onAppear {
                     print("On Appear")
@@ -142,6 +143,18 @@ struct InitialView: View {
                     try? moc.save()
                     
                 }
+//            Image(uiImage: "🛸".image()!)
+//                .frame(width: 80, height: 80)
+//
+//                .position(x: 0, y: 490)
+//                .offset(x: shouldAnimate ? 1000 : -1000)
+//                .offset(y: shouldAnimate ? -1000 : 1000)
+//
+//                .animation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: false).delay(2),value: shouldAnimate ? 1000 : -1000)
+//                .onAppear {
+//                    self.shouldAnimate = true
+//                }
+//                .zIndex(1)
             
         }
 
@@ -153,6 +166,5 @@ struct InitialView: View {
 //        InitialView()
 //    }
 //}
-
 
 

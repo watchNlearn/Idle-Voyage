@@ -389,35 +389,4 @@ private func getCurrentDateFormat(atTime: Date) -> String {
     return time
 }
 
-func getNextSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceObject {
-    let totalDistance = distance
-    var nextSpaceObj = SpaceObject(name: "Error", distanceInKm: 0, image: Image(""), desc: "Error", description: "Error", type: .other)
-    for i in spaceObjects {
-        if (i.distanceInKm > totalDistance) {
-            nextSpaceObj = i
-            break
-        }
-    }
-//    SpaceObject(name: "Moon", distanceInKm: 384400, image: Image(uiImage: "🌑".image()!), desc: "i smell cheese", description: "This is the Moon", type: .moon)\
-//    print("RETURNING NEXT: \(nextSpaceObj.name)")
-//    print("-------------")
-//    print("RETURNING DISTANCE: \(totalDistance)")
-//    print("-------------")
 
-    
-
-    return nextSpaceObj
-}
-func getLastSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceObject {
-    let totalDistance = distance
-    var lastSpaceObj = SpaceObject(name: "Error", distanceInKm: 0, image: Image(""), desc: "Error", description: "Error", type: .other)
-    for i in spaceObjects {
-        if (i.distanceInKm < totalDistance) {
-            lastSpaceObj = i
-        }
-    }
-//    SpaceObject(name: "Moon", distanceInKm: 384400, image: Image(uiImage: "🌑".image()!), desc: "i smell cheese", description: "This is the Moon", type: .moon)
-//    print("RETURNING Last: \(lastSpaceObj.name)")
-
-    return lastSpaceObj
-}
