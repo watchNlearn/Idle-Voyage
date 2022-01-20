@@ -30,9 +30,9 @@ enum SpaceTypes {
 
 var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".image()!, desc: "You may know this place...", description: "This is the earth", type: .planet),
                     SpaceObject(name: "Venus", distanceInKm: 41400000, image: "🌕".image()!, desc: "Hot hot...", description: "This is Venus", type: .planet),
-                    SpaceObject(name: "Mars", distanceInKm: 78340000, image: "🔴".image()!, desc: "... Aliens", description: "This is Mars", type: .planet),
-                    SpaceObject(name: "Mercury", distanceInKm: 91691000, image: "🌒".image()!, desc: "FIRE", description: "This is Mercury", type: .planet),
-                    SpaceObject(name: "Sun", distanceInKm: 150000000, image: "☀️".image()!, desc: "Sunblock?", description: "This is the Sun", type: .star),
+                    SpaceObject(name: "Mars", distanceInKm: 78340000, image: "🌒".image()!, desc: "... Aliens", description: "This is Mars", type: .planet),
+                    SpaceObject(name: "Mercury", distanceInKm: 91691000, image: UIImage(named: "Mercury")!, desc: "FIRE", description: "This is Mercury", type: .planet),
+                    SpaceObject(name: "Sun", distanceInKm: 150000000, image: UIImage(named: "Mercury")!, desc: "Sunblock?", description: "This is the Sun", type: .star),
                     SpaceObject(name: "Jupiter", distanceInKm: 628730000, image: "🌖".image()!, desc: "HUGE", description: "This is Jupiter", type: .planet),
                     SpaceObject(name: "Saturn", distanceInKm: 1275000000, image: "🪐".image()!, desc: "Rings... lots of them", description: "This is Saturn", type: .planet),
                     SpaceObject(name: "Uranus", distanceInKm: 2723950000, image: "🌑".image()!, desc: "ahahaha", description: "This is Uranus",type: .planet),
