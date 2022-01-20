@@ -26,7 +26,7 @@ extension Int {
 }
 extension String
 {
-    func image(fontSize:CGFloat = 40, bgColor:UIColor = UIColor.clear, imageSize:CGSize? = nil) -> UIImage?
+    func image(fontSize:CGFloat = 60, bgColor:UIColor = UIColor.clear, imageSize:CGSize? = nil) -> UIImage?
     {
         let font = UIFont.systemFont(ofSize: fontSize)
         let attributes = [NSAttributedString.Key.font: font]

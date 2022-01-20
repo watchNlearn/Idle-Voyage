@@ -266,6 +266,7 @@ struct HomeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 50)
+                    .frame(width: 50)
                 OnboardingWidgetPbar(value: $progressValue).frame(maxWidth: .infinity)
                     .frame(height: 30)
                     .onReceive(timer) { _ in
@@ -281,6 +282,7 @@ struct HomeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 50)
+                    .frame(width: 50)
             }
             
             

@@ -70,7 +70,7 @@ struct OnboardingWidgetView: View {
             .frame(maxHeight: .infinity)
             // Bottom planets + p bar
             HStack {
-                Image(uiImage: "🌎".image()!)
+                Image(uiImage: UIImage(named: "Mercury")!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 25)
