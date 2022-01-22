@@ -35,7 +35,7 @@ struct HomeView: View {
     // Tolerance 0.1 to give some wiggle room
     let timer = Timer.publish(every: 1, tolerance: 0.1, on: .main, in: .common).autoconnect()
 
-    
+    @State var showDetail = false
     
     @State var shipImage: String = getShipImageString(desc: "ufo")
     
@@ -57,82 +57,90 @@ struct HomeView: View {
         VStack {
             HStack(alignment: .center) {
                 VStack(alignment: .leading){
-                    
-                    // MARK: DISTANCE
-                    Text("Distance")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .frame(alignment: .leading)
-                        .padding(.trailing, 5)
-                        .foregroundColor(.white)
-                    Text("Travelled")
-                        .font(.headline)
-                        .fontWeight(.thin)
-                        .frame(alignment: .leading)
-                        .padding(.trailing, 10)
-                    HStack {
-                        Text(String(user.first!.distanceInKm.rounded(toPlaces: 1).formattedWithSeparator))
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
+                    Group {
+                        // MARK: DISTANCE
+                        Text("Distance")
+                            .font(.title)
+                            .fontWeight(.bold)
                             .frame(alignment: .leading)
-                            .padding(.leading, 8)
-                            .padding(.trailing, 8)
-                            .background(Color.orange)
-                            .cornerRadius(6)
-                            .onReceive(timer) { _ in
-//                                self.distanceTravelled += speedPerSecKm
-                                currentUser.distanceInKm += speedPerSecKm
-                                try? moc.save()
-                            }
-                        Text("km")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
+                            .padding(.trailing, 5)
+                            .foregroundColor(.white)
+                        Text("Travelled")
+                            .font(.headline)
+                            .fontWeight(.thin)
                             .frame(alignment: .leading)
-                            .padding(.leading, 4)
-                        
+                            .padding(.trailing, 10)
+                        HStack {
+                            Text(String(user.first!.distanceInKm.rounded(toPlaces: 1).formattedWithSeparator))
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .frame(alignment: .leading)
+                                .padding(.leading, 8)
+                                .padding(.trailing, 8)
+                                .background(Color.orange)
+                                .cornerRadius(6)
+                                .onReceive(timer) { _ in
+                                    //                                self.distanceTravelled += speedPerSecKm
+                                    currentUser.distanceInKm += speedPerSecKm
+                                    try? moc.save()
+                                }
+                            Text("km")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .frame(alignment: .leading)
+                                .padding(.leading, 4)
+                            
+                        }
+                        .padding(.bottom, 5)
+                        Text("Remaining")
+                            .font(.headline)
+                            .fontWeight(.thin)
+                            .frame(alignment: .leading)
+                            .padding(.trailing, 10)
+                        HStack {
+                            Text(String(user.first!.distanceRemainInKm.rounded(toPlaces: 1).formattedWithSeparator))
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .frame(alignment: .leading)
+                                .padding(.leading, 4)
+                                .padding(.trailing, 4)
+                                .background(Color.orange)
+                                .cornerRadius(6)
+                                .onReceive(timer) { _ in
+                                    let distanceRemaining = user.first!.distanceRemainInKm
+                                    if distanceRemaining > speedPerSecKm {
+                                        currentUser.distanceRemainInKm -= speedPerSecKm
+                                    }
+                                    else {
+                                        // the next distance until
+                                        currentUser.distanceRemainInKm = 0
+                                    }
+                                    if distanceRemaining == 0 {
+                                        // the next distance until//
+                                        //let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                                        let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                                        //                                    nextSpaceObj.distanceInKm - user.first!.distanceInKm
+                                        //print(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm)
+                                        currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - currentUser.distanceInKm
+                                    }
+                                    try? moc.save()
+                                }
+                            Text("km")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .frame(alignment: .leading)
+                                .padding(.leading, 4)
+                                
+                            
+                        }
+                        .padding(.bottom, 40)
                     }
-                    .padding(.bottom, 5)
-                    Text("Remaining")
-                        .font(.headline)
-                        .fontWeight(.thin)
-                        .frame(alignment: .leading)
-                        .padding(.trailing, 10)
-                    HStack {
-                        Text(String(user.first!.distanceRemainInKm.rounded(toPlaces: 1).formattedWithSeparator))
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .frame(alignment: .leading)
-                            .padding(.leading, 4)
-                            .padding(.trailing, 4)
-                            .background(Color.orange)
-                            .cornerRadius(6)
-                            .onReceive(timer) { _ in
-                                let distanceRemaining = user.first!.distanceRemainInKm
-                                if distanceRemaining > speedPerSecKm {
-                                    currentUser.distanceRemainInKm -= speedPerSecKm
-                                }
-                                else {
-                                    // the next distance until
-                                    currentUser.distanceRemainInKm = 0
-                                }
-                                if distanceRemaining == 0 {
-                                    // the next distance until//
-                                    //let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-                                    let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-//                                    nextSpaceObj.distanceInKm - user.first!.distanceInKm
-                                    //print(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm)
-                                    currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - currentUser.distanceInKm
-                                }
-                                try? moc.save()
-                            }
-                        Text("km")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .frame(alignment: .leading)
-                            .padding(.leading, 4)
+                    .sheet(isPresented: $showDetail, content: {
+                        VoyageCardView()
+                    })
+                    .onTapGesture {
+                        showDetail.toggle()
                     }
-                    .padding(.bottom, 40)
-                    
                     // MARK: TIME
                     Group {
                         VStack(alignment: .leading) {
@@ -178,6 +186,12 @@ struct HomeView: View {
                                 .cornerRadius(6)
                         }
                         .padding(.bottom, 40)
+                    }
+                    .sheet(isPresented: $showDetail, content: {
+                        VoyageCardView()
+                    })
+                    .onTapGesture {
+                        showDetail.toggle()
                     }
                     Group {
                         // MARK: LEAVING
@@ -229,6 +243,12 @@ struct HomeView: View {
                                 .padding(.bottom, 20)
                                 .padding(.trailing, 10)
                         }
+                    }
+                    .sheet(isPresented: $showDetail, content: {
+                        VoyageCardView()
+                    })
+                    .onTapGesture {
+                        showDetail.toggle()
                     }
                 }
                 // MARK: SHIP IMAGE
