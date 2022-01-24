@@ -29,6 +29,7 @@
 		0B44F70F27879FFA00EE0B33 /* SpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F70E27879FFA00EE0B33 /* SpaceData.swift */; };
 		0B44F71127880E2100EE0B33 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F71027880E2100EE0B33 /* HomeView.swift */; };
 		0B4FE59E279BDF4A00C94A10 /* DistanceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE59D279BDF4A00C94A10 /* DistanceDetail.swift */; };
+		0B4FE5A0279E96D200C94A10 /* ClearBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE59F279E96D200C94A10 /* ClearBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		0B44F70E27879FFA00EE0B33 /* SpaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceData.swift; sourceTree = "<group>"; };
 		0B44F71027880E2100EE0B33 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0B4FE59D279BDF4A00C94A10 /* DistanceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceDetail.swift; sourceTree = "<group>"; };
+		0B4FE59F279E96D200C94A10 /* ClearBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				0B44F7092787916200EE0B33 /* UserData.xcdatamodeld */,
 				0B44F70C2787955200EE0B33 /* DataController.swift */,
 				0B44F70E27879FFA00EE0B33 /* SpaceData.swift */,
+				0B4FE59F279E96D200C94A10 /* ClearBackgroundView.swift */,
 			);
 			path = "Idle Voyage";
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				0B44F6C82783C1B700EE0B33 /* ContentView.swift in Sources */,
 				0B44F70F27879FFA00EE0B33 /* SpaceData.swift in Sources */,
 				0B44F6FE2784F50F00EE0B33 /* Extensions.swift in Sources */,
+				0B4FE5A0279E96D200C94A10 /* ClearBackgroundView.swift in Sources */,
 				0B44F6FC2784EBB000EE0B33 /* OnboardingWidgetPbar.swift in Sources */,
 				0B44F70027850D1E00EE0B33 /* OnboardingView.swift in Sources */,
 				0B44F70D2787955200EE0B33 /* DataController.swift in Sources */,

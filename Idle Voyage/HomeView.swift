@@ -139,6 +139,7 @@ struct HomeView: View {
                     }
                     .sheet(isPresented: $showDistanceDetail, content: {
                         DistanceDetail()
+                            .clearModalBackground()
                     })
                     .onTapGesture {
                         showDistanceDetail.toggle()
