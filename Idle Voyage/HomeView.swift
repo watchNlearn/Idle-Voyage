@@ -35,8 +35,10 @@ struct HomeView: View {
     // Tolerance 0.1 to give some wiggle room
     let timer = Timer.publish(every: 1, tolerance: 0.1, on: .main, in: .common).autoconnect()
 
-    @State var showDetail = false
-    
+    @State var showDistanceDetail = false
+    @State var showTimeDetail = false
+    @State var showLocationDetail = false
+
     @State var shipImage: String = getShipImageString(desc: "ufo")
     
     @State var progressValue: Float = 0.0
@@ -135,11 +137,11 @@ struct HomeView: View {
                         }
                         .padding(.bottom, 40)
                     }
-                    .sheet(isPresented: $showDetail, content: {
-                        VoyageCardView()
+                    .sheet(isPresented: $showDistanceDetail, content: {
+                        DistanceDetail()
                     })
                     .onTapGesture {
-                        showDetail.toggle()
+                        showDistanceDetail.toggle()
                     }
                     // MARK: TIME
                     Group {
@@ -187,11 +189,11 @@ struct HomeView: View {
                         }
                         .padding(.bottom, 40)
                     }
-                    .sheet(isPresented: $showDetail, content: {
+                    .sheet(isPresented: $showTimeDetail, content: {
                         VoyageCardView()
                     })
                     .onTapGesture {
-                        showDetail.toggle()
+                        showTimeDetail.toggle()
                     }
                     Group {
                         // MARK: LEAVING
@@ -244,11 +246,11 @@ struct HomeView: View {
                                 .padding(.trailing, 10)
                         }
                     }
-                    .sheet(isPresented: $showDetail, content: {
-                        VoyageCardView()
+                    .sheet(isPresented: $showLocationDetail, content: {
+                        VoyageCardView2()
                     })
                     .onTapGesture {
-                        showDetail.toggle()
+                        showLocationDetail.toggle()
                     }
                 }
                 // MARK: SHIP IMAGE
