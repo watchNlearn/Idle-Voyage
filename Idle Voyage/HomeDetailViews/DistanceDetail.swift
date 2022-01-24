@@ -19,7 +19,68 @@ struct DistanceDetail: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            
+            Group {
+                Text("Current Voyage")
+                    .font(.title)
+                    .fontWeight(.bold)
+                VStack (alignment: .leading) {
+                    Text("Total Distance Travelled")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .frame(alignment: .leading)
+                        .padding(.trailing, 10)
+                    HStack {
+                        Text(String("Kilometers: " + user.first!.distanceInKm.rounded(toPlaces: 1).formattedWithSeparator))
+
+                            .frame(alignment: .leading)
+                            .padding(.trailing, 8)
+                            .cornerRadius(6)
+                            .opacity(0.7)
+                    }
+                    .padding(.bottom, 5)
+                    HStack {
+                        Text(String("Miles: " + (user.first!.distanceInKm*0.62137).rounded(toPlaces: 1).formattedWithSeparator))
+//                            .font(.subheadline)
+//                            .fontWeight(.thin)
+                            .frame(alignment: .leading)
+                            .padding(.trailing, 8)
+                            .cornerRadius(6)
+                            .opacity(0.7)
+                    }
+                    .padding(.bottom, 5)
+                }
+                VStack(alignment: .leading) {
+                    Text("Distance Remaining to " + getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).name)
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .frame(alignment: .leading)
+                        .padding(.trailing, 10)
+                    HStack {
+                        Text("Kilometers: " + String(user.first!.distanceRemainInKm.rounded(toPlaces: 1).formattedWithSeparator))
+//                            .font(.subheadline)
+//                            .fontWeight(.thin)
+                            .frame(alignment: .leading)
+                            .padding(.trailing, 4)
+                            .cornerRadius(6)
+                            .opacity(0.7)
+                        
+                    }
+                    .padding(.bottom, 5)
+                    HStack {
+                        Text("Miles: " + String((user.first!.distanceRemainInKm*0.62137).rounded(toPlaces: 1).formattedWithSeparator))
+//                            .font(.subheadline)
+//                            .fontWeight(.thin)
+                            .frame(alignment: .leading)
+                            .padding(.trailing, 4)
+                            .cornerRadius(6)
+                            .opacity(0.7)
+                        
+                    }
+                    .padding(.bottom, 20)
+                    
+                }
+                
+            }
             Group {
                 Text("Just how fast?")
                     .font(.title)
@@ -45,13 +106,12 @@ struct DistanceDetail: View {
                     .font(.subheadline)
                     .fontWeight(.light)
             }
+           
             
-            
-
         }
         .foregroundColor(.white)
         .padding()
-//        .frame(width: .infinity, height: .infinity)
+        //        .frame(width: .infinity, height: .infinity)
 //        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom))
         .background(LinearGradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "f8bc04"), Color.init(hex: "101b39"),Color.init(hex: "101b39")], startPoint: .bottomTrailing, endPoint: .topLeading)
                         .hueRotation(.degrees(animateGradient ? 329 : 0))
