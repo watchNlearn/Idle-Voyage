@@ -192,6 +192,8 @@ struct HomeView: View {
                     }
                     .sheet(isPresented: $showTimeDetail, content: {
                         VoyageCardView()
+                            .clearModalBackground()
+
                     })
                     .onTapGesture {
                         showTimeDetail.toggle()
@@ -249,6 +251,8 @@ struct HomeView: View {
                     }
                     .sheet(isPresented: $showLocationDetail, content: {
                         VoyageCardView2()
+                            .clearModalBackground()
+
                     })
                     .onTapGesture {
                         showLocationDetail.toggle()
