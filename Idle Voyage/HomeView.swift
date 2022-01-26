@@ -37,7 +37,8 @@ struct HomeView: View {
 
     @State var showDistanceDetail = false
     @State var showTimeDetail = false
-    @State var showLocationDetail = false
+    @State var showLeavingDetail = false
+    @State var showApproachingDetail = false
 
 //    @State var shipImage: String = getShipImageString(desc: "ufo")
     
@@ -222,6 +223,14 @@ struct HomeView: View {
                                 .padding(.bottom, 40)
                                 .padding(.trailing, 10)
                         }
+                        .sheet(isPresented: $showLeavingDetail, content: {
+                            VoyageCardView()
+                                .clearModalBackground()
+
+                        })
+                        .onTapGesture {
+                            showLeavingDetail.toggle()
+                        }
                         // MARK: LEAVING
                         VStack(alignment: .leading) {
                             Text("Approaching")
@@ -248,15 +257,16 @@ struct HomeView: View {
                                 .padding(.bottom, 20)
                                 .padding(.trailing, 10)
                         }
-                    }
-                    .sheet(isPresented: $showLocationDetail, content: {
-                        VoyageCardView2()
-                            .clearModalBackground()
+                        .sheet(isPresented: $showApproachingDetail, content: {
+                            VoyageCardView2()
+                                .clearModalBackground()
 
-                    })
-                    .onTapGesture {
-                        showLocationDetail.toggle()
+                        })
+                        .onTapGesture {
+                            showApproachingDetail.toggle()
+                        }
                     }
+                   
                 }
                 // MARK: SHIP IMAGE
                 VStack {
