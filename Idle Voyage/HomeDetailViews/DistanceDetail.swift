@@ -15,6 +15,8 @@ struct DistanceDetail: View {
     // Tolerance 0.1 to give some wiggle room
     let timer = Timer.publish(every: 1, tolerance: 0.1, on: .main, in: .common).autoconnect()
     
+    let background = getRandomGradient()
+    
     @State private var animateGradient = false
 
     var body: some View {
@@ -111,16 +113,17 @@ struct DistanceDetail: View {
         }
         .foregroundColor(.white)
         .padding()
+        .background(Color.init(hex: "100b1f"))
         //        .frame(width: .infinity, height: .infinity)
 //        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom))
-        .background(LinearGradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "f8bc04"), Color.init(hex: "101b39"),Color.init(hex: "101b39")], startPoint: .bottomTrailing, endPoint: .topLeading)
-                        .hueRotation(.degrees(animateGradient ? 329 : 0))
-                        .ignoresSafeArea()
-                        .onAppear {
-            withAnimation(.easeInOut(duration: 12.0).repeatForever(autoreverses: true)) {
-                                animateGradient.toggle()
-                            }
-                    })
+//        .background(LinearGradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "f8bc04"), Color.init(hex: "101b39"),Color.init(hex: "101b39")], startPoint: .bottomTrailing, endPoint: .topLeading)
+//                        .hueRotation(.degrees(animateGradient ? 329 : 0))
+//                        .ignoresSafeArea()
+//                        .onAppear {
+//            withAnimation(.easeInOut(duration: 12.0).repeatForever(autoreverses: true)) {
+//                                animateGradient.toggle()
+//                            }
+//                    })
         .cornerRadius(30)
         
     }
