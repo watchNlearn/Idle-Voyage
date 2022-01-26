@@ -39,7 +39,7 @@ struct HomeView: View {
     @State var showTimeDetail = false
     @State var showLocationDetail = false
 
-    @State var shipImage: String = getShipImageString(desc: "ufo")
+//    @State var shipImage: String = getShipImageString(desc: "ufo")
     
     @State var progressValue: Float = 0.0
         
@@ -266,8 +266,9 @@ struct HomeView: View {
                         .frame(height: 100)
                         .frame(width: 100)
                         .onTapGesture {
-//                            self.shipImage = getShipImageString(desc: "ufo")
-//                            try? moc.save()
+                            let currentUser = user.first!
+                            currentUser.shipPref = getNextShip(current: user.first!.shipPref!)
+                            try? moc.save()
                         }
                 }
                 
@@ -385,6 +386,18 @@ struct HomeView: View {
 //  Kinda made it a linear gradient below?
 //LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"), Color.init(hex: "000000"), Color.init(hex: "212354"), Color.init(hex: "3E66F9"), Color.init(hex: "3E54E8")]), startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: UnitPoint(x: 0.1, y: 0.9))
 
+private func getNextShip(current: String) -> String {
+    if current == "🚀" {
+        return "🛰️"
+    }
+    else if current == "🛰️" {
+        return "🛸"
+    }
+    return "🚀"
+}
+
+
+
 private func getRandomGradient() -> LinearGradient {
     let gradients = [
         LinearGradient(gradient: Gradient(colors: [Color.init(hex: "013026"), Color.init(hex: "133769"), Color.init(hex: "210535"), Color.init(hex: "000000")]), startPoint: .bottomLeading, endPoint: .topTrailing),
@@ -392,22 +405,6 @@ private func getRandomGradient() -> LinearGradient {
         LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom),
         LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"), Color.init(hex: "000000"), Color.init(hex: "212354"), Color.init(hex: "3E66F9"), Color.init(hex: "3E54E8")]), startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: UnitPoint(x: 0.1, y: 0.9))]
     return gradients.randomElement()!
-}
-
-//        // Options: rocket, satellite, ufo (default is rocket)
-private func getShipImageString(desc: String) -> String {
-    switch desc {
-    case "rocket":
-        return "🚀"
-    case "satellite":
-        return "🛰️"
-    case "ufo":
-        return "🛸"
-    default:
-        return "🚀"
-    }
-    //    let ships = ["🚀","🛰️","🛸"]
-    //    return ships.randomElement() ?? "🚀"
 }
 
 private func getCurrentDateFormat(atTime: Date) -> String {
