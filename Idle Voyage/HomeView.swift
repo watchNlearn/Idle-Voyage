@@ -224,7 +224,7 @@ struct HomeView: View {
                                 .padding(.trailing, 10)
                         }
                         .sheet(isPresented: $showLeavingDetail, content: {
-                            VoyageCardView()
+                            LeavingDetail()
                                 .clearModalBackground()
 
                         })
@@ -258,7 +258,7 @@ struct HomeView: View {
                                 .padding(.trailing, 10)
                         }
                         .sheet(isPresented: $showApproachingDetail, content: {
-                            VoyageCardView2()
+                            ApproachingDetail()
                                 .clearModalBackground()
 
                         })
