@@ -83,9 +83,9 @@ func getRandomGradient() -> BackgroundObject {
         BackgroundObject(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "333136"), Color.init(hex: "6f6d72"), Color.init(hex: "001736")], start: .topTrailing, end: .leading, rotation: 160, duration: 23),
         BackgroundObject(colors: [Color.init(hex: "1b1145"),Color.init(hex: "021f4b"), Color.init(hex: "4c3b71"), Color.init(hex: "8749bc"), Color.init(hex: "4c3b71"), Color.init(hex: "021f4b"),Color.init(hex: "1b1145")], start: .leading, end: .bottomTrailing, rotation: 59, duration: 40),
         // Black
-        BackgroundObject(colors: [Color.init(hex: "100b1f")], start: .leading, end: .bottomTrailing, rotation: 0, duration: 17),
+        BackgroundObject(colors: [Color.init(hex: "000000"),Color.init(hex: "100b1f"),Color.init(hex: "000000")], start: .bottom, end: .leading, rotation: 219, duration: 17),
  
-        BackgroundObject(colors: [Color.init(hex: "100b1f")], start: .leading, end: .bottomTrailing, rotation: 0, duration: 17)
+        BackgroundObject(colors: [Color.init(hex: "000000"),Color.init(hex: "100b1f"),Color.init(hex: "000000")], start: .trailing, end: .topLeading, rotation: 287, duration: 32)
     ]
     
     return backgrounds.randomElement()!
