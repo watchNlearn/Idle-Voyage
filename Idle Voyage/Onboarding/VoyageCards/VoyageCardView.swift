@@ -35,10 +35,10 @@ struct VoyageCardView: View {
                 
                 
 
-            Text("Welcome to Idle Voyage!")
+            Text("Welcome to Idle Voyage")
                 .font(.title)
                 .fontWeight(.bold)
-            Text("Get ready to embark on your never ending journey through the stars...")
+            Text("Get ready to embark on your never ending journey through the Universe!")
                 .lineLimit(4)
                 .opacity(0.7)
         }

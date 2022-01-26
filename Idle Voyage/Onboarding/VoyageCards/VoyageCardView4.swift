@@ -72,7 +72,7 @@ struct VoyageCardView4: View {
                 .background(Color.green)
                 .cornerRadius(10)
             }
-            Text("Fasten your seatbelts! Tap the green button to start your voyage.")
+            Text("We are clear for launch! Tap the rocket ship to start your voyage.")
                 .opacity(0.7)
                 
 
@@ -92,7 +92,7 @@ private func getCurrentDateFormat() -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MM/dd/yy HH:mm:ss"
     let time = dateFormatter.string(from: date)
-    return "Launch Time: " + time
+    return "Start Date: " + time
 }
 
 
