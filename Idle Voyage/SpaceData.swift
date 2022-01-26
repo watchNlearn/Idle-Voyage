@@ -28,17 +28,17 @@ enum SpaceTypes {
 }
 
 
-var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".image()!, desc: "You may know this place...", description: "This is the earth", type: .planet),
-                    SpaceObject(name: "Venus", distanceInKm: 41400000, image: UIImage(named: "Venus")!, desc: "Hot hot...", description: "This is Venus", type: .planet),
-                    SpaceObject(name: "Mars", distanceInKm: 78340000, image: UIImage(named: "Mars")!, desc: "... Aliens", description: "This is Mars", type: .planet),
-                    SpaceObject(name: "Mercury", distanceInKm: 91691000, image: UIImage(named: "Mercury")!, desc: "FIRE", description: "This is Mercury", type: .planet),
+var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".image()!, desc: "You may know this place...", description: "Earth is the planet we live on, one of eight planets in our solar system and the only known place in the universe to support life.", type: .planet),
+                    SpaceObject(name: "Venus", distanceInKm: 41400000, image: UIImage(named: "Venus")!, desc: "Hot hot...", description: "Venus is the second planet from the Sun, and is Earth's closest neighbor in the solar system. Venus is the brightest object in the sky after the Sun and the Moon, and sometimes looks like a bright star in the morning or evening sky.", type: .planet),
+                    SpaceObject(name: "Mars", distanceInKm: 78340000, image: UIImage(named: "Mars")!, desc: "... Aliens", description: "Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System, being larger than only Mercury. In English, Mars carries the name of the Roman god of war and is often referred to as the 'Red Planet'.", type: .planet),
+                    SpaceObject(name: "Mercury", distanceInKm: 91691000, image: UIImage(named: "Mercury")!, desc: "FIRE", description: "Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the Sun's planets.", type: .planet),
                     SpaceObject(name: "Sun", distanceInKm: 150000000, image: "☀️".image()!, desc: "Sunblock?", description: "This is the Sun", type: .star),
                     SpaceObject(name: "Jupiter", distanceInKm: 628730000, image: UIImage(named: "Jupiter")!, desc: "HUGE", description: "This is Jupiter", type: .planet),
                     SpaceObject(name: "Saturn", distanceInKm: 1275000000, image: UIImage(named: "Saturn")!, desc: "Rings... lots of them", description: "This is Saturn", type: .planet),
                     SpaceObject(name: "Uranus", distanceInKm: 2723950000, image: UIImage(named: "Uranus")!, desc: "ahahaha", description: "This is Uranus",type: .planet),
                     SpaceObject(name: "Neptune", distanceInKm: 4351400000, image: UIImage(named: "Neptune")!, desc: "oo pretty", description: "This is Neptune",type: .planet),
                     SpaceObject(name: "Pluto", distanceInKm: 5890000000, image: UIImage(named: "Pluto")!, desc: "not sure either", description: "This is Pluto", type: .planet),
-                    SpaceObject(name: "Moon", distanceInKm: 384400, image: "🌕".image()!, desc: "No cheese here", description: "This is the Moon", type: .moon),
+                    SpaceObject(name: "Moon", distanceInKm: 384400, image: "🌕".image()!, desc: "No cheese here", description: "The Moon is Earth's only natural satellite and the fifth largest moon in the solar system.", type: .moon),
                     SpaceObject(name: "Kuiper Belt", distanceInKm: 4338338250.0390005, image: "🪨".image()!, desc: "no way home", description: "This is the Kuiper Belt", type: .other)]
 
 // Sorted by distance from decreasing to increasing

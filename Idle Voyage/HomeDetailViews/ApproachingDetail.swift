@@ -32,6 +32,8 @@ struct ApproachingDetail: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 100)
                         .frame(width: 100)
+                        .padding(.trailing, 50)
+
 //                    Spacer()
                 }
                 HStack {
@@ -40,6 +42,8 @@ struct ApproachingDetail: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 100)
                         .frame(width: 100)
+                        .padding(.leading, 20)
+
                     Spacer()
                 }
                 
@@ -54,15 +58,15 @@ struct ApproachingDetail: View {
                 .fontWeight(.medium)
             Text(getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).description)
                 .opacity(0.7)
-            
+                .padding(.bottom, 10)
             
            
                 
         }
         .foregroundColor(.white)
-        .frame(maxWidth: .infinity)
+//        .frame(maxWidth: .infinity)
         .padding()
-        .frame(width: 300, height: 400)
+//        .frame(width: 300, height: 400)
         .background(Color.init(hex: "100b1f"))
         .cornerRadius(30)
         
