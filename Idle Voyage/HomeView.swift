@@ -191,7 +191,7 @@ struct HomeView: View {
                         .padding(.bottom, 40)
                     }
                     .sheet(isPresented: $showTimeDetail, content: {
-                        VoyageCardView()
+                        TimeDetail()
                             .clearModalBackground()
 
                     })
@@ -260,7 +260,7 @@ struct HomeView: View {
                 }
                 // MARK: SHIP IMAGE
                 VStack {
-                    Image(uiImage: getShipImageString(desc: user.first!.shipPref!).image()!)
+                    Image(uiImage: user.first!.shipPref!.image()!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 100)

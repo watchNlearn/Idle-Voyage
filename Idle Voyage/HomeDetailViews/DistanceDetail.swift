@@ -11,9 +11,7 @@ struct DistanceDetail: View {
     // Get out environment and users
     @Environment(\.managedObjectContext) var moc
     // We may not even have to create a fetch request
-    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
-    // Tolerance 0.1 to give some wiggle room
-    let timer = Timer.publish(every: 1, tolerance: 0.1, on: .main, in: .common).autoconnect()
+    @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>    
     
     let background = getRandomGradient()
     
@@ -22,11 +20,11 @@ struct DistanceDetail: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Group {
-                Text("Current Voyage")
+                Text("Current Voyage  " + user.first!.shipPref!)
                     .font(.title)
                     .fontWeight(.bold)
                 VStack (alignment: .leading) {
-                    Text("Total Distance Travelled")
+                    Text("Total Distance Travelled from 🌎")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)

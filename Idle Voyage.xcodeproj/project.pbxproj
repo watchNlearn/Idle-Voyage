@@ -30,6 +30,7 @@
 		0B44F71127880E2100EE0B33 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F71027880E2100EE0B33 /* HomeView.swift */; };
 		0B4FE59E279BDF4A00C94A10 /* DistanceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE59D279BDF4A00C94A10 /* DistanceDetail.swift */; };
 		0B4FE5A0279E96D200C94A10 /* ClearBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE59F279E96D200C94A10 /* ClearBackgroundView.swift */; };
+		0B4FE5A227A1132A00C94A10 /* TimeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5A127A1132A00C94A10 /* TimeDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		0B44F71027880E2100EE0B33 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0B4FE59D279BDF4A00C94A10 /* DistanceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceDetail.swift; sourceTree = "<group>"; };
 		0B4FE59F279E96D200C94A10 /* ClearBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackgroundView.swift; sourceTree = "<group>"; };
+		0B4FE5A127A1132A00C94A10 /* TimeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				0B4FE59D279BDF4A00C94A10 /* DistanceDetail.swift */,
+				0B4FE5A127A1132A00C94A10 /* TimeDetail.swift */,
 			);
 			path = HomeDetailViews;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				0B44F70227850D5C00EE0B33 /* InitialView.swift in Sources */,
 				0B44F6C82783C1B700EE0B33 /* ContentView.swift in Sources */,
 				0B44F70F27879FFA00EE0B33 /* SpaceData.swift in Sources */,
+				0B4FE5A227A1132A00C94A10 /* TimeDetail.swift in Sources */,
 				0B44F6FE2784F50F00EE0B33 /* Extensions.swift in Sources */,
 				0B4FE5A0279E96D200C94A10 /* ClearBackgroundView.swift in Sources */,
 				0B44F6FC2784EBB000EE0B33 /* OnboardingWidgetPbar.swift in Sources */,

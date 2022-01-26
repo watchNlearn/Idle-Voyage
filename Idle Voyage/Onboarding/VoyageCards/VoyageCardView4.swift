@@ -33,7 +33,7 @@ struct VoyageCardView4: View {
                         newUser.uid = UUID()
                         newUser.voyageStartDate = Date()
                         // Options: rocket, satellite, ufo (default is rocket)
-                        newUser.shipPref = "rocket"
+                        newUser.shipPref = "🚀"
                         newUser.unitPref = "km"
                         newUser.leaving = "Earth"
                         newUser.approaching = "Saturn"
