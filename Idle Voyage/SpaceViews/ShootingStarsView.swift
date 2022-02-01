@@ -16,7 +16,7 @@ struct ShootingStarsView: View {
         Group {
             Circle()
                 .fill(Color.white)
-                .frame(width: 6, height: 6)
+                .frame(width: 4, height: 4)
                 
                 .position(x: 0, y: 80)
                 .offset(x: shouldAnimate ? -1900 : 1900)
@@ -29,7 +29,7 @@ struct ShootingStarsView: View {
                 .zIndex(1)
             Circle()
                 .fill(Color.white)
-                .frame(width: 6, height: 6)
+                .frame(width: 4, height: 4)
                 
                 .position(x: 0, y: 200)
                 .offset(x: shouldAnimate ? -1000 : 1000)
@@ -42,7 +42,7 @@ struct ShootingStarsView: View {
                 .zIndex(1)
             Circle()
                 .fill(Color.white)
-                .frame(width: 6, height: 6)
+                .frame(width: 4, height: 4)
                 .position(x: 0, y: 400)
                 .offset(x: shouldAnimate ? -880 : 880)
                 .offset(y: shouldAnimate ? 880 : -880)
@@ -54,7 +54,7 @@ struct ShootingStarsView: View {
                 .zIndex(1)
             Circle()
                 .fill(Color.white)
-                .frame(width: 6, height: 6)
+                .frame(width: 4, height: 4)
 
                 .position(x: 0, y: 528)
                 .offset(x: shouldAnimate ? -1800 : 1800)
@@ -67,7 +67,7 @@ struct ShootingStarsView: View {
                 .zIndex(1)
             Circle()
                 .fill(Color.white)
-                .frame(width: 6, height: 6)
+                .frame(width: 4, height: 4)
 
                 .position(x: 0, y: 670)
                 .offset(x: shouldAnimate ? -1200 : 1200)
@@ -81,7 +81,7 @@ struct ShootingStarsView: View {
             
             Circle()
                 .fill(Color.white)
-                .frame(width: 6, height: 6)
+                .frame(width: 4, height: 4)
 
                 .position(x: 0, y: 933)
                 .offset(x: shouldAnimate ? -1200 : 1200)
