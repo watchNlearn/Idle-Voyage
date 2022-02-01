@@ -18,6 +18,7 @@ struct ContentView: View {
 //        .overlay(
 //            InitialView()
 //        )
+
         InitialView()
             .background(LinearGradient(colors: background.colors, startPoint: background.start, endPoint: background.end)
                             .hueRotation(.degrees(animateGradient ? background.rotation : 370))
