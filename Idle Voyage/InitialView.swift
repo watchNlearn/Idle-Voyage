@@ -66,9 +66,10 @@ struct InitialView: View {
                     try? moc.save()
                     
                 }
-                .overlay(
-                    StarsView(starInt: 78)
-                )
+                .background(StarsView(starInt: 78))
+//                .overlay(
+//                    StarsView(starInt: 78)
+//                )
 //            Image(uiImage: "🛸".image()!)
 //                .frame(width: 80, height: 80)
 //

@@ -16,7 +16,17 @@ struct StarsView: View {
     var body: some View {
         GeometryReader { proxy in
             ForEach(0...starInt, id: \.self) { index in
-                StarView(index: index, offset: getRandXY(size: proxy.size), duration: getRandomDur(), delay: getRandomDelay())
+                
+                let rand = Int.random(in: 1...38)
+                if rand == 1 && starInt >= 70 {
+                    PlanetView(index: index, offset: getRandXY(size: proxy.size))
+
+                }
+                else {
+                    StarView(index: index, offset: getRandXY(size: proxy.size), duration: getRandomDur(), delay: getRandomDelay())
+                }
+                
+                
             }
             
         }.ignoresSafeArea()
