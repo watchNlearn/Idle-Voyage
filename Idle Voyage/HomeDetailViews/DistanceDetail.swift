@@ -35,7 +35,7 @@ struct DistanceDetail: View {
                             .frame(alignment: .leading)
                             .padding(.trailing, 8)
                             .cornerRadius(6)
-                            .opacity(0.7)
+                            .opacity(0.8)
                     }
                     .padding(.bottom, 5)
                     HStack {
@@ -45,7 +45,7 @@ struct DistanceDetail: View {
                             .frame(alignment: .leading)
                             .padding(.trailing, 8)
                             .cornerRadius(6)
-                            .opacity(0.7)
+                            .opacity(0.8)
                     }
                     .padding(.bottom, 5)
                 }
@@ -62,7 +62,7 @@ struct DistanceDetail: View {
                             .frame(alignment: .leading)
                             .padding(.trailing, 4)
                             .cornerRadius(6)
-                            .opacity(0.7)
+                            .opacity(0.8)
                         
                     }
                     .padding(.bottom, 5)
@@ -73,7 +73,7 @@ struct DistanceDetail: View {
                             .frame(alignment: .leading)
                             .padding(.trailing, 4)
                             .cornerRadius(6)
-                            .opacity(0.7)
+                            .opacity(0.8)
                         
                     }
                     .padding(.bottom, 20)
@@ -86,7 +86,7 @@ struct DistanceDetail: View {
                     .font(.title)
                     .fontWeight(.bold)
                 Text("Space is big... really big, so to speed things up we'll be traveling as the fastest object ever made!")
-                    .opacity(0.7)
+                    .opacity(0.8)
                 Image(uiImage: "🛰️".image()!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

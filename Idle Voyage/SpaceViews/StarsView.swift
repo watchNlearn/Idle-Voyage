@@ -10,11 +10,12 @@ import SwiftUI
 struct StarsView: View {
     
     @State var shouldAnimate = false
-
+    
+    let starInt: Int
     
     var body: some View {
         GeometryReader { proxy in
-            ForEach(0...78, id: \.self) { index in
+            ForEach(0...starInt, id: \.self) { index in
                 StarView(index: index, offset: getRandXY(size: proxy.size), duration: getRandomDur(), delay: getRandomDelay())
             }
             

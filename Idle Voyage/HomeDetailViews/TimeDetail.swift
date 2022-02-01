@@ -34,7 +34,7 @@ struct TimeDetail: View {
                             .frame(alignment: .leading)
                             .padding(.trailing, 8)
                             .cornerRadius(6)
-                            .opacity(0.7)
+                            .opacity(0.8)
                     }
                     .padding(.bottom, 5)
                 }
@@ -51,7 +51,7 @@ struct TimeDetail: View {
                             .frame(alignment: .leading)
                             .padding(.trailing, 4)
                             .cornerRadius(6)
-                            .opacity(0.7)
+                            .opacity(0.8)
                         
                     }
                     

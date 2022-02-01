@@ -67,7 +67,7 @@ struct InitialView: View {
                     
                 }
                 .overlay(
-                    StarsView()
+                    StarsView(starInt: 78)
                 )
 //            Image(uiImage: "🛸".image()!)
 //                .frame(width: 80, height: 80)

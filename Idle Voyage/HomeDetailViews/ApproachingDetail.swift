@@ -57,7 +57,7 @@ struct ApproachingDetail: View {
                 .font(.subheadline)
                 .fontWeight(.medium)
             Text(getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).description)
-                .opacity(0.7)
+                .opacity(0.8)
                 .padding(.bottom, 10)
             
            
