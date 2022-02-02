@@ -26,17 +26,17 @@ private func yPositionRandom() -> CGFloat {
     return CGFloat.random(in: 80...900)
 }
 private func randomOffset() -> CGFloat {
-    return CGFloat.random(in: 800...1200)
+    return CGFloat.random(in: 700...1400)
 }
 
 private func getRandomDur() -> Double {
     return Double.random(in: 60...300)
 }
 private func getRandomDelay() -> Double {
-    return Double.random(in: 0...30)
+    return Double.random(in: 0...35)
 }
 private func getRandomBool() -> Bool {
-    let val = Int.random(in: 0...200)
+    let val = Int.random(in: 0...250)
     if val == 4 {
         return true
     }
