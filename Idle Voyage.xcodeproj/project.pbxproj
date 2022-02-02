@@ -229,10 +229,10 @@
 			isa = PBXGroup;
 			children = (
 				0B4FE5AA27A8DF4C00C94A10 /* ShootingStarsView.swift */,
+				0B4FE5B227AA276100C94A10 /* ShootingStarView.swift */,
 				0B4FE5AC27A8DFE100C94A10 /* StarsView.swift */,
 				0B4FE5AE27A9154600C94A10 /* StarView.swift */,
 				0B4FE5B027A9B97500C94A10 /* PlanetView.swift */,
-				0B4FE5B227AA276100C94A10 /* ShootingStarView.swift */,
 			);
 			path = SpaceViews;
 			sourceTree = "<group>";

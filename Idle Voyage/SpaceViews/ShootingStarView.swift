@@ -21,7 +21,7 @@ struct ShootingStarView: View {
             Image(uiImage: "🛸".image()!)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 15, height: 15)
+                .frame(width: 18, height: 18)
                 .opacity(0.7)
                 .position(x: 0, y: yPosition)
                 .offset(x: shouldAnimate ? offset : -offset)
