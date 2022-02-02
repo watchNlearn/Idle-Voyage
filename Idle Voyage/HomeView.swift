@@ -39,7 +39,7 @@ struct HomeView: View {
     @State var showTimeDetail = false
     @State var showLeavingDetail = false
     @State var showApproachingDetail = false
-
+    @State var showProgressDetail = false
 //    @State var shipImage: String = getShipImageString(desc: "ufo")
     
     @State var progressValue: Float = 0.0
@@ -342,6 +342,13 @@ struct HomeView: View {
         .frame(maxWidth: 360)
         .frame(maxHeight: .infinity)
         .background(Color.clear)
+        .sheet(isPresented: $showProgressDetail, content: {
+            ProgressDetail()
+                .clearModalBackground()
+        })
+        .onTapGesture {
+            showProgressDetail.toggle()
+        }
 //        .background(LinearGradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")], startPoint: .topLeading, endPoint: .bottomTrailing)
 //                        .hueRotation(.degrees(animateGradient ? 120 : 0))
 //                        .ignoresSafeArea()
