@@ -14,13 +14,31 @@ struct ShootingStarView: View {
     let yPosition: CGFloat
     let duration: Double
     let delay: Double
+    let alien: Bool
     
     var body: some View {
-        Group {
+        if alien {
+            Image(uiImage: "🛸".image()!)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 15, height: 15)
+                .opacity(0.7)
+                .position(x: 0, y: yPosition)
+                .offset(x: shouldAnimate ? offset : -offset)
+                .offset(y: shouldAnimate ? -offset : offset)
+            
+                .animation(Animation.easeInOut(duration: duration).repeatForever(autoreverses: false).delay(delay),value: shouldAnimate ? offset : -offset)
+                .onAppear {
+                    self.shouldAnimate = true
+                }
+                .zIndex(1)
+            
+        } else {
             Circle()
                 .fill(Color.white)
                 .frame(width: 2, height: 2)
-                .opacity(0.7)
+                .opacity(shouldAnimate ? 0.1 : 0.8)
+//                .opacity(0.7)
                 .position(x: 0, y: yPosition)
                 .offset(x: shouldAnimate ? -offset : offset)
                 .offset(y: shouldAnimate ? offset : -offset)
@@ -30,8 +48,8 @@ struct ShootingStarView: View {
                     self.shouldAnimate = true
                 }
                 .zIndex(1)
+            
         }
-        
     }
 }
 

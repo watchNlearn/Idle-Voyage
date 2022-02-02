@@ -15,7 +15,7 @@ struct ShootingStarsView: View {
     var body: some View {
         GeometryReader { proxy in
             ForEach(0...starInt, id: \.self) { index in
-                ShootingStarView(offset: randomOffset(), yPosition: yPositionRandom(), duration: getRandomDur(), delay: getRandomDelay())
+                ShootingStarView(offset: randomOffset(), yPosition: yPositionRandom(), duration: getRandomDur(), delay: getRandomDelay(), alien: getRandomBool())
                 
             }
             
@@ -30,10 +30,17 @@ private func randomOffset() -> CGFloat {
 }
 
 private func getRandomDur() -> Double {
-    return Double.random(in: 20...40)
+    return Double.random(in: 60...300)
 }
 private func getRandomDelay() -> Double {
-    return Double.random(in: 3...17)
+    return Double.random(in: 0...30)
+}
+private func getRandomBool() -> Bool {
+    let val = Int.random(in: 0...200)
+    if val == 4 {
+        return true
+    }
+    return false
 }
 
 //struct ShootingStarsView_Previews: PreviewProvider {
