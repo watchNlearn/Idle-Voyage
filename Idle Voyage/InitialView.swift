@@ -37,7 +37,7 @@ struct InitialView: View {
 //            Button(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/) {
 //                showingOnboarding = true
 //            }
-            ShootingStarsView()
+            ShootingStarsView(starInt: 8)
 
 
             HomeView()

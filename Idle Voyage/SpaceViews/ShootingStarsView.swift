@@ -10,96 +10,30 @@ import SwiftUI
 struct ShootingStarsView: View {
     
     @State var shouldAnimate = false
-
+    let starInt: Int
     
     var body: some View {
-        Group {
-            Circle()
-                .fill(Color.white)
-                .frame(width: 3, height: 3)
-                .opacity(0.7)
-                .position(x: 0, y: 80)
-                .offset(x: shouldAnimate ? -1900 : 1900)
-                .offset(y: shouldAnimate ? 1900 : -1900)
-            
-                .animation(Animation.easeInOut(duration: 10.87).repeatForever(autoreverses: false).delay(19.64),value: shouldAnimate ? -1900 : 1900)
-                .onAppear {
-                    self.shouldAnimate = true
-                }
-                .zIndex(1)
-            Circle()
-                .fill(Color.white)
-                .frame(width: 3, height: 3)
-                .opacity(0.7)
+        GeometryReader { proxy in
+            ForEach(0...starInt, id: \.self) { index in
+                ShootingStarView(offset: randomOffset(), yPosition: yPositionRandom(), duration: getRandomDur(), delay: getRandomDelay())
                 
-                .position(x: 0, y: 200)
-                .offset(x: shouldAnimate ? -1000 : 1000)
-                .offset(y: shouldAnimate ? 1000 : -1000)
+            }
             
-                .animation(Animation.easeInOut(duration: 3.26).repeatForever(autoreverses: false).delay(7.64),value: shouldAnimate ? -1000 : 1000)
-                .onAppear {
-                    self.shouldAnimate = true
-                }
-                .zIndex(1)
-            Circle()
-                .fill(Color.white)
-                .frame(width: 3, height: 3)
-                .opacity(0.7)
-                .position(x: 0, y: 400)
-                .offset(x: shouldAnimate ? -880 : 880)
-                .offset(y: shouldAnimate ? 880 : -880)
-            
-                .animation(Animation.easeInOut(duration: 2.93).repeatForever(autoreverses: false).delay(4.72),value: shouldAnimate ? -880 : 880)
-                .onAppear {
-                    self.shouldAnimate = true
-                }
-                .zIndex(1)
-            Circle()
-                .fill(Color.white)
-                .frame(width: 3, height: 3)
-                .opacity(0.7)
-
-                .position(x: 0, y: 528)
-                .offset(x: shouldAnimate ? -1800 : 1800)
-                .offset(y: shouldAnimate ? 1800 : -1800)
-
-                .animation(Animation.easeInOut(duration: 7.87).repeatForever(autoreverses: false).delay(4.1),value: shouldAnimate ? -1800 : 1800)
-                .onAppear {
-                    self.shouldAnimate = true
-                }
-                .zIndex(1)
-            Circle()
-                .fill(Color.white)
-                .frame(width: 3, height: 3)
-                .opacity(0.7)
-
-                .position(x: 0, y: 670)
-                .offset(x: shouldAnimate ? -1200 : 1200)
-                .offset(y: shouldAnimate ? 1200 : -1200)
-
-                .animation(Animation.easeInOut(duration: 4.7).repeatForever(autoreverses: false).delay(2.28),value: shouldAnimate ? -1200 : 1200)
-                .onAppear {
-                    self.shouldAnimate = true
-                }
-                .zIndex(1)
-            
-            Circle()
-                .fill(Color.white)
-                .frame(width: 3, height: 3)
-                .opacity(0.7)
-
-                .position(x: 0, y: 933)
-                .offset(x: shouldAnimate ? -1200 : 1200)
-                .offset(y: shouldAnimate ? 1200 : -1200)
-
-                .animation(Animation.easeInOut(duration: 5.73).repeatForever(autoreverses: false).delay(11),value: shouldAnimate ? -1200 : 1200)
-                .onAppear {
-                    self.shouldAnimate = true
-                }
-                .zIndex(1)
         }
-        
     }
+}
+private func yPositionRandom() -> CGFloat {
+    return CGFloat.random(in: 80...900)
+}
+private func randomOffset() -> CGFloat {
+    return CGFloat.random(in: 800...1200)
+}
+
+private func getRandomDur() -> Double {
+    return Double.random(in: 20...60)
+}
+private func getRandomDelay() -> Double {
+    return Double.random(in: 3...17)
 }
 
 //struct ShootingStarsView_Previews: PreviewProvider {
