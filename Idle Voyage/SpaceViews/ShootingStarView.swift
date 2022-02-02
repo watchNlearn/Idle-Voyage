@@ -19,7 +19,7 @@ struct ShootingStarView: View {
         Group {
             Circle()
                 .fill(Color.white)
-                .frame(width: 3, height: 3)
+                .frame(width: 2, height: 2)
                 .opacity(0.7)
                 .position(x: 0, y: yPosition)
                 .offset(x: shouldAnimate ? -offset : offset)

@@ -30,7 +30,7 @@ private func randomOffset() -> CGFloat {
 }
 
 private func getRandomDur() -> Double {
-    return Double.random(in: 20...60)
+    return Double.random(in: 20...40)
 }
 private func getRandomDelay() -> Double {
     return Double.random(in: 3...17)
