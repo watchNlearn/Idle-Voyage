@@ -61,6 +61,9 @@ struct TimeDetail: View {
                 
             }
         }
+        .background(
+            StarsView(starInt: 12)
+        )
         .frame(maxWidth: .infinity)
         .foregroundColor(.white)
         .padding()

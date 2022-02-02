@@ -109,6 +109,9 @@ struct DistanceDetail: View {
            
             
         }
+        .background(
+            StarsView(starInt: 17)
+        )
         .foregroundColor(.white)
         .padding()
         .background(Color.init(hex: "100b1f"))

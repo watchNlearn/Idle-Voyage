@@ -19,24 +19,12 @@ struct OnboardingView: View {
     //                    VoyageCardView()
     //                }
                     VoyageCardView()
-                        .overlay(
-                            StarsView(starInt: 20)
-                        )
                     Spacer()
                     VoyageCardView2()
-                        .overlay(
-                            StarsView(starInt: 20)
-                        )
                     Spacer()
                     VoyageCardView3()
-                        .overlay(
-                            StarsView(starInt: 20)
-                        )
                     Spacer()
                     VoyageCardView4(valueFromOnboardingView: $valueFromInitialView)
-                        .overlay(
-                            StarsView(starInt: 20)
-                        )
                     
                 }
                 .padding()

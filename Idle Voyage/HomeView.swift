@@ -141,9 +141,10 @@ struct HomeView: View {
                     .sheet(isPresented: $showDistanceDetail, content: {
                         DistanceDetail()
                             .clearModalBackground()
-                            .overlay(
-                                StarsView(starInt: 17)
-                            )
+                        // added to background in distance detail
+//                            .overlay(
+//                                StarsView(starInt: 17)
+//                            )
                     })
                     .onTapGesture {
                         showDistanceDetail.toggle()
@@ -197,10 +198,6 @@ struct HomeView: View {
                     .sheet(isPresented: $showTimeDetail, content: {
                         TimeDetail()
                             .clearModalBackground()
-                            .overlay(
-                                StarsView(starInt: 12)
-                            )
-
                     })
                     .onTapGesture {
                         showTimeDetail.toggle()
@@ -232,10 +229,6 @@ struct HomeView: View {
                         .sheet(isPresented: $showLeavingDetail, content: {
                             LeavingDetail()
                                 .clearModalBackground()
-                                .overlay(
-                                    StarsView(starInt: 28)
-                                )
-
                         })
                         .onTapGesture {
                             showLeavingDetail.toggle()
@@ -269,10 +262,6 @@ struct HomeView: View {
                         .sheet(isPresented: $showApproachingDetail, content: {
                             ApproachingDetail()
                                 .clearModalBackground()
-                                .overlay(
-                                    StarsView(starInt: 28)
-                                )
-
                         })
                         .onTapGesture {
                             showApproachingDetail.toggle()

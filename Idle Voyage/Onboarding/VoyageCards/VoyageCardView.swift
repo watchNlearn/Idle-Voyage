@@ -42,6 +42,9 @@ struct VoyageCardView: View {
                 .lineLimit(4)
                 .opacity(0.7)
         }
+        .background(
+            StarsView(starInt: 20)
+        )
         .foregroundColor(.white)
         .padding()
         .frame(width: 300, height: 400)

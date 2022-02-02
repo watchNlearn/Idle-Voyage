@@ -37,6 +37,9 @@ struct VoyageCardView2: View {
                 .fontWeight(.light)
                 
         }
+        .background(
+            StarsView(starInt: 20)
+        )
         .foregroundColor(.white)
         .padding()
         .frame(width: 300, height: 400)
