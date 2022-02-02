@@ -13,30 +13,33 @@ struct PlanetDetailCard: View {
     @State private var animateGradient = false
     let background = getRandomGradient()
     
-    let spaceObjImage: UIImage
-    let spaceObjName: String
-    let spaceObjDesc: String
+    let spaceObject: SpaceObject
+//    let spaceObjImage: UIImage
+//    let spaceObjName: String
+//    let spaceObjDesc: String
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            
-            Image(uiImage: spaceObjImage)
+            Image(uiImage: spaceObject.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 100)
                 .frame(width: 100)
-                .padding(.trailing, 50)
+                .padding(.leading, 30)
+                .padding(.trailing, 30)
             
-            Text(spaceObjName)
+            
+            
+            Text(spaceObject.name)
                 .font(.title)
                 .fontWeight(.bold)
             //434959.835
-            Text(spaceObjDesc)
+            Text(spaceObject.desc)
                 .font(.subheadline)
                 .fontWeight(.medium)
-//            Text(getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).description)
-//                .opacity(0.8)
-//                .padding(.bottom, 10)
+            Text(spaceObject.distanceInKm.formattedWithSeparator + " km")
+                .opacity(0.8)
+                .padding(.bottom, 10)
             
            
                 

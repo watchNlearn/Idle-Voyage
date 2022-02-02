@@ -19,12 +19,13 @@ struct ProgressDetail: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach(0...spaceObjectsSorted.count-1, id: \.self) { index in
-                        PlanetDetailCard(spaceObjImage: spaceObjectsSorted[index].image, spaceObjName: spaceObjectsSorted[index].name, spaceObjDesc: spaceObjectsSorted[index].desc)
+                        PlanetDetailCard(spaceObject: spaceObjectsSorted[index])
                     }
                 }
             }
             
         }
+        .background(StarsView(starInt: 20))
         .foregroundColor(.white)
         .padding()
         .background(Color.init(hex: "100b1f"))
