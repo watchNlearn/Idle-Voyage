@@ -20,11 +20,13 @@ struct DistanceDetail: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Group {
-                Text("Current Voyage  " + user.first!.shipPref!)
+                Text("Voyage Distance  " + user.first!.shipPref!)
                     .font(.title)
                     .fontWeight(.bold)
+                    .padding(.bottom, 20)
+                    .padding(.top, 20)
                 VStack (alignment: .leading) {
-                    Text("Total Distance Travelled from 🌎")
+                    Text("Travelled from 🌎")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)
@@ -50,7 +52,7 @@ struct DistanceDetail: View {
                     .padding(.bottom, 5)
                 }
                 VStack(alignment: .leading) {
-                    Text("Distance Remaining to " + getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).name)
+                    Text("Remaining to " + getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).name)
                         .font(.headline)
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)

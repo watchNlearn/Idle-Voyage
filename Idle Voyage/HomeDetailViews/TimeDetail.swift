@@ -20,11 +20,13 @@ struct TimeDetail: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Group {
-                Text("Current Voyage  " + user.first!.shipPref!)
+                Text("Voyage Time  " + user.first!.shipPref!)
                     .font(.title)
                     .fontWeight(.bold)
+                    .padding(.bottom, 20)
+                    .padding(.top, 20)
                 VStack (alignment: .leading) {
-                    Text("Time Since Launch ⏱️")
+                    Text("Since Launch ⏱️")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)

@@ -20,6 +20,10 @@ struct ProgressDetail: View {
             Text("Voyage Progress  " + user.first!.shipPref!)
                 .font(.title)
                 .fontWeight(.bold)
+                .padding(.bottom, 20)
+                .padding(.top, 20)
+
+
             ScrollViewReader { proxy in
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
@@ -34,9 +38,16 @@ struct ProgressDetail: View {
                     proxy.scrollTo(lastSpaceObj.name)
                 }
             }
+            .padding(.bottom, 10)
             Text("Progress to " + getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).name)
                 .font(.headline)
                 .fontWeight(.bold)
+                .padding(.bottom, 2)
+            let num = Double(user.first!.progress) * 100
+            Text(String(num.rounded(toPlaces: 4)) + "%")
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .foregroundColor(Color.white)
             HStack {
                 Image(uiImage: getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).image)
                     .resizable()
@@ -57,6 +68,7 @@ struct ProgressDetail: View {
                     .frame(height: 25)
                     .frame(width: 25)
             }
+            .padding(.bottom, 8)
             Text("Progress from Earth")
                 .font(.headline)
                 .fontWeight(.bold)
@@ -78,7 +90,7 @@ struct ProgressDetail: View {
             
             
         }
-        .background(StarsView(starInt: 20))
+        .background(StarsView(starInt: 25))
         .foregroundColor(.white)
         .padding()
         .background(Color.init(hex: "100b1f"))
