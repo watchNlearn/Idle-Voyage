@@ -76,6 +76,7 @@ struct OnboardingWidgetView: View {
                     .frame(height: 25)
 //                    .frame(maxWidth: .infinity)
                 OnboardingWidgetPbar(value: $progressValue).frame(maxWidth: .infinity)
+                    .frame(height: 12)
                 Image(uiImage: "🪐".image()!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

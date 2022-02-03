@@ -291,7 +291,7 @@ struct HomeView: View {
             
             // MARK: PERCENT PROGRESS
             let num = Double(user.first!.progress) * 100
-            Text(String(num.rounded(toPlaces: 3)) + "%")
+            Text(String(num.rounded(toPlaces: 2)) + "%")
                 .font(.headline)
                 .fontWeight(.semibold)
                 .foregroundColor(Color.white)
@@ -307,7 +307,7 @@ struct HomeView: View {
                     .frame(height: 50)
                     .frame(width: 50)
                 OnboardingWidgetPbar(value: $progressValue).frame(maxWidth: .infinity)
-                    .frame(height: 30)
+                    .frame(height: 20)
                     .onReceive(timer) { _ in
                         let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
                         let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)

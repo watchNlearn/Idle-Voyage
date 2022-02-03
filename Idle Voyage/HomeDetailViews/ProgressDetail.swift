@@ -34,25 +34,48 @@ struct ProgressDetail: View {
                     proxy.scrollTo(lastSpaceObj.name)
                 }
             }
-            
+            Text("Progress to " + getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).name)
+                .font(.headline)
+                .fontWeight(.bold)
             HStack {
                 Image(uiImage: getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 50)
-                    .frame(width: 50)
-                
+                    .frame(height: 25)
+                    .frame(width: 25)
                 OnboardingWidgetPbar(value: $progressValue).frame(maxWidth: .infinity)
-                    .frame(height: 30)
+                    .frame(height: 10)
                     .onReceive(timer) { _ in
-                        progressValue = user.first?.progress ?? 0
+                        let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                        let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                        let progress = 1 - (user.first!.distanceRemainInKm/(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm))
+                        progressValue = Float(progress)
                     }
                 Image(uiImage: getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 50)
-                    .frame(width: 50)
+                    .frame(height: 25)
+                    .frame(width: 25)
             }
+            Text("Progress from Earth")
+                .font(.headline)
+                .fontWeight(.bold)
+            ScrollViewReader { proxy in
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 12) {
+                        ForEach(1...spaceObjectsSorted.count-1, id: \.self) { index in
+                            ProgressBarDetail(spaceObject: spaceObjectsSorted[index])
+                                .id(spaceObjectsSorted[index].name)
+                        }
+                    }
+                }
+                .onAppear {
+                    let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                    proxy.scrollTo(nextSpaceObj.name)
+                }
+            }
+            
+            
             
         }
         .background(StarsView(starInt: 20))

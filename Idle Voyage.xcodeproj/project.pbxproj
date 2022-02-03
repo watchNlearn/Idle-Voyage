@@ -40,6 +40,7 @@
 		0B4FE5B327AA276200C94A10 /* ShootingStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5B227AA276100C94A10 /* ShootingStarView.swift */; };
 		0B4FE5B527AA713A00C94A10 /* ProgressDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5B427AA713A00C94A10 /* ProgressDetail.swift */; };
 		0B4FE5B727AA74DA00C94A10 /* PlanetDetailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5B627AA74DA00C94A10 /* PlanetDetailCard.swift */; };
+		0B4FE5B927AB8A1300C94A10 /* ProgressBarDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5B827AB8A1300C94A10 /* ProgressBarDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		0B4FE5B227AA276100C94A10 /* ShootingStarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingStarView.swift; sourceTree = "<group>"; };
 		0B4FE5B427AA713A00C94A10 /* ProgressDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDetail.swift; sourceTree = "<group>"; };
 		0B4FE5B627AA74DA00C94A10 /* PlanetDetailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailCard.swift; sourceTree = "<group>"; };
+		0B4FE5B827AB8A1300C94A10 /* ProgressBarDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				0B4FE5A727A125B100C94A10 /* ApproachingDetail.swift */,
 				0B4FE5B427AA713A00C94A10 /* ProgressDetail.swift */,
 				0B4FE5B627AA74DA00C94A10 /* PlanetDetailCard.swift */,
+				0B4FE5B827AB8A1300C94A10 /* ProgressBarDetail.swift */,
 			);
 			path = HomeDetailViews;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				0B44F6F627844C5500EE0B33 /* VoyageCardView3.swift in Sources */,
 				0B44F6C62783C1B700EE0B33 /* Idle_VoyageApp.swift in Sources */,
 				0B44F6FA27844E3E00EE0B33 /* OnboardingWidgetView.swift in Sources */,
+				0B4FE5B927AB8A1300C94A10 /* ProgressBarDetail.swift in Sources */,
 				0B44F6F02783E20900EE0B33 /* LoadingView.swift in Sources */,
 				0B44F71127880E2100EE0B33 /* HomeView.swift in Sources */,
 				0B4FE59E279BDF4A00C94A10 /* DistanceDetail.swift in Sources */,
