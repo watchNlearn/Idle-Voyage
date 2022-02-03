@@ -37,9 +37,17 @@ struct PlanetDetailCard: View {
             Text(spaceObject.desc)
                 .font(.subheadline)
                 .fontWeight(.medium)
-            Text(spaceObject.distanceInKm.formattedWithSeparator + " km")
-                .opacity(0.8)
-                .padding(.bottom, 10)
+            HStack {
+                Text(spaceObject.distanceInKm.formattedWithSeparator)
+                    .opacity(0.8)
+                    .padding(.bottom, 10)
+                    .foregroundColor(Color(UIColor.green))
+                Text("km")
+                    .opacity(0.8)
+                    .padding(.bottom, 10)
+            }
+            
+
             
            
                 
