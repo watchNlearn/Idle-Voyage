@@ -26,7 +26,7 @@ private func yPositionRandom() -> CGFloat {
     return CGFloat.random(in: 80...900)
 }
 private func randomOffset() -> CGFloat {
-    return CGFloat.random(in: 700...1400)
+    return CGFloat.random(in: 600...1400)
 }
 
 private func getRandomDur() -> Double {
