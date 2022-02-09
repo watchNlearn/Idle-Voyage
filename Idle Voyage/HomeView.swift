@@ -291,10 +291,18 @@ struct HomeView: View {
             
             // MARK: PERCENT PROGRESS
             let num = Double(user.first!.progress) * 100
-            Text(String(num.rounded(toPlaces: 2)) + "%")
-                .font(.headline)
-                .fontWeight(.semibold)
-                .foregroundColor(Color.white)
+            if num.rounded(toPlaces: 2) == 200 {
+                Text("0.0%")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.white)
+            } else {
+                Text(String(num.rounded(toPlaces: 2)) + "%")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.white)
+            }
+            
             //.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             // Bottom planets + p bar
             
