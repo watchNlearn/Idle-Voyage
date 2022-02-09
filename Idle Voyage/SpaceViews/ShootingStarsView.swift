@@ -36,7 +36,7 @@ private func getRandomDelay() -> Double {
     return Double.random(in: 0...35)
 }
 private func getRandomBool() -> Bool {
-    let val = Int.random(in: 0...250)
+    let val = Int.random(in: 0...300)
     if val == 4 {
         return true
     }

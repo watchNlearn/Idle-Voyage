@@ -41,6 +41,7 @@
 		0B4FE5B527AA713A00C94A10 /* ProgressDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5B427AA713A00C94A10 /* ProgressDetail.swift */; };
 		0B4FE5B727AA74DA00C94A10 /* PlanetDetailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5B627AA74DA00C94A10 /* PlanetDetailCard.swift */; };
 		0B4FE5B927AB8A1300C94A10 /* ProgressBarDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5B827AB8A1300C94A10 /* ProgressBarDetail.swift */; };
+		0B4FE5BB27B365AB00C94A10 /* MainProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5BA27B365AA00C94A10 /* MainProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		0B4FE5B427AA713A00C94A10 /* ProgressDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDetail.swift; sourceTree = "<group>"; };
 		0B4FE5B627AA74DA00C94A10 /* PlanetDetailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailCard.swift; sourceTree = "<group>"; };
 		0B4FE5B827AB8A1300C94A10 /* ProgressBarDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarDetail.swift; sourceTree = "<group>"; };
+		0B4FE5BA27B365AA00C94A10 /* MainProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 				0B4FE5B427AA713A00C94A10 /* ProgressDetail.swift */,
 				0B4FE5B627AA74DA00C94A10 /* PlanetDetailCard.swift */,
 				0B4FE5B827AB8A1300C94A10 /* ProgressBarDetail.swift */,
+				0B4FE5BA27B365AA00C94A10 /* MainProgressBar.swift */,
 			);
 			path = HomeDetailViews;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				0B44F70D2787955200EE0B33 /* DataController.swift in Sources */,
 				0B4FE5A427A120FB00C94A10 /* LeavingDetail.swift in Sources */,
 				0B4FE5AD27A8DFE100C94A10 /* StarsView.swift in Sources */,
+				0B4FE5BB27B365AB00C94A10 /* MainProgressBar.swift in Sources */,
 				0B44F6F627844C5500EE0B33 /* VoyageCardView3.swift in Sources */,
 				0B44F6C62783C1B700EE0B33 /* Idle_VoyageApp.swift in Sources */,
 				0B44F6FA27844E3E00EE0B33 /* OnboardingWidgetView.swift in Sources */,

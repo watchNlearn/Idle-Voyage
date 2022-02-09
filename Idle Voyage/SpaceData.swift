@@ -27,6 +27,11 @@ enum SpaceTypes {
     case other
 }
 
+struct SpaceShip {
+    let rocket = "🚀"
+    let ufo = "🛸"
+    let voyager = "🛰️"
+}
 
 var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".image()!, desc: "You may know this place...", description: "Earth is the planet we live on, one of eight planets in our solar system and the only known place in the universe to support life.", type: .planet),
                     SpaceObject(name: "Venus", distanceInKm: 41400000, image: UIImage(named: "Venus")!, desc: "Lets turn up the heat", description: "Venus is the second planet from the Sun, and is Earth's closest neighbor in the solar system. Venus is the brightest object in the sky after the Sun and the Moon, and sometimes looks like a bright star in the morning or evening sky.", type: .planet),

@@ -33,7 +33,7 @@ struct ProgressBarDetail: View {
                 .frame(height: 25)
                 .frame(width: 25)
             
-            OnboardingWidgetPbar(value: $progressValue).frame(maxWidth: .infinity)
+            MainProgressBar(value: $progressValue).frame(maxWidth: .infinity)
                 .frame(height: 10)
 //                .frame(width: 150)
                 .onReceive(timer) { _ in

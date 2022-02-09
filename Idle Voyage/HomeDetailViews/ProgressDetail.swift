@@ -54,7 +54,7 @@ struct ProgressDetail: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 25)
                     .frame(width: 25)
-                OnboardingWidgetPbar(value: $progressValue).frame(maxWidth: .infinity)
+                MainProgressBar(value: $progressValue).frame(maxWidth: .infinity)
                     .frame(height: 10)
                     .onReceive(timer) { _ in
                         let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
