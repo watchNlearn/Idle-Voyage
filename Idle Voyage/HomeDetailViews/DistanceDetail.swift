@@ -23,7 +23,7 @@ struct DistanceDetail: View {
                 Text("Voyage Distance  " + user.first!.shipPref!)
                     .font(.title)
                     .fontWeight(.bold)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 10)
                     .padding(.top, 20)
                 VStack (alignment: .leading) {
                     Text("Travelled from 🌎")
@@ -31,18 +31,32 @@ struct DistanceDetail: View {
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)
                         .padding(.trailing, 10)
+                        .padding(.bottom, 2)
+
                     HStack {
-                        Text(String("Kilometers: " + user.first!.distanceInKm.rounded(toPlaces: 1).formattedWithSeparator))
+                        Text(String(user.first!.distanceInKm.rounded(toPlaces: 0).formattedWithSeparator) + " km")
+                            .font(Font.subheadline.monospacedDigit())
 
                             .frame(alignment: .leading)
                             .padding(.trailing, 8)
                             .cornerRadius(6)
                             .opacity(0.8)
                     }
-                    .padding(.bottom, 5)
+                    .padding(.bottom, 1)
                     HStack {
-                        Text(String("Miles: " + (user.first!.distanceInKm*0.62137).rounded(toPlaces: 1).formattedWithSeparator))
-//                            .font(.subheadline)
+                        Text(String((user.first!.distanceInKm*0.62137).rounded(toPlaces: 0).formattedWithSeparator) + " mi")
+                            .font(Font.subheadline.monospacedDigit())
+//                            .fontWeight(.thin)
+                            .frame(alignment: .leading)
+                            .padding(.trailing, 8)
+                            .cornerRadius(6)
+                            .opacity(0.8)
+                    }
+                    .padding(.bottom, 1)
+
+                    HStack {
+                        Text(String((user.first!.distanceInKm/149597870.700).rounded(toPlaces: 4).formattedWithSeparator) + " au")
+                            .font(Font.subheadline.monospacedDigit())
 //                            .fontWeight(.thin)
                             .frame(alignment: .leading)
                             .padding(.trailing, 8)
@@ -57,26 +71,44 @@ struct DistanceDetail: View {
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)
                         .padding(.trailing, 10)
+                        .padding(.bottom, 2)
+
+
                     HStack {
-                        Text("Kilometers: " + String(user.first!.distanceRemainInKm.rounded(toPlaces: 1).formattedWithSeparator))
+                        Text(String(user.first!.distanceRemainInKm.rounded(toPlaces: 0).formattedWithSeparator) + " km")
 //                            .font(.subheadline)
 //                            .fontWeight(.thin)
+                            .font(Font.subheadline.monospacedDigit())
+
                             .frame(alignment: .leading)
                             .padding(.trailing, 4)
                             .cornerRadius(6)
                             .opacity(0.8)
                         
                     }
-                    .padding(.bottom, 5)
+                    .padding(.bottom, 2)
+
                     HStack {
-                        Text("Miles: " + String((user.first!.distanceRemainInKm*0.62137).rounded(toPlaces: 1).formattedWithSeparator))
+                        Text(String((user.first!.distanceRemainInKm*0.62137).rounded(toPlaces: 0).formattedWithSeparator) + " mi")
 //                            .font(.subheadline)
 //                            .fontWeight(.thin)
+                            .font(Font.subheadline.monospacedDigit())
+
                             .frame(alignment: .leading)
                             .padding(.trailing, 4)
                             .cornerRadius(6)
                             .opacity(0.8)
                         
+                    }
+                    .padding(.bottom, 2)
+                    HStack {
+                        Text(String((user.first!.distanceRemainInKm/149597870.700).rounded(toPlaces: 4).formattedWithSeparator) + " au")
+                            .font(Font.subheadline.monospacedDigit())
+//                            .fontWeight(.thin)
+                            .frame(alignment: .leading)
+                            .padding(.trailing, 8)
+                            .cornerRadius(6)
+                            .opacity(0.8)
                     }
                     .padding(.bottom, 20)
                     
@@ -84,29 +116,37 @@ struct DistanceDetail: View {
                 
             }
             Group {
-                Text("Just how fast?")
+                Text("Current Speed")
                     .font(.title)
                     .fontWeight(.bold)
-                Text("Space is big... really big, so to speed things up we'll be traveling as the fastest object ever made!")
-                    .opacity(0.8)
-                Image(uiImage: "🛰️".image()!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 50)
-                    .frame(maxWidth: .infinity)
+//                Text("Space is big... really big, so to speed things up we'll be traveling as the fastest object ever made!")
+//                    .opacity(0.8)
+//                Image(uiImage: "🛰️".image()!)
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(height: 50)
+//                    .frame(maxWidth: .infinity)
                 //434959.835
                 Text("NASA Parker Solar Probe")
                     .font(.subheadline)
                     .fontWeight(.medium)
                 Text("700,000 km/h")
                     .font(.subheadline)
-                    .fontWeight(.light)
-                Text("430,000 mi/h")
-                    .font(.subheadline)
-                    .fontWeight(.light)
+                    .opacity(0.8)
+                HStack {
+                    Text("430,000 mi/h")
+                        .font(.subheadline)
+                        .opacity(0.8)
+                    Text("🛰️")
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .padding(.leading, 25)
+
+                }
+                
                 Text("0.064% c")
                     .font(.subheadline)
-                    .fontWeight(.light)
+                    .opacity(0.8)
             }
            
             
