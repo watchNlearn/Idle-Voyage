@@ -45,7 +45,7 @@ struct ProgressDetail: View {
                 .padding(.bottom, 2)
             let num = Double(user.first!.progress) * 100
             Text(String(num.rounded(toPlaces: 4)) + "%")
-                .font(.subheadline)
+                .font(Font.subheadline.monospacedDigit())
                 .fontWeight(.medium)
                 .foregroundColor(Color.white)
             HStack {

@@ -74,8 +74,8 @@ struct HomeView: View {
                             .frame(alignment: .leading)
                             .padding(.trailing, 10)
                         HStack {
-                            Text(String(user.first!.distanceInKm.rounded(toPlaces: 1).formattedWithSeparator))
-                                .font(.subheadline)
+                            Text(String(user.first!.distanceInKm.rounded(toPlaces: 0).formattedWithSeparator) + "  km")
+                                .font(Font.subheadline.monospacedDigit())
                                 .fontWeight(.semibold)
                                 .frame(alignment: .leading)
                                 .padding(.leading, 8)
@@ -87,11 +87,15 @@ struct HomeView: View {
                                     currentUser.distanceInKm += speedPerSecKm
                                     try? moc.save()
                                 }
-                            Text("km")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .frame(alignment: .leading)
-                                .padding(.leading, 4)
+//                            Text("km")
+//                                .font(.subheadline)
+//                                .fontWeight(.semibold)
+//                                .frame(alignment: .leading)
+//                                .padding(.leading, 4)
+//                                .background(Color.orange)
+//                                .cornerRadius(6)
+
+
                             
                         }
                         .padding(.bottom, 5)
@@ -101,12 +105,12 @@ struct HomeView: View {
                             .frame(alignment: .leading)
                             .padding(.trailing, 10)
                         HStack {
-                            Text(String(user.first!.distanceRemainInKm.rounded(toPlaces: 1).formattedWithSeparator))
-                                .font(.subheadline)
+                            Text(String(user.first!.distanceRemainInKm.rounded(toPlaces: 0).formattedWithSeparator) + "  km")
+                                .font(Font.subheadline.monospacedDigit())
                                 .fontWeight(.semibold)
                                 .frame(alignment: .leading)
-                                .padding(.leading, 4)
-                                .padding(.trailing, 4)
+                                .padding(.leading, 8)
+                                .padding(.trailing, 8)
                                 .background(Color.orange)
                                 .cornerRadius(6)
                                 .onReceive(timer) { _ in
@@ -128,12 +132,12 @@ struct HomeView: View {
                                     }
                                     try? moc.save()
                                 }
-                            Text("km")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .frame(alignment: .leading)
-                                .padding(.leading, 4)
-                                
+//                            Text("km")
+//                                .font(.subheadline)
+//                                .fontWeight(.semibold)
+//                                .frame(alignment: .leading)
+//                                .padding(.leading, 4)
+//
                             
                         }
                         .padding(.bottom, 40)
@@ -165,7 +169,7 @@ struct HomeView: View {
                                     .frame(alignment: .leading)
                                     .padding(.trailing, 10)
                                 Text(getTimeStringSec(interval: Int(user.first!.elapsedTime)))
-                                    .font(.subheadline)
+                                    .font(Font.subheadline.monospacedDigit())
                                     .fontWeight(.semibold)
                                     .frame(alignment: .leading)
                                     .padding(.leading, 4)
@@ -293,12 +297,12 @@ struct HomeView: View {
             let num = Double(user.first!.progress) * 100
             if num.rounded(toPlaces: 2) == 200 {
                 Text("0.0%")
-                    .font(.headline)
+                    .font(Font.headline.monospacedDigit())
                     .fontWeight(.semibold)
                     .foregroundColor(Color.white)
             } else {
                 Text(String(num.rounded(toPlaces: 2)) + "%")
-                    .font(.headline)
+                    .font(Font.headline.monospacedDigit())
                     .fontWeight(.semibold)
                     .foregroundColor(Color.white)
             }
