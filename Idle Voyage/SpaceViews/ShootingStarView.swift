@@ -15,6 +15,8 @@ struct ShootingStarView: View {
     let duration: Double
     let delay: Double
     let alien: Bool
+    let size: Double
+
     
     var body: some View {
         if alien {
@@ -22,12 +24,12 @@ struct ShootingStarView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 18, height: 18)
-                .opacity(0.7)
+//                .opacity(0.7)
                 .position(x: 0, y: yPosition)
-                .offset(x: shouldAnimate ? offset : -offset)
-                .offset(y: shouldAnimate ? -offset : offset)
+                .offset(x: shouldAnimate ? offset+200 : -offset-200)
+                .offset(y: shouldAnimate ? -offset-200 : offset+200)
             
-                .animation(Animation.easeInOut(duration: duration).repeatForever(autoreverses: false).delay(delay),value: shouldAnimate ? offset : -offset)
+                .animation(Animation.easeInOut(duration: duration).repeatForever(autoreverses: false).delay(delay),value: shouldAnimate ? offset+200 : -offset-200)
                 .onAppear {
                     self.shouldAnimate = true
                 }
@@ -36,9 +38,9 @@ struct ShootingStarView: View {
         } else {
             Circle()
                 .fill(Color.white)
-                .frame(width: 2, height: 2)
-                .opacity(shouldAnimate ? 0.1 : 0.8)
-//                .opacity(0.7)
+                .frame(width: size, height: size)
+//                .opacity(shouldAnimate ? 0.1 : 0.8)
+                .opacity(0.7)
                 .position(x: 0, y: yPosition)
                 .offset(x: shouldAnimate ? -offset : offset)
                 .offset(y: shouldAnimate ? offset : -offset)
