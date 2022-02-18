@@ -224,7 +224,7 @@ struct HomeView: View {
                                 .fontWeight(.semibold)
                                 .padding(.leading, 4)
                                 .padding(.trailing, 4)
-                                .background(Color.purple)
+                                .background(Color.red)
                                 .frame(alignment: .center)
                                 .cornerRadius(6)
                             Text(getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).desc)

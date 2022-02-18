@@ -70,7 +70,7 @@ struct TimeDetail: View {
         .foregroundColor(.white)
         .padding()
         .background(Color.init(hex: "100b1f"))
-        .cornerRadius(40)
+        .cornerRadius(30)
         
     }
 }
