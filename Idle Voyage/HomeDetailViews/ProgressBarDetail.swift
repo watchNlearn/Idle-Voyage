@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ProgressBarDetail: View {
     
-    let timer = Timer.publish(every: 1, tolerance: 0.1, on: .main, in: .common).autoconnect()
+   // let timer = Timer.publish(every: 1, tolerance: 0.1, on: .main, in: .common).autoconnect()
+    
+    let timer: Timer.TimerPublisher
+
     
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
 
@@ -36,6 +39,10 @@ struct ProgressBarDetail: View {
             MainProgressBar(value: $progressValue).frame(maxWidth: .infinity)
                 .frame(height: 10)
 //                .frame(width: 150)
+                .onAppear {
+                    let progress = (user.first!.distanceInKm/spaceObject.distanceInKm)
+                    progressValue = Float(progress)
+                }
                 .onReceive(timer) { _ in
                     let progress = (user.first!.distanceInKm/spaceObject.distanceInKm)
                     progressValue = Float(progress)

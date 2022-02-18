@@ -56,6 +56,12 @@ struct ProgressDetail: View {
                     .frame(width: 25)
                 MainProgressBar(value: $progressValue).frame(maxWidth: .infinity)
                     .frame(height: 10)
+                    .onAppear {
+                        let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                        let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                        let progress = 1 - (user.first!.distanceRemainInKm/(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm))
+                        progressValue = Float(progress)
+                    }
                     .onReceive(timer) { _ in
                         let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
                         let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
@@ -76,7 +82,7 @@ struct ProgressDetail: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 12) {
                         ForEach(1...spaceObjectsSorted.count-1, id: \.self) { index in
-                            ProgressBarDetail(spaceObject: spaceObjectsSorted[index])
+                            ProgressBarDetail(timer: timer.upstream, spaceObject: spaceObjectsSorted[index])
                                 .id(spaceObjectsSorted[index].name)
                         }
                     }
