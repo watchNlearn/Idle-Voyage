@@ -142,9 +142,11 @@ struct HomeView: View {
                         }
                         .padding(.bottom, 40)
                     }
-                    .sheet(isPresented: $showDistanceDetail, content: {
+                    .fullScreenCover(isPresented: $showDistanceDetail, content: {
                         DistanceDetail()
-                            .clearModalBackground()
+                            .clearModalBackground().onTapGesture {
+                                showDistanceDetail.toggle()
+                            }
                         // added to background in distance detail
 //                            .overlay(
 //                                StarsView(starInt: 17)
@@ -199,9 +201,11 @@ struct HomeView: View {
                         }
                         .padding(.bottom, 40)
                     }
-                    .sheet(isPresented: $showTimeDetail, content: {
+                    .fullScreenCover(isPresented: $showTimeDetail, content: {
                         TimeDetail()
-                            .clearModalBackground()
+                            .clearModalBackground().onTapGesture {
+                                showTimeDetail.toggle()
+                            }
                     })
                     .onTapGesture {
                         showTimeDetail.toggle()
@@ -230,9 +234,11 @@ struct HomeView: View {
                                 .padding(.bottom, 40)
                                 .padding(.trailing, 10)
                         }
-                        .sheet(isPresented: $showLeavingDetail, content: {
+                        .fullScreenCover(isPresented: $showLeavingDetail, content: {
                             LeavingDetail()
-                                .clearModalBackground()
+                                .clearModalBackground().onTapGesture {
+                                    showLeavingDetail.toggle()
+                                }
                         })
                         .onTapGesture {
                             showLeavingDetail.toggle()
@@ -263,9 +269,11 @@ struct HomeView: View {
                                 .padding(.bottom, 20)
                                 .padding(.trailing, 10)
                         }
-                        .sheet(isPresented: $showApproachingDetail, content: {
+                        .fullScreenCover(isPresented: $showApproachingDetail, content: {
                             ApproachingDetail()
-                                .clearModalBackground()
+                                .clearModalBackground().onTapGesture {
+                                    showApproachingDetail.toggle()
+                                }
                         })
                         .onTapGesture {
                             showApproachingDetail.toggle()
@@ -343,9 +351,11 @@ struct HomeView: View {
         .frame(maxWidth: 360)
         .frame(maxHeight: .infinity)
         .background(Color.clear)
-        .sheet(isPresented: $showProgressDetail, content: {
+        .fullScreenCover(isPresented: $showProgressDetail, content: {
             ProgressDetail()
-                .clearModalBackground()
+                .clearModalBackground().onTapGesture {
+                    showProgressDetail.toggle()
+                }
         })
         .onTapGesture {
             showProgressDetail.toggle()
