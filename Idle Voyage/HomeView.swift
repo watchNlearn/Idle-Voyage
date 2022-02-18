@@ -328,6 +328,13 @@ struct HomeView: View {
                     .frame(width: 50)
                 OnboardingWidgetPbar(value: $progressValue).frame(maxWidth: .infinity)
                     .frame(height: 20)
+                    .onAppear {
+                        let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                        let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
+                        
+                        let progress = 1 - (currentUser.distanceRemainInKm/(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm))
+                        progressValue = Float(progress)
+                    }
                     .onReceive(timer) { _ in
                         let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
                         let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
