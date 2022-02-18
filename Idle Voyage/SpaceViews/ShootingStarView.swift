@@ -26,10 +26,10 @@ struct ShootingStarView: View {
                 .frame(width: 18, height: 18)
 //                .opacity(0.7)
                 .position(x: 0, y: yPosition)
-                .offset(x: shouldAnimate ? offset+200 : -offset-200)
-                .offset(y: shouldAnimate ? -offset-200 : offset+200)
+                .offset(x: shouldAnimate ? offset+500 : -offset-500)
+                .offset(y: shouldAnimate ? -offset-500 : offset+500)
             
-                .animation(Animation.easeInOut(duration: duration).repeatForever(autoreverses: false).delay(delay),value: shouldAnimate ? offset+200 : -offset-200)
+                .animation(Animation.easeInOut(duration: duration).repeatCount(2).delay(Double.random(in: 30...120)),value: shouldAnimate ? offset+500 : -offset-500)
                 .onAppear {
                     self.shouldAnimate = true
                 }

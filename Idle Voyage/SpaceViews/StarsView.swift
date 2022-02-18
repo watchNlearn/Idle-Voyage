@@ -17,13 +17,13 @@ struct StarsView: View {
         GeometryReader { proxy in
             ForEach(0...starInt, id: \.self) { index in
                 
-                let rand = Int.random(in: 1...38)
-                if rand == 1 && starInt >= 70 {
-                    PlanetView(index: index, offset: getRandXY(size: proxy.size))
+                let rand = Int.random(in: 1...40)
+                if rand == 1 && starInt >= 80 {
+                    PlanetView(index: index, offset: getRandXY(size: proxy.size), size: getRandomSizePlanet())
 
                 }
                 else {
-                    StarView(index: index, offset: getRandXY(size: proxy.size), duration: getRandomDur(), delay: getRandomDelay())
+                    StarView(index: index, offset: getRandXY(size: proxy.size), duration: getRandomDur(), delay: getRandomDelay(), size: getRandomSize())
                 }
                 
                 
@@ -48,6 +48,13 @@ private func getRandomDur() -> Double {
 private func getRandomDelay() -> Double {
     return Double.random(in: 0...5)
 }
+private func getRandomSize() -> Double {
+    return Double.random(in: 1...2.8)
+}
+private func getRandomSizePlanet() -> Double {
+    return Double.random(in: 6...9)
+}
+
 
 //struct StarsView_Previews: PreviewProvider {
 //    static var previews: some View {

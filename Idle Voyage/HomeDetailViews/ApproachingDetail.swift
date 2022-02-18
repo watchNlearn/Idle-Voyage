@@ -64,7 +64,7 @@ struct ApproachingDetail: View {
                 
         }
         .background(
-            StarsView(starInt: 28)
+            StarsView(starInt: 35)
         )
         .foregroundColor(.white)
 //        .frame(maxWidth: .infinity)

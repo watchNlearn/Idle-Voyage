@@ -15,10 +15,11 @@ struct StarView: View {
     let offset: CGSize
     let duration: Double
     let delay: Double
+    let size: Double
     var body: some View {
         Circle()
             .fill(Color.white)
-            .frame(width: 2, height: 2)
+            .frame(width: size, height: size)
             
             //.position(x: 250, y: 170)
         

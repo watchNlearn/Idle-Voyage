@@ -117,7 +117,7 @@ struct DistanceDetail: View {
             }
             Group {
                 Text("Current Speed")
-                    .font(.title)
+                    .font(.headline)
                     .fontWeight(.bold)
 //                Text("Space is big... really big, so to speed things up we'll be traveling as the fastest object ever made!")
 //                    .opacity(0.8)
@@ -127,22 +127,18 @@ struct DistanceDetail: View {
 //                    .frame(height: 50)
 //                    .frame(maxWidth: .infinity)
                 //434959.835
-                Text("NASA Parker Solar Probe")
+                Text("NASA Parker Solar Probe   🛰️")
                     .font(.subheadline)
-                    .fontWeight(.medium)
+                //                    .fontWeight(.medium)
                 Text("700,000 km/h")
                     .font(.subheadline)
                     .opacity(0.8)
-                HStack {
-                    Text("430,000 mi/h")
-                        .font(.subheadline)
-                        .opacity(0.8)
-                    Text("🛰️")
-                        .font(.subheadline)
-                        .fontWeight(.light)
-                        .padding(.leading, 25)
-
-                }
+                Text("430,000 mi/h")
+                    .font(.subheadline)
+                    .opacity(0.8)
+                    .padding(.trailing, 10)
+                
+                
                 
                 Text("0.064% c")
                     .font(.subheadline)
@@ -151,9 +147,9 @@ struct DistanceDetail: View {
            
             
         }
-        .background(
-            StarsView(starInt: 17)
-        )
+//        .background(
+//            StarsView(starInt: 17)
+//        )
         .foregroundColor(.white)
         .padding()
         .background(Color.init(hex: "100b1f"))

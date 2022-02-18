@@ -14,7 +14,7 @@ struct PlanetView: View {
 
     let index: Int
     let offset: CGSize
-
+    let size: Double
     var body: some View {
         Image(uiImage: spaceObjectsSorted.randomElement()!.image)
             .resizable()
