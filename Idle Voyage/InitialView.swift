@@ -20,15 +20,15 @@ struct InitialView: View {
 //    @State var shouldAnimate = false
 
     //should grab from userdefaults eventually
-    @State var showingOnboarding = true
+    @State var finishedOnboarding = UserDefaults.standard.bool(forKey: "finishedOnboarding")
     // testing speed
 //    let speedPerSecKm = 2675000.6564657
     //PROD: USE THIS SPEED FOR SECONDS
     let speedPerSecKm = 194.444444443
     var body: some View {
         // If user hasn't done onboarding
-        if showingOnboarding {
-            OnboardingView(valueFromInitialView: $showingOnboarding)
+        if !finishedOnboarding {
+            OnboardingView(valueFromInitialView: $finishedOnboarding)
                 .transition(.backslide)
                 
         }

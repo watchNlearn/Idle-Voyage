@@ -46,6 +46,7 @@ struct VoyageCardView4: View {
                         newUser.lastSaveDate = Date().timeIntervalSince1970
 
                         try? moc.save()
+                        UserDefaults.standard.set(true, forKey: "finishedOnboarding")
                     } else {
                         print("This shouldnt be happening! User should be saved already")
                         //print(user.first?.startDate)
@@ -53,7 +54,7 @@ struct VoyageCardView4: View {
                     
                     
                     withAnimation {
-                        valueFromOnboardingView = false
+                        valueFromOnboardingView = true //finishedOnboarding
                     }
                 }) {
                     HStack{
