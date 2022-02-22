@@ -29,6 +29,7 @@ struct OnboardingWidgetView: View {
                             .frame(alignment: .leading)
                             .padding(.bottom, 5)
                             .padding(.trailing, 5)
+                            .opacity(0.7)
                         Text("Time")
                             .font(.headline)
                             .fontWeight(.bold)
@@ -40,6 +41,7 @@ struct OnboardingWidgetView: View {
                             .frame(alignment: .leading)
                             .padding(.bottom, 5)
                             .padding(.trailing, 5)
+                            .opacity(0.7)
                         Text("Approach")
                             .font(.headline)
                             .fontWeight(.bold)
@@ -51,6 +53,7 @@ struct OnboardingWidgetView: View {
                             .frame(alignment: .leading)
                             .padding(.bottom, 5)
                             .padding(.trailing, 5)
+                            .opacity(0.7)
                     }
                     VStack(alignment: .trailing) {
                         Image(uiImage: "🚀".image()!)
@@ -97,11 +100,11 @@ struct OnboardingWidgetView: View {
     }
 }
 
-struct OnboardingWidgetView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingWidgetView()
-    }
-}
+//struct OnboardingWidgetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnboardingWidgetView()
+//    }
+//}
 func getTimeString(interval: Int) -> String {
     let formatter = DateComponentsFormatter()
     formatter.allowedUnits = [.day, .hour, .minute]
