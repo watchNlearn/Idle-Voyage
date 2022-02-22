@@ -49,6 +49,8 @@
 		0B4FE61D27C468F300C94A10 /* IdleVoyageWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE61927C468F200C94A10 /* IdleVoyageWidget.intentdefinition */; };
 		0B4FE61E27C468F300C94A10 /* IdleVoyageWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE61927C468F200C94A10 /* IdleVoyageWidget.intentdefinition */; };
 		0B4FE62127C468F300C94A10 /* IdleVoyageWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0B4FE61027C468F200C94A10 /* IdleVoyageWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0B4FE62A27C4849500C94A10 /* SpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F70E27879FFA00EE0B33 /* SpaceData.swift */; };
+		0B4FE62B27C4849A00C94A10 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F6FD2784F50F00EE0B33 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -531,7 +533,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B4FE61827C468F200C94A10 /* IdleVoyageWidget.swift in Sources */,
+				0B4FE62A27C4849500C94A10 /* SpaceData.swift in Sources */,
 				0B4FE61D27C468F300C94A10 /* IdleVoyageWidget.intentdefinition in Sources */,
+				0B4FE62B27C4849A00C94A10 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

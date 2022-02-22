@@ -24,6 +24,23 @@ extension Int {
         return "\(n.description)M"
     }
 }
+extension Double {
+    func abbreviateNumber() -> String {
+        if self < 1000 {
+            return "\(self)"
+        }
+
+        if self < 1000000 {
+            var n = Double(self);
+            n = Double( floor(n/100)/100 )
+            return "\(n.description)K"
+        }
+
+        var n = Double(self)
+        n = Double( floor(n/100000)/100 )
+        return "\(n.description)M"
+    }
+}
 extension String
 {
     func image(fontSize:CGFloat = 60, bgColor:UIColor = UIColor.clear, imageSize:CGSize? = nil) -> UIImage?

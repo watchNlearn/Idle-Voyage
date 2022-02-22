@@ -422,7 +422,8 @@ struct HomeView: View {
             currentUser.progress = Float(progress)
             progressValue = Float(progress)
             try? moc.save()
-        
+            WidgetCenter.shared.reloadAllTimelines()
+
             }
         
     }

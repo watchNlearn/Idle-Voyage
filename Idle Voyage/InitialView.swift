@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct InitialView: View {
 //    @Environment(\.scenePhase) var scenePhase
@@ -64,7 +65,7 @@ struct InitialView: View {
                     let progress = 1 - (currentUser.distanceRemainInKm/(currentUser.distanceInKm - nextSpaceObj.distanceInKm))
                     currentUser.progress = Float(progress)
                     try? moc.save()
-                    
+                    WidgetCenter.shared.reloadAllTimelines()
                 }
                 .background(StarsView(starInt: 100))
 //                .overlay(
