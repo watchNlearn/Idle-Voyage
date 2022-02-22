@@ -27,7 +27,7 @@ struct Provider: IntentTimelineProvider {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        for minOffset in 0 ..< 5 {
+        for minOffset in 0 ..< 120 {
             let entryDate = Calendar.current.date(byAdding: .second, value: minOffset, to: currentDate)!
             let entry = SimpleEntry(startDate: dateValue as! Double, ship: shipString as! String, date: entryDate, configuration: configuration)
             entries.append(entry)
@@ -79,8 +79,8 @@ struct IdleVoyageWidgetEntryView : View {
                         Text("Distance")
                             .font(.headline)
                             .fixedSize()
-                        Text(elapsedDistance.abbreviateNumber() + " km")
-                            .font(.footnote)
+                        Text(elapsedDistance.formatUsingAbbrevation() + " km")
+                            .font(Font.footnote.monospacedDigit())
                             .opacity(0.7)
                             .fixedSize()
                         Text("Time")

@@ -25,21 +25,40 @@ extension Int {
     }
 }
 extension Double {
-    func abbreviateNumber() -> String {
-        if self < 1000 {
-            return "\(self)"
-        }
 
-        if self < 1000000 {
-            var n = Double(self);
-            n = Double( floor(n/100)/100 )
-            return "\(n.description)K"
-        }
+    func formatUsingAbbrevation () -> String {
+        let numFormatter = NumberFormatter()
 
-        var n = Double(self)
-        n = Double( floor(n/100000)/100 )
-        return "\(n.description)M"
+        typealias Abbrevation = (threshold:Double, divisor:Double, suffix:String)
+        let abbreviations:[Abbrevation] = [(0, 1, ""),
+                                           (1000.0, 1000.0, "K"),
+                                           (1_000_000.0, 1_000_000.0, "M"),
+                                           (1_000_000_000.0, 1_000_000_000.0, "B")]
+                                           // you can add more !
+
+        let startValue = Double (abs(self))
+        let abbreviation:Abbrevation = {
+            var prevAbbreviation = abbreviations[0]
+            for tmpAbbreviation in abbreviations {
+                if (startValue < tmpAbbreviation.threshold) {
+                    break
+                }
+                prevAbbreviation = tmpAbbreviation
+            }
+            return prevAbbreviation
+        } ()
+
+        let value = Double(self) / abbreviation.divisor
+        numFormatter.positiveSuffix = abbreviation.suffix
+        numFormatter.negativeSuffix = abbreviation.suffix
+        numFormatter.allowsFloats = true
+        numFormatter.minimumIntegerDigits = 1
+        numFormatter.minimumFractionDigits = 3
+        numFormatter.maximumFractionDigits = 3
+
+        return numFormatter.string(from: NSNumber (value:value))!
     }
+
 }
 extension String
 {
