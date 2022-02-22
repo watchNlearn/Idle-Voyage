@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct HomeView: View {
     
@@ -290,8 +291,14 @@ struct HomeView: View {
                         .frame(width: 100)
                         .onTapGesture {
                             let currentUser = user.first!
-                            currentUser.shipPref = getNextShip(current: user.first!.shipPref!)
+                            let newShip = getNextShip(current: user.first!.shipPref!)
+                            currentUser.shipPref = newShip
                             try? moc.save()
+                            // Widget update ud group
+                            // update timeline after
+                            let ud = UserDefaults(suiteName: "group.com.wal.IdleVoyage")
+                            ud?.setValue(newShip, forKey: "shipPref")
+                            WidgetCenter.shared.reloadAllTimelines()
                         }
                 }
                 

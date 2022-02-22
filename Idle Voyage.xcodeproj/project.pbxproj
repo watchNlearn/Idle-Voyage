@@ -42,6 +42,13 @@
 		0B4FE5B727AA74DA00C94A10 /* PlanetDetailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5B627AA74DA00C94A10 /* PlanetDetailCard.swift */; };
 		0B4FE5B927AB8A1300C94A10 /* ProgressBarDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5B827AB8A1300C94A10 /* ProgressBarDetail.swift */; };
 		0B4FE5BB27B365AB00C94A10 /* MainProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE5BA27B365AA00C94A10 /* MainProgressBar.swift */; };
+		0B4FE61327C468F200C94A10 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4FE61227C468F200C94A10 /* WidgetKit.framework */; };
+		0B4FE61527C468F200C94A10 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4FE61427C468F200C94A10 /* SwiftUI.framework */; };
+		0B4FE61827C468F200C94A10 /* IdleVoyageWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE61727C468F200C94A10 /* IdleVoyageWidget.swift */; };
+		0B4FE61B27C468F300C94A10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B4FE61A27C468F300C94A10 /* Assets.xcassets */; };
+		0B4FE61D27C468F300C94A10 /* IdleVoyageWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE61927C468F200C94A10 /* IdleVoyageWidget.intentdefinition */; };
+		0B4FE61E27C468F300C94A10 /* IdleVoyageWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FE61927C468F200C94A10 /* IdleVoyageWidget.intentdefinition */; };
+		0B4FE62127C468F300C94A10 /* IdleVoyageWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0B4FE61027C468F200C94A10 /* IdleVoyageWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +66,28 @@
 			remoteGlobalIDString = 0B44F6C12783C1B700EE0B33;
 			remoteInfo = "Idle Voyage";
 		};
+		0B4FE61F27C468F300C94A10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B44F6BA2783C1B700EE0B33 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B4FE60F27C468F200C94A10;
+			remoteInfo = IdleVoyageWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0B4FE62227C468F300C94A10 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0B4FE62127C468F300C94A10 /* IdleVoyageWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0B44F6C22783C1B700EE0B33 /* Idle Voyage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Idle Voyage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +128,15 @@
 		0B4FE5B627AA74DA00C94A10 /* PlanetDetailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailCard.swift; sourceTree = "<group>"; };
 		0B4FE5B827AB8A1300C94A10 /* ProgressBarDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarDetail.swift; sourceTree = "<group>"; };
 		0B4FE5BA27B365AA00C94A10 /* MainProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProgressBar.swift; sourceTree = "<group>"; };
+		0B4FE61027C468F200C94A10 /* IdleVoyageWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IdleVoyageWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B4FE61227C468F200C94A10 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		0B4FE61427C468F200C94A10 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0B4FE61727C468F200C94A10 /* IdleVoyageWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleVoyageWidget.swift; sourceTree = "<group>"; };
+		0B4FE61927C468F200C94A10 /* IdleVoyageWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = IdleVoyageWidget.intentdefinition; sourceTree = "<group>"; };
+		0B4FE61A27C468F300C94A10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B4FE61C27C468F300C94A10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B4FE62627C4697600C94A10 /* Idle Voyage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Idle Voyage.entitlements"; sourceTree = "<group>"; };
+		0B4FE62727C4698400C94A10 /* IdleVoyageWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IdleVoyageWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,15 +161,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0B4FE60D27C468F200C94A10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B4FE61527C468F200C94A10 /* SwiftUI.framework in Frameworks */,
+				0B4FE61327C468F200C94A10 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0B44F6B92783C1B700EE0B33 = {
 			isa = PBXGroup;
 			children = (
+				0B4FE62727C4698400C94A10 /* IdleVoyageWidgetExtension.entitlements */,
 				0B44F6C42783C1B700EE0B33 /* Idle Voyage */,
 				0B44F6D52783C1B900EE0B33 /* Idle VoyageTests */,
 				0B44F6DF2783C1B900EE0B33 /* Idle VoyageUITests */,
+				0B4FE61627C468F200C94A10 /* IdleVoyageWidget */,
+				0B4FE61127C468F200C94A10 /* Frameworks */,
 				0B44F6C32783C1B700EE0B33 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,6 +192,7 @@
 				0B44F6C22783C1B700EE0B33 /* Idle Voyage.app */,
 				0B44F6D22783C1B900EE0B33 /* Idle VoyageTests.xctest */,
 				0B44F6DC2783C1B900EE0B33 /* Idle VoyageUITests.xctest */,
+				0B4FE61027C468F200C94A10 /* IdleVoyageWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,6 +200,7 @@
 		0B44F6C42783C1B700EE0B33 /* Idle Voyage */ = {
 			isa = PBXGroup;
 			children = (
+				0B4FE62627C4697600C94A10 /* Idle Voyage.entitlements */,
 				0B4FE5A927A8DF2B00C94A10 /* SpaceViews */,
 				0B4FE59C279BDD9600C94A10 /* HomeDetailViews */,
 				0B44F6C52783C1B700EE0B33 /* Idle_VoyageApp.swift */,
@@ -243,6 +294,26 @@
 			path = SpaceViews;
 			sourceTree = "<group>";
 		};
+		0B4FE61127C468F200C94A10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B4FE61227C468F200C94A10 /* WidgetKit.framework */,
+				0B4FE61427C468F200C94A10 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0B4FE61627C468F200C94A10 /* IdleVoyageWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0B4FE61727C468F200C94A10 /* IdleVoyageWidget.swift */,
+				0B4FE61927C468F200C94A10 /* IdleVoyageWidget.intentdefinition */,
+				0B4FE61A27C468F300C94A10 /* Assets.xcassets */,
+				0B4FE61C27C468F300C94A10 /* Info.plist */,
+			);
+			path = IdleVoyageWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,10 +324,12 @@
 				0B44F6BE2783C1B700EE0B33 /* Sources */,
 				0B44F6BF2783C1B700EE0B33 /* Frameworks */,
 				0B44F6C02783C1B700EE0B33 /* Resources */,
+				0B4FE62227C468F300C94A10 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0B4FE62027C468F300C94A10 /* PBXTargetDependency */,
 			);
 			name = "Idle Voyage";
 			productName = "Idle Voyage";
@@ -299,6 +372,23 @@
 			productReference = 0B44F6DC2783C1B900EE0B33 /* Idle VoyageUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		0B4FE60F27C468F200C94A10 /* IdleVoyageWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B4FE62527C468F300C94A10 /* Build configuration list for PBXNativeTarget "IdleVoyageWidgetExtension" */;
+			buildPhases = (
+				0B4FE60C27C468F200C94A10 /* Sources */,
+				0B4FE60D27C468F200C94A10 /* Frameworks */,
+				0B4FE60E27C468F200C94A10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IdleVoyageWidgetExtension;
+			productName = IdleVoyageWidgetExtension;
+			productReference = 0B4FE61027C468F200C94A10 /* IdleVoyageWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -320,6 +410,9 @@
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = 0B44F6C12783C1B700EE0B33;
 					};
+					0B4FE60F27C468F200C94A10 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 0B44F6BD2783C1B700EE0B33 /* Build configuration list for PBXProject "Idle Voyage" */;
@@ -338,6 +431,7 @@
 				0B44F6C12783C1B700EE0B33 /* Idle Voyage */,
 				0B44F6D12783C1B900EE0B33 /* Idle VoyageTests */,
 				0B44F6DB2783C1B900EE0B33 /* Idle VoyageUITests */,
+				0B4FE60F27C468F200C94A10 /* IdleVoyageWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -366,6 +460,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0B4FE60E27C468F200C94A10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B4FE61B27C468F300C94A10 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -383,6 +485,7 @@
 				0B4FE5AF27A9154600C94A10 /* StarView.swift in Sources */,
 				0B44F70F27879FFA00EE0B33 /* SpaceData.swift in Sources */,
 				0B4FE5A227A1132A00C94A10 /* TimeDetail.swift in Sources */,
+				0B4FE61E27C468F300C94A10 /* IdleVoyageWidget.intentdefinition in Sources */,
 				0B4FE5B527AA713A00C94A10 /* ProgressDetail.swift in Sources */,
 				0B44F6FE2784F50F00EE0B33 /* Extensions.swift in Sources */,
 				0B4FE5A0279E96D200C94A10 /* ClearBackgroundView.swift in Sources */,
@@ -423,6 +526,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0B4FE60C27C468F200C94A10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B4FE61827C468F200C94A10 /* IdleVoyageWidget.swift in Sources */,
+				0B4FE61D27C468F300C94A10 /* IdleVoyageWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -435,6 +547,11 @@
 			isa = PBXTargetDependency;
 			target = 0B44F6C12783C1B700EE0B33 /* Idle Voyage */;
 			targetProxy = 0B44F6DD2783C1B900EE0B33 /* PBXContainerItemProxy */;
+		};
+		0B4FE62027C468F300C94A10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0B4FE60F27C468F200C94A10 /* IdleVoyageWidgetExtension */;
+			targetProxy = 0B4FE61F27C468F300C94A10 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -558,8 +675,10 @@
 		0B44F6E72783C1B900EE0B33 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Idle Voyage/Idle Voyage.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Idle Voyage/Preview Content\"";
@@ -589,8 +708,10 @@
 		0B44F6E82783C1B900EE0B33 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Idle Voyage/Idle Voyage.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Idle Voyage/Preview Content\"";
@@ -693,6 +814,64 @@
 			};
 			name = Release;
 		};
+		0B4FE62327C468F300C94A10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = IdleVoyageWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 96UYU697JG;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IdleVoyageWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IdleVoyageWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wal.Idle-Voyage.IdleVoyageWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0B4FE62427C468F300C94A10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = IdleVoyageWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 96UYU697JG;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = IdleVoyageWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IdleVoyageWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wal.Idle-Voyage.IdleVoyageWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -728,6 +907,15 @@
 			buildConfigurations = (
 				0B44F6ED2783C1B900EE0B33 /* Debug */,
 				0B44F6EE2783C1B900EE0B33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B4FE62527C468F300C94A10 /* Build configuration list for PBXNativeTarget "IdleVoyageWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B4FE62327C468F300C94A10 /* Debug */,
+				0B4FE62427C468F300C94A10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

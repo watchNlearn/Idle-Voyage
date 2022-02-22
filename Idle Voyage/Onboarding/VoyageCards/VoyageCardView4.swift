@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct VoyageCardView4: View {
     // Get out environment and users
@@ -28,6 +29,7 @@ struct VoyageCardView4: View {
                 Button(action: {
                     //  TODO: save to UserDefaults
                     // Button press update value
+                    let startDate = Date().timeIntervalSince1970
                     if user.isEmpty {
                         let newUser = User(context: moc)
                         newUser.uid = UUID()
@@ -42,11 +44,19 @@ struct VoyageCardView4: View {
                         newUser.distanceRemainInKm = 384400
                         newUser.elapsedTime = 0
                         newUser.speedInKm = 700000
-                        newUser.startDate = Date().timeIntervalSince1970
-                        newUser.lastSaveDate = Date().timeIntervalSince1970
+                        newUser.startDate = startDate
+                        newUser.lastSaveDate = startDate
 
                         try? moc.save()
                         UserDefaults.standard.set(true, forKey: "finishedOnboarding")
+                        // Widget app group userDefaults saves
+                        let ud = UserDefaults(suiteName: "group.com.wal.IdleVoyage")
+                        ud?.setValue(startDate, forKey: "startDate")
+                        ud?.setValue("🚀", forKey: "shipPref")
+                        // Update timeline
+                        WidgetCenter.shared.reloadAllTimelines()
+                        
+                        
                     } else {
                         print("This shouldnt be happening! User should be saved already")
                         //print(user.first?.startDate)
