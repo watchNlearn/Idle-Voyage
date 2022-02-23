@@ -175,8 +175,8 @@ struct HomeView: View {
                                     .font(Font.subheadline.monospacedDigit())
                                     .fontWeight(.semibold)
                                     .frame(alignment: .leading)
-                                    .padding(.leading, 4)
-                                    .padding(.trailing, 4)
+                                    .padding(.leading, 8)
+                                    .padding(.trailing, 8)
                                     .background(Color.blue)
                                     .cornerRadius(6)
                                     .onReceive(timer) { _ in

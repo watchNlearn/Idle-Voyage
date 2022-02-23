@@ -29,7 +29,7 @@ struct ShootingStarView: View {
                 .offset(x: shouldAnimate ? offset+500 : -offset-500)
                 .offset(y: shouldAnimate ? -offset-500 : offset+500)
             
-                .animation(Animation.easeInOut(duration: duration).repeatCount(2).delay(Double.random(in: 30...120)),value: shouldAnimate ? offset+500 : -offset-500)
+                .animation(Animation.easeInOut(duration: duration).repeatCount(2).repeatForever(autoreverses: false).delay(Double.random(in: 30...120)),value: shouldAnimate ? offset+500 : -offset-500)
                 .onAppear {
                     self.shouldAnimate = true
                 }
