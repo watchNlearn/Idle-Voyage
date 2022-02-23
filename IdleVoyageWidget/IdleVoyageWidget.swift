@@ -11,11 +11,11 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(startDate: 103934, ship: "🚀", date: Date(), configuration: ConfigurationIntent())
+        SimpleEntry(startDate: 103934, ship: "🚀", date: Date(), background: LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading), configuration: ConfigurationIntent())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(startDate: 103934, ship: "🚀", date: Date(), configuration: configuration)
+        let entry = SimpleEntry(startDate: 103934, ship: "🚀", date: Date(), background: LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading), configuration: configuration)
         completion(entry)
     }
 
@@ -24,12 +24,35 @@ struct Provider: IntentTimelineProvider {
         let ud = UserDefaults(suiteName: "group.com.wal.IdleVoyage")
         let dateValue = ud?.value(forKey: "startDate")
         let shipString = ud?.value(forKey: "shipPref")
-
+        
+        // this is such a bad way of doing this but whatever
+        
+        var background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading)
+        
+        
+        if configuration.backgrounds == .one {
+            background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading)
+        }
+        else  if configuration.backgrounds == .two {
+            background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topTrailing, endPoint: .bottomLeading)
+        }
+        else  if configuration.backgrounds == .three {
+            background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "f8bc04"), Color.init(hex: "101b39"),Color.init(hex: "101b39")]), startPoint: .bottomTrailing, endPoint: .topLeading)
+        }
+        else  if configuration.backgrounds == .four {
+            background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "333136"), Color.init(hex: "6f6d72"), Color.init(hex: "001736")]), startPoint: .topTrailing, endPoint: .leading)
+        }
+        else  if configuration.backgrounds == .five {
+            background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "1b1145"),Color.init(hex: "021f4b"), Color.init(hex: "8749bc"), Color.init(hex: "021f4b"),Color.init(hex: "1b1145")]), startPoint: .topLeading, endPoint: .bottom)
+        }
+        else  if configuration.backgrounds == .six {
+            background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"),Color.init(hex: "100b1f"),Color.init(hex: "000000")]), startPoint: .trailing, endPoint: .topLeading)
+        }
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for minOffset in 0 ..< 60 {
             let entryDate = Calendar.current.date(byAdding: .second, value: minOffset, to: currentDate)!
-            let entry = SimpleEntry(startDate: dateValue as! Double, ship: shipString as! String, date: entryDate, configuration: configuration)
+            let entry = SimpleEntry(startDate: dateValue as! Double, ship: shipString as! String, date: entryDate, background: background, configuration: configuration)
             entries.append(entry)
         }
 
@@ -42,6 +65,7 @@ struct SimpleEntry: TimelineEntry {
     let startDate: Double
     let ship: String
     let date: Date
+    let background: LinearGradient
     let configuration: ConfigurationIntent
 }
 
@@ -124,7 +148,7 @@ struct IdleVoyageWidgetEntryView : View {
         }
         .foregroundColor(.white)
         .padding()
-        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading))
+        .background(entry.background)
     }
 }
 

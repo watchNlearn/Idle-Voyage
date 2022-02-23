@@ -139,6 +139,7 @@
 		0B4FE61C27C468F300C94A10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B4FE62627C4697600C94A10 /* Idle Voyage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Idle Voyage.entitlements"; sourceTree = "<group>"; };
 		0B4FE62727C4698400C94A10 /* IdleVoyageWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IdleVoyageWidgetExtension.entitlements; sourceTree = "<group>"; };
+		0B5FBD5027C5DFD500F02DCA /* Idle-Voyage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Idle-Voyage-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +203,7 @@
 		0B44F6C42783C1B700EE0B33 /* Idle Voyage */ = {
 			isa = PBXGroup;
 			children = (
+				0B5FBD5027C5DFD500F02DCA /* Idle-Voyage-Info.plist */,
 				0B4FE62627C4697600C94A10 /* Idle Voyage.entitlements */,
 				0B4FE5A927A8DF2B00C94A10 /* SpaceViews */,
 				0B4FE59C279BDD9600C94A10 /* HomeDetailViews */,
@@ -689,6 +691,7 @@
 				DEVELOPMENT_TEAM = 96UYU697JG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Idle-Voyage-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -722,6 +725,7 @@
 				DEVELOPMENT_TEAM = 96UYU697JG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Idle-Voyage-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
