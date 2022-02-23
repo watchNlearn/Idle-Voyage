@@ -30,22 +30,22 @@ struct Provider: IntentTimelineProvider {
         var background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading)
         
         
-        if configuration.backgrounds == .one {
+        if configuration.background == .one {
             background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading)
         }
-        else  if configuration.backgrounds == .two {
+        else  if configuration.background == .two {
             background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topTrailing, endPoint: .bottomLeading)
         }
-        else  if configuration.backgrounds == .three {
+        else  if configuration.background == .three {
             background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "f8bc04"), Color.init(hex: "101b39"),Color.init(hex: "101b39")]), startPoint: .bottomTrailing, endPoint: .topLeading)
         }
-        else  if configuration.backgrounds == .four {
+        else  if configuration.background == .four {
             background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "333136"), Color.init(hex: "6f6d72"), Color.init(hex: "001736")]), startPoint: .topTrailing, endPoint: .leading)
         }
-        else  if configuration.backgrounds == .five {
+        else  if configuration.background == .five {
             background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "1b1145"),Color.init(hex: "021f4b"), Color.init(hex: "8749bc"), Color.init(hex: "021f4b"),Color.init(hex: "1b1145")]), startPoint: .topLeading, endPoint: .bottom)
         }
-        else  if configuration.backgrounds == .six {
+        else  if configuration.background == .six {
             background = LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"),Color.init(hex: "100b1f"),Color.init(hex: "000000")]), startPoint: .trailing, endPoint: .topLeading)
         }
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
@@ -160,8 +160,8 @@ struct IdleVoyageWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             IdleVoyageWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Idle Voyage Widget")
+        .description("Choose a background for your voyage!")
     }
 }
 

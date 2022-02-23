@@ -6,13 +6,13 @@
 	<array>
 		<dict>
 			<key>INEnumDisplayName</key>
-			<string>Backgrounds</string>
+			<string>Background</string>
 			<key>INEnumDisplayNameID</key>
 			<string>rfB3Wl</string>
 			<key>INEnumGeneratesHeader</key>
 			<true/>
 			<key>INEnumName</key>
-			<string>Backgrounds</string>
+			<string>Background</string>
 			<key>INEnumType</key>
 			<string>Regular</string>
 			<key>INEnumValues</key>
@@ -119,17 +119,17 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Backgrounds</string>
+					<string>Background</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>ZQVnHo</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterEnumType</key>
-					<string>Backgrounds</string>
+					<string>Background</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
 					<string>88xZPY</string>
 					<key>INIntentParameterName</key>
-					<string>backgrounds</string>
+					<string>background</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -148,7 +148,7 @@
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
 							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${backgrounds}’.</string>
+							<string>There are ${count} options matching ‘${background}’.</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
 							<string>Ov7Sfb</string>
 							<key>INIntentParameterPromptDialogType</key>
@@ -158,7 +158,7 @@
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
 							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${backgrounds}’?</string>
+							<string>Just to confirm, you wanted ‘${background}’?</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
 							<string>ZVw260</string>
 							<key>INIntentParameterPromptDialogType</key>
