@@ -177,7 +177,7 @@ struct HomeView: View {
                                     .frame(alignment: .leading)
                                     .padding(.leading, 8)
                                     .padding(.trailing, 8)
-                                    .background(Color.blue)
+                                    .background(Color.purple)
                                     .cornerRadius(6)
                                     .onReceive(timer) { _ in
                                         currentUser.elapsedTime += 1
@@ -197,7 +197,7 @@ struct HomeView: View {
                                 .padding(.leading, 4)
                                 .padding(.trailing, 4)
                                 .frame(alignment: .leading)
-                                .background(Color.blue)
+                                .background(Color.purple)
                                 .cornerRadius(6)
                         }
                         .padding(.bottom, 40)
@@ -225,7 +225,7 @@ struct HomeView: View {
                                 .fontWeight(.semibold)
                                 .padding(.leading, 4)
                                 .padding(.trailing, 4)
-                                .background(Color.red)
+                                .background(getBorderColor(so: getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)))
                                 .frame(alignment: .center)
                                 .cornerRadius(6)
                             Text(getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).desc)
@@ -261,7 +261,7 @@ struct HomeView: View {
                                 .frame(alignment: .leading)
                                 .padding(.leading, 4)
                                 .padding(.trailing, 4)
-                                .background(Color.green)
+                                .background(getBorderColor(so: getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)))
                                 .cornerRadius(6)
                             Text(getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).desc)
                                 .font(.subheadline)

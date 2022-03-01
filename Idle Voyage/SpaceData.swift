@@ -24,6 +24,7 @@ enum SpaceTypes {
     case moon
     case star
     case asteroid
+    case galaxy
     case other
 }
 
@@ -84,7 +85,7 @@ var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".im
                     SpaceObject(name: "Uranus", distanceInKm: 2723950000, image: UIImage(named: "Uranus")!, desc: "haha get it?", description: "The seventh planet from the sun and third-largest diameter in our solar system, Uranus is an oddball. It has clouds made of hydrogen sulfide, the same chemical that makes rotten eggs smell so foul. It rotates from east to west like Venus. But unlike Venus or any other planet, its equator is nearly at right angles to its orbit — it basically orbits on its side.",type: .planet),
                     
                     // Neptune Moons
-                    SpaceObject(name: "Sao", distanceInKm: 4328980000, image: "🪨".image()!, desc: "Fun Sized", description: "Sao is one of three tiny moons (ranging in size from 18 to 24 miles—or 30 to 40 km) of Neptune discovered in 2002 using innovative ground-based telescope techniques. (The other moons discovered were Laomedeia and Halimede.) The moons are so distant and so small they are about 100 million times fainter than can be seen with the unaided eye. The moons were missed by the Voyager 2 spacecraft in 1989 because they are so faint and distant from Neptune.", type: .moon),
+                    SpaceObject(name: "Sao", distanceInKm: 4328980000, image: "🌑".image()!, desc: "Fun Sized", description: "Sao is one of three tiny moons (ranging in size from 18 to 24 miles—or 30 to 40 km) of Neptune discovered in 2002 using innovative ground-based telescope techniques. The moons are so distant and so small they are about 100 million times fainter than can be seen with the unaided eye. The moons were missed by the Voyager 2 spacecraft in 1989 because they are so faint and distant from Neptune.", type: .moon),
                     
                     SpaceObject(name: "Triton", distanceInKm: 4338780000, image: "🌑".image()!, desc: "Retro!", description: "Triton is the largest natural satellite of the planet Neptune, and was the first Neptunian moon to be discovered, on October 10, 1846, by English astronomer William Lassell. It is the only large moon in the Solar System with a retrograde orbit, an orbit in the direction opposite to its planet's rotation.", type: .moon),
                     
@@ -94,7 +95,7 @@ var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".im
                     SpaceObject(name: "Neptune", distanceInKm: 4351400000, image: UIImage(named: "Neptune")!, desc: "ooo pretty", description: "The eighth planet from the sun, Neptune is about the size of Uranus and is known for supersonic strong winds. Neptune is far out and cold being more than 30 times as far from the sun as Earth. Neptune was the first planet predicted to exist by using math, before it was visually detected and is the only planet in our solar system not visible to the naked eye.",type: .planet),
                     
                     // Pluto Moons
-                    SpaceObject(name: "Pluto", distanceInKm: 5890000000, image: UIImage(named: "Pluto")!, desc: "not sure either", description: "Once the ninth planet from the sun, Pluto is unlike other planets in many respects. It is smaller than Earth's moon; its orbit is highly elliptical, falling inside Neptune's orbit at some points and far beyond it at others; and Pluto's orbit doesn't fall on the same plane as all the other planets —  instead, it orbits 17.1 degrees above or below. Now a dwarf planet, Pluto resides in the Kuiper Belt.", type: .planet),
+                    SpaceObject(name: "Pluto", distanceInKm: 5890000000, image: UIImage(named: "Pluto")!, desc: "not sure either", description: "Once the ninth planet from the sun, Pluto is unlike other planets in many respects. It is smaller than Earth's moon; its orbit is highly elliptical, falling inside Neptune's orbit at some points and far beyond it at others; and Pluto's orbit doesn't fall on the same plane as all the other planets —  instead, it orbits 17.1 degrees above or below. Now a dwarf planet, Pluto resides in the Kuiper Belt.", type: .other),
                     
                     
                     SpaceObject(name: "Luna", distanceInKm: 384400, image: "🌑".image()!, desc: "No cheese here...", description: "Earth's Moon is the only place beyond Earth where humans have set foot. The brightest and largest object in our night sky, the Moon makes Earth a more livable planet by moderating our home planet's wobble on its axis, leading to a relatively stable climate. It also causes tides, creating a rhythm that has guided humans for thousands of years.", type: .moon),
@@ -111,7 +112,7 @@ var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".im
                     
                     
                     SpaceObject(name: "Kuiper Belt", distanceInKm: 4338000000, image: "🪨".image()!, desc: "No turning back!", description: "Beyond the gas giant Neptune lies a region of space filled with icy bodies. Known as the Kuiper Belt, this chilly expanse holds trillions of objects — remnants of the solar system's early history. Like the asteroid belt, it has also been shaped by a giant planet, although it's more of a thick disk (like a donut) than a thin belt.", type: .other),
-                    SpaceObject(name: "Andromeda Galaxy", distanceInKm: 23651826181452, image: "🌀".image()!, desc: "epilogue", description: "The Andromeda Galaxy, also known as Messier 31, M31, or NGC 224 and originally the Andromeda Nebula, is a barred spiral galaxy approximately 2.5 million light-years (770 kiloparsecs) from Earth and the nearest large galaxy to the Milky Way. The galaxy's name stems from the area of Earth's sky in which it appears, the constellation of Andromeda, which itself is named after the Ethiopian (or Phoenician) princess who was the wife of Perseus in Greek mythology.", type: .other)]
+                    SpaceObject(name: "Andromeda Galaxy", distanceInKm: 23651826181452, image: "🌀".image()!, desc: "epilogue", description: "The Andromeda Galaxy, also known as Messier 31, M31, or NGC 224 and originally the Andromeda Nebula, is a barred spiral galaxy approximately 2.5 million light-years (770 kiloparsecs) from Earth and the nearest large galaxy to the Milky Way. The galaxy's name stems from the area of Earth's sky in which it appears, the constellation of Andromeda, which itself is named after the Ethiopian (or Phoenician) princess who was the wife of Perseus in Greek mythology.", type: .galaxy)]
 //23651826181452 <- might be too big for type double!
 //4338338250
 
@@ -155,4 +156,22 @@ func getLastSpaceObject(spaceObjects: [SpaceObject], distance: Double) -> SpaceO
 //    print("RETURNING Last: \(lastSpaceObj.name)")
 
     return lastSpaceObj
+}
+
+func getBorderColor(so: SpaceObject) -> Color {
+    switch so.type {
+    case .moon:
+        return Color.blue
+    case .asteroid:
+        return Color.gray
+    case .planet:
+        return Color.green
+    case .other:
+        return Color.white
+    case .star:
+        return Color.orange
+    case .galaxy:
+        return Color.purple
+    }
+    
 }

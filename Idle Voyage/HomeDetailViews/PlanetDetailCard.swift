@@ -63,7 +63,12 @@ struct PlanetDetailCard: View {
                         .hueRotation(.degrees(animateGradient ? 287 : 370))
                         .ignoresSafeArea()
             )
+        .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(getBorderColor(so: spaceObject), lineWidth: 4)
+            )
         .cornerRadius(30)
+        
         
     }
     
