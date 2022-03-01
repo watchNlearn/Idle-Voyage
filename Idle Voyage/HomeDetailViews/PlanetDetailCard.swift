@@ -53,7 +53,7 @@ struct PlanetDetailCard: View {
                 
         }
         .background(
-            StarsView(starInt: 9)
+            StarsView(starInt: 10)
         )
         .foregroundColor(.white)
 //        .frame(maxWidth: .infinity)
