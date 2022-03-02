@@ -23,8 +23,8 @@ struct PlanetDetailCard: View {
             Image(uiImage: spaceObject.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 100)
-                .frame(width: 100)
+                .frame(height: 80)
+                .frame(width: 80)
                 .padding(.leading, 30)
                 .padding(.trailing, 30)
             
