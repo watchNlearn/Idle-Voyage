@@ -51,6 +51,7 @@
 		0B4FE62127C468F300C94A10 /* IdleVoyageWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0B4FE61027C468F200C94A10 /* IdleVoyageWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0B4FE62A27C4849500C94A10 /* SpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F70E27879FFA00EE0B33 /* SpaceData.swift */; };
 		0B4FE62B27C4849A00C94A10 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F6FD2784F50F00EE0B33 /* Extensions.swift */; };
+		0BC9B09E27D00DC8006AB69A /* VoyageCardViewNotif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC9B09D27D00DC7006AB69A /* VoyageCardViewNotif.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		0B4FE62627C4697600C94A10 /* Idle Voyage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Idle Voyage.entitlements"; sourceTree = "<group>"; };
 		0B4FE62727C4698400C94A10 /* IdleVoyageWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IdleVoyageWidgetExtension.entitlements; sourceTree = "<group>"; };
 		0B5FBD5027C5DFD500F02DCA /* Idle-Voyage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Idle-Voyage-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0BC9B09D27D00DC7006AB69A /* VoyageCardViewNotif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoyageCardViewNotif.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +257,7 @@
 				0B44F6F12783E4DE00EE0B33 /* VoyageCardView.swift */,
 				0B44F6F327843E8700EE0B33 /* VoyageCardView2.swift */,
 				0B44F6F527844C5500EE0B33 /* VoyageCardView3.swift */,
+				0BC9B09D27D00DC7006AB69A /* VoyageCardViewNotif.swift */,
 				0B44F7052785365500EE0B33 /* VoyageCardView4.swift */,
 			);
 			path = VoyageCards;
@@ -499,6 +502,7 @@
 				0B44F70D2787955200EE0B33 /* DataController.swift in Sources */,
 				0B4FE5A427A120FB00C94A10 /* LeavingDetail.swift in Sources */,
 				0B4FE5AD27A8DFE100C94A10 /* StarsView.swift in Sources */,
+				0BC9B09E27D00DC8006AB69A /* VoyageCardViewNotif.swift in Sources */,
 				0B4FE5BB27B365AB00C94A10 /* MainProgressBar.swift in Sources */,
 				0B44F6F627844C5500EE0B33 /* VoyageCardView3.swift in Sources */,
 				0B44F6C62783C1B700EE0B33 /* Idle_VoyageApp.swift in Sources */,

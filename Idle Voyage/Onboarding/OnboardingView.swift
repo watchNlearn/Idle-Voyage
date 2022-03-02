@@ -24,6 +24,8 @@ struct OnboardingView: View {
                     Spacer()
                     VoyageCardView3()
                     Spacer()
+                    VoyageCardViewNotif()
+                    Spacer()
                     VoyageCardView4(valueFromOnboardingView: $valueFromInitialView)
                     
                 }
