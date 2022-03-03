@@ -21,33 +21,37 @@ struct VoyageCardViewNotif: View {
                         Image(uiImage: "🪐".image()!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(height: 12)
-                            .frame(width: 12)
+                            .frame(height: 20)
+                            .frame(width: 20)
                             .padding(.leading, 2)
-                        Text("Idle Voyage")
-                            .opacity(0.7)
-                            .frame(height: 6)
-                            .padding(.trailing, 2)
-                        
-
-                        
-                        Text("now")
-                            .opacity(0.7)
-                            .frame(height: 6)
-                            .padding(.leading, 50)
-                            .padding(.trailing, 2)
-                        
+                            .padding(.bottom, 20)
+                        VStack {
+                            HStack {
+                                Text("Idle Voyage")
+                                    .opacity(0.7)
+                                    .frame(height: 6)
+                                    .padding(.trailing, 38)
+                                Text("now")
+                                    .opacity(0.7)
+                                    .frame(height: 6)
+                                    .padding(.trailing, 2)
+                            }
+                            .padding(.bottom, 4)
+                            
+                            Text("About to pass Mars!")
+                                .opacity(0.7)
+                                .frame(height: 10)
+                                .frame(maxWidth: .infinity)
+                                .padding(.leading, 2)
+                                .padding(.trailing, 20)
+                        }
+                        .padding(.bottom, 20)
+                     
 
                     }
                     .padding(.top, 20)
-                    Spacer()
-                    Text("About to pass Mars!")
-                        .opacity(0.7)
-                        .frame(height: 10)
-                        .frame(maxWidth: .infinity)
-                        .padding(.leading, 2)
-                        .padding(.trailing, 20)
-                        .padding(.bottom, 20)
+                    
+                    
 
                     
                 }
@@ -55,6 +59,7 @@ struct VoyageCardViewNotif: View {
                 .padding(.trailing, 15)
                 .frame(maxWidth: .infinity)
                 .frame(height: 70)
+                .opacity(0.85)
                 .background(Color.white)
                 .foregroundColor(Color.black)
                 .cornerRadius(14)
