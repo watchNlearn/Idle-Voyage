@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WidgetKit
+import UserNotifications
 
 struct VoyageCardView4: View {
     // Get out environment and users
@@ -55,7 +56,8 @@ struct VoyageCardView4: View {
                         ud?.setValue("🚀", forKey: "shipPref")
                         // Update timeline
                         WidgetCenter.shared.reloadAllTimelines()
-                        
+                        // Setup our notifications
+                        scheduleSpaceDataNotifications()
                         
                     } else {
                         print("This shouldnt be happening! User should be saved already")
@@ -116,3 +118,26 @@ private func getCurrentDateFormat() -> String {
 //        VoyageCardView4()
 //    }
 //}
+private func scheduleSpaceDataNotifications() {
+    for i in spaceObjectsSorted {
+        if i.name != "Earth" {
+            let content = UNMutableNotificationContent()
+            content.title = "Idle Voyage"
+            content.subtitle = i.desc
+            content.body = "You're about to pass \(i.name)"
+            content.sound = UNNotificationSound.default
+            
+            let objDistance = i.distanceInKm
+            let speedPerSecKm = 194.444444443
+            let secondsInFuture = (objDistance/speedPerSecKm) - 120
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: secondsInFuture, repeats: false)
+
+            // choose a random identifier
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+            // add our notification request
+            UNUserNotificationCenter.current().add(request)
+            print("added notification for \(i.name)")
+        }
+    }
+}

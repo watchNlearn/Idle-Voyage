@@ -50,8 +50,9 @@ struct Provider: IntentTimelineProvider {
         }
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
+        // WidgetKit is stupid .second works better than .minute cus second -> min and min -> hour....
         for minOffset in 0 ..< 60 {
-            let entryDate = Calendar.current.date(byAdding: .minute, value: minOffset, to: currentDate)!
+            let entryDate = Calendar.current.date(byAdding: .second, value: minOffset, to: currentDate)!
             let entry = SimpleEntry(startDate: dateValue as! Double, ship: shipString as! String, date: entryDate, background: background, configuration: configuration)
             entries.append(entry)
         }
