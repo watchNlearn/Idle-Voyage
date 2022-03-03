@@ -31,7 +31,7 @@ struct VoyageCardViewNotif: View {
                                     .opacity(0.7)
                                     .frame(height: 6)
                                     .padding(.trailing, 38)
-                                Text("now")
+                                Text(" now")
                                     .opacity(0.7)
                                     .frame(height: 6)
                                     .padding(.trailing, 2)
