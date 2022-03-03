@@ -357,6 +357,16 @@ struct HomeView: View {
                     .frame(height: 50)
                     .frame(width: 50)
             }
+            .padding(.bottom, 35)
+            .fullScreenCover(isPresented: $showProgressDetail, content: {
+                ProgressDetail()
+                    .clearModalBackground().onTapGesture {
+                        showProgressDetail.toggle()
+                    }
+            })
+            .onTapGesture {
+                showProgressDetail.toggle()
+            }
             
             
         }
@@ -365,15 +375,7 @@ struct HomeView: View {
         .frame(maxWidth: 360)
         .frame(maxHeight: .infinity)
         .background(Color.clear)
-        .fullScreenCover(isPresented: $showProgressDetail, content: {
-            ProgressDetail()
-                .clearModalBackground().onTapGesture {
-                    showProgressDetail.toggle()
-                }
-        })
-        .onTapGesture {
-            showProgressDetail.toggle()
-        }
+        
 //        .background(LinearGradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")], startPoint: .topLeading, endPoint: .bottomTrailing)
 //                        .hueRotation(.degrees(animateGradient ? 120 : 0))
 //                        .ignoresSafeArea()
