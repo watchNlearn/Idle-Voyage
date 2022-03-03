@@ -83,14 +83,14 @@ struct VoyageCardView4: View {
                 .background(Color.green)
                 .cornerRadius(10)
             }
-            Text("We are clear for launch! Tap the rocket ship to start your voyage.")
+            Text("Fasten your seatbelts! Tap the rocket ship to start your voyage.")
                 .opacity(0.7)
                 
 
             
         }
         .background(
-            StarsView(starInt: 20)
+            StarsView(starInt: 30)
         )
         .foregroundColor(.white)
         .padding()
