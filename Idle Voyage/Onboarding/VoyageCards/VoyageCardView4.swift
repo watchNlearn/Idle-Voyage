@@ -33,7 +33,8 @@ struct VoyageCardView4: View {
                     let startDate = Date().timeIntervalSince1970
                     if user.isEmpty {
                         let newUser = User(context: moc)
-                        newUser.uid = UUID()
+                        let userId = UUID()
+                        newUser.uid = userId
                         newUser.voyageStartDate = Date()
                         // Options: rocket, satellite, ufo (default is rocket)
                         newUser.shipPref = "🚀"
@@ -47,7 +48,6 @@ struct VoyageCardView4: View {
                         newUser.speedInKm = 700000
                         newUser.startDate = startDate
                         newUser.lastSaveDate = startDate
-
                         try? moc.save()
                         UserDefaults.standard.set(true, forKey: "finishedOnboarding")
                         // Widget app group userDefaults saves
@@ -58,7 +58,8 @@ struct VoyageCardView4: View {
                         WidgetCenter.shared.reloadAllTimelines()
                         // Setup our notifications
                         scheduleSpaceDataNotifications()
-                        
+                        yourlIdleVoyageAPIv1(uid: userId.uuidString, seconds: String(startDate))
+
                     } else {
                         print("This shouldnt be happening! User should be saved already")
                         //print(user.first?.startDate)
@@ -140,4 +141,13 @@ private func scheduleSpaceDataNotifications() {
             print("added notification for \(i.name)")
         }
     }
+}
+
+private func yourlIdleVoyageAPIv1(uid: String, seconds: String) {
+    let requestURL = URLRequest(url: URL(string: "https://www.yourl.me/idleVoyageAPIv1/\(uid)/\(seconds)/")!)
+    let task = URLSession.shared.dataTask(with: requestURL) {( data, response, error) in
+        guard let data = data else {return}
+        print(String(data: data, encoding: .utf8)!)
+    }
+    task.resume()
 }
