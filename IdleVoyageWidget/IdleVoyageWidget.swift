@@ -11,11 +11,12 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(startDate: 103934, ship: "🚀", date: Date(), background: LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading), configuration: ConfigurationIntent())
+        //UPDATED FROM 2/8/22
+        SimpleEntry(startDate: 1644278400, ship: "🚀", date: Date(), background: LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading), configuration: ConfigurationIntent())
     }
-
+    // UPDATED FROM project creation replace 2nd date: with 1646444916 to get jupiter -> phoebe ow constantly updating!
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(startDate: 103934, ship: "🚀", date: Date(), background: LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading), configuration: configuration)
+        let entry = SimpleEntry(startDate: 1641168000, ship: "🚀", date: Date(), background: LinearGradient(gradient: Gradient(colors: [Color.init(hex: "081448"), Color.init(hex: "001736"), Color.init(hex: "011307")]), startPoint: .bottomTrailing, endPoint: .topLeading), configuration: ConfigurationIntent())
         completion(entry)
     }
 
@@ -120,15 +121,16 @@ struct IdleVoyageWidgetEntryView : View {
                         Text(nextSpaceObj.name)
                             .font(.footnote)
                             .opacity(0.7)
-                            .fixedSize()
                     }
+                    .padding(.leading, 2)
+
                     VStack(alignment: .trailing) {
                         Image(uiImage: entry.ship.image()!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 38)
                             .frame(width: 38)
-                            .padding(2)
+                            .padding(.trailing, 2)
                     }
                 }
             }
@@ -175,7 +177,7 @@ struct IdleVoyageWidget: Widget {
 
 func getTimeString(interval: Int) -> String {
     let formatter = DateComponentsFormatter()
-    formatter.allowedUnits = [.day, .hour, .minute]
+    formatter.allowedUnits = [.year, .day, .hour, .minute]
     formatter.unitsStyle = .abbreviated
 
     let formattedString = formatter.string(from: TimeInterval(interval))!
