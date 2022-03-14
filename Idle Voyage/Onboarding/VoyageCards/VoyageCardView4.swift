@@ -125,12 +125,12 @@ private func scheduleSpaceDataNotifications() {
             let content = UNMutableNotificationContent()
             content.title = "Idle Voyage"
             content.subtitle = i.desc
-            content.body = "You're about to pass \(i.name)"
+            content.body = "You're about to pass \(i.name)!"
             content.sound = UNNotificationSound.default
             
             let objDistance = i.distanceInKm
             let speedPerSecKm = 194.444444443
-            let secondsInFuture = (objDistance/speedPerSecKm) - 120
+            let secondsInFuture = (objDistance/speedPerSecKm) - 90
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: secondsInFuture, repeats: false)
 
             // choose a random identifier
