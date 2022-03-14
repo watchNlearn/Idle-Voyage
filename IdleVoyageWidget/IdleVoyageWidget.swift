@@ -59,6 +59,7 @@ struct Provider: IntentTimelineProvider {
         }
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
+//        print("Timeline Entry Count: \(timeline.entries.count)")
         completion(timeline)
     }
 }
@@ -152,6 +153,9 @@ struct IdleVoyageWidgetEntryView : View {
         .foregroundColor(.white)
         .padding()
         .background(entry.background)
+//        .onAppear {
+//            print("Refreshed!")
+//        }
     }
 }
 
