@@ -13,11 +13,6 @@ struct ContentView: View {
 
     
     var body: some View {
-//        Color.init(hex: "081448")
-//        .ignoresSafeArea()
-//        .overlay(
-//            InitialView()
-//        )
 
         InitialView()
             .background(LinearGradient(colors: background.colors, startPoint: background.start, endPoint: background.end)
@@ -28,39 +23,6 @@ struct ContentView: View {
                                     animateGradient.toggle()
                                 }
                         })
-        
-        // top left to bottom right middle stripe galaxy
-//            .background(LinearGradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "333136"), Color.init(hex: "6f6d72"), Color.init(hex: "001736")], startPoint: .topTrailing, endPoint: .leading)
-//                            .hueRotation(.degrees(animateGradient ? 160 : 0))
-//                            .ignoresSafeArea()
-//                            .onAppear {
-//                withAnimation(.easeInOut(duration: 20.0).repeatForever(autoreverses: true)) {
-//                                    animateGradient.toggle()
-//                                }
-//                        })
-        
-        //middle left to top right stripe galaxy look
-//            .background(LinearGradient(colors: [Color.init(hex: "101b39"), Color.init(hex: "430d4b"), Color.init(hex: "f8bc04"), Color.init(hex: "101b39"),Color.init(hex: "101b39")], startPoint: .bottomTrailing, endPoint: .topLeading)
-//                            .hueRotation(.degrees(animateGradient ? 329 : 0))
-//                            .ignoresSafeArea()
-//                            .onAppear {
-//                withAnimation(.easeInOut(duration: 12.0).repeatForever(autoreverses: true)) {
-//                                    animateGradient.toggle()
-//                                }
-//                        })
-        
-        
-        
-        // bottom left planetish
-//        .background(LinearGradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")], startPoint: .topTrailing, endPoint: .bottomLeading)
-//                        .hueRotation(.degrees(animateGradient ? 120 : 0))
-//                        .ignoresSafeArea()
-//                        .onAppear {
-//            withAnimation(.easeInOut(duration: 10.0).repeatForever(autoreverses: true)) {
-//                                animateGradient.toggle()
-//                            }
-//                    })
-        
     }
     
 }

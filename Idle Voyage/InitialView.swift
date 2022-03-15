@@ -35,9 +35,6 @@ struct InitialView: View {
         }
         // Otherwise show home
         else {
-//            Button(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/) {
-//                showingOnboarding = true
-//            }
             ShootingStarsView(starInt: 400)
 
 
@@ -68,21 +65,6 @@ struct InitialView: View {
                     WidgetCenter.shared.reloadAllTimelines()
                 }
                 .background(StarsView(starInt: 100))
-//                .overlay(
-//                    StarsView(starInt: 78)
-//                )
-//            Image(uiImage: "🛸".image()!)
-//                .frame(width: 80, height: 80)
-//
-//                .position(x: 0, y: 490)
-//                .offset(x: shouldAnimate ? 1000 : -1000)
-//                .offset(y: shouldAnimate ? -1000 : 1000)
-//
-//                .animation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: false).delay(2),value: shouldAnimate ? 1000 : -1000)
-//                .onAppear {
-//                    self.shouldAnimate = true
-//                }
-//                .zIndex(1)
             
         }
 

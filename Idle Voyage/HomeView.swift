@@ -84,20 +84,9 @@ struct HomeView: View {
                                 .background(Color.orange)
                                 .cornerRadius(6)
                                 .onReceive(timer) { _ in
-                                    //                                self.distanceTravelled += speedPerSecKm
                                     currentUser.distanceInKm += speedPerSecKm
                                     try? moc.save()
                                 }
-//                            Text("km")
-//                                .font(.subheadline)
-//                                .fontWeight(.semibold)
-//                                .frame(alignment: .leading)
-//                                .padding(.leading, 4)
-//                                .background(Color.orange)
-//                                .cornerRadius(6)
-
-
-                            
                         }
                         .padding(.bottom, 5)
                         Text("Remaining")
@@ -124,21 +113,11 @@ struct HomeView: View {
                                         currentUser.distanceRemainInKm = 0
                                     }
                                     if distanceRemaining == 0 {
-                                        // the next distance until//
-                                        //let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
                                         let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-                                        //                                    nextSpaceObj.distanceInKm - user.first!.distanceInKm
-                                        //print(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm)
                                         currentUser.distanceRemainInKm = nextSpaceObj.distanceInKm - currentUser.distanceInKm
                                     }
                                     try? moc.save()
                                 }
-//                            Text("km")
-//                                .font(.subheadline)
-//                                .fontWeight(.semibold)
-//                                .frame(alignment: .leading)
-//                                .padding(.leading, 4)
-//
                             
                         }
                         .padding(.bottom, 40)
@@ -148,10 +127,6 @@ struct HomeView: View {
                             .clearModalBackground().onTapGesture {
                                 showDistanceDetail.toggle()
                             }
-                        // added to background in distance detail
-//                            .overlay(
-//                                StarsView(starInt: 17)
-//                            )
                     })
                     .onTapGesture {
                         showDistanceDetail.toggle()
@@ -252,9 +227,6 @@ struct HomeView: View {
                                 .fontWeight(.bold)
                                 .frame(alignment: .leading)
                                 .padding(.trailing, 10)
-                            //            let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm)
-//                            Text(user.first!.approaching!) <- was originally not sure if i need this anymore
-
                             Text(getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: user.first!.distanceInKm).name)
                                 .font(.headline)
                                 .fontWeight(.semibold)
@@ -375,18 +347,6 @@ struct HomeView: View {
         .frame(maxWidth: 360)
         .frame(maxHeight: .infinity)
         .background(Color.clear)
-        
-//        .background(LinearGradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")], startPoint: .topLeading, endPoint: .bottomTrailing)
-//                        .hueRotation(.degrees(animateGradient ? 120 : 0))
-//                        .ignoresSafeArea()
-//                        .onAppear {
-//            withAnimation(.easeInOut(duration: 10.0).repeatForever(autoreverses: true)) {
-//                                animateGradient.toggle()
-//                            }
-//                    })
-        //.background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"), Color.init(hex: "000000"), Color.init(hex: "212354"), Color.init(hex: "3E66F9"), Color.init(hex: "3E54E8")]), startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: UnitPoint(x: 0.1, y: 0.9)))
-//        .background(getRandomGradient())
-//        .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom))
         .cornerRadius(30)
         // Maybe we need to do
         // Used when app comes back into foreground from background (we need to update values, counters stop in background!)
@@ -400,14 +360,11 @@ struct HomeView: View {
             try? moc.save()
             }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                    // your code
             print("Entering foreground update")
             let currentUser = user.first!
             
             let startDate = currentUser.startDate
-            //let lastSaveDate = currentUser.lastSaveDate
             
-            //let elapsedTimeSinceSave = Date().timeIntervalSince1970 - lastSaveDate
             let totalElapsedTime = Date().timeIntervalSince1970 - startDate
             
             let elapsedDistance = speedPerSecKm * totalElapsedTime
