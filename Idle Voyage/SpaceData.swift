@@ -35,7 +35,7 @@ struct SpaceShip {
 }
 
 var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".image()!, desc: "You may know this place...", description: "Our home planet is the third planet from the Sun, and the only place we know of so far that’s inhabited by living things. While Earth is only the fifth largest planet in the solar system, it is the only world in our solar system with liquid water on the surface. Just slightly larger than nearby Venus, Earth is the biggest of the four planets closest to the Sun, all of which are made of rock and metal.", type: .planet),
-                    SpaceObject(name: "James Webb", distanceInKm: 1500000, image: "🛰️".image()!, desc: "Space 🔭", description: "The James Webb Space Telescope (sometimes called JWST) is a large, infrared-optimized space telescope. The observatory launched into space on an Ariane 5 rocket from the Guiana Space Centre in Kourou, French Guiana on December 25, 2021. After launch, the observatory was successfully unfolded and is being readied for science. Webb will find the first galaxies that formed in the early Universe, connecting the Big Bang to our own Milky Way Galaxy. Webb will peer through dusty clouds to see stars forming planetary systems, connecting the Milky Way to our own Solar System.", type: .other),
+                    SpaceObject(name: "JWST", distanceInKm: 1500000, image: "🛰️".image()!, desc: "Space 🔭", description: "The James Webb Space Telescope (also called JWST) is a large, infrared-optimized space telescope. The observatory launched into space on an Ariane 5 rocket from the Guiana Space Centre in Kourou, French Guiana on December 25, 2021. After launch, the observatory was successfully unfolded and is being readied for science. Webb will find the first galaxies that formed in the early Universe, connecting the Big Bang to our own Milky Way Galaxy. Webb will peer through dusty clouds to see stars forming planetary systems, connecting the Milky Way to our own Solar System.", type: .other),
                     SpaceObject(name: "Venus", distanceInKm: 41400000, image: UIImage(named: "Venus")!, desc: "Hot Shot", description: "The second planet from the sun, Venus is Earth's twin in size. Radar images beneath its atmosphere reveal that its surface has various mountains and volcanoes. But beyond that, the two planets couldn't be more different. Because of its thick, toxic atmosphere that's made of sulfuric acid clouds, Venus is an extreme example of the greenhouse effect. It's scorching-hot, even though Mercury is closer to the sun and is the hottest planet in the solar system.", type: .planet),
                     // Mars Moons
                     SpaceObject(name: "Deimos", distanceInKm: 224400000, image: "🌑".image()!, desc: "Breaking free", description: "Deimos is the smaller of Mars' two moons and whirls around Mars every 30 hours. Deimos is a small lumpy and heavily cratered object with most of its craters ranging only in 2.5km in diameter. Unlike Phobos, Deimos will eventually break from Mars' gravitational pull and fly off into space.", type: .moon),
@@ -174,9 +174,9 @@ func getBorderColor(so: SpaceObject) -> Color {
     case .planet:
         return Color.green
     case .other:
-        return Color.white
+        return Color.yellow
     case .star:
-        return Color.orange
+        return Color.red
     case .galaxy:
         return Color.purple
     }
