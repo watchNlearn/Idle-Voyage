@@ -8,7 +8,8 @@
 import WidgetKit
 import SwiftUI
 import Intents
-import Idle_Voyage
+// says no such module error out of nowhere wtf?
+//import Idle_Voyage
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -99,10 +100,9 @@ struct IdleVoyageWidgetEntryView : View {
         
         let progressValue = Float(progress)
         
-        VStack {
+        VStack(alignment: .leading) {
             // stats + emoji
             HStack(alignment: .center) {
-                HStack {
                     VStack(alignment: .leading) {
                         Text("Distance")
                             .font(.headline)
@@ -123,19 +123,12 @@ struct IdleVoyageWidgetEntryView : View {
                         Text(nextSpaceObj.name)
                             .font(.footnote)
                             .opacity(0.7)
+                            .fixedSize()
                     }
                     .padding(.leading, 2)
 
-                    VStack(alignment: .trailing) {
-                        Image(uiImage: entry.ship.image()!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 38)
-                            .frame(width: 38)
-                            .padding(.trailing, 2)
-                    }
-                }
             }
+            
             
             // Bottom planets + p bar
             HStack {
@@ -154,6 +147,15 @@ struct IdleVoyageWidgetEntryView : View {
         .foregroundColor(.white)
         .padding()
         .background(entry.background)
+        .overlay(
+            Image(uiImage: entry.ship.image()!)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 38)
+                .frame(width: 38)
+                .padding(.trailing, 6)
+                .padding(.bottom, 30)
+            , alignment: .trailing)
 //        .onAppear {
 //            print("Refreshed!")
 //        }
