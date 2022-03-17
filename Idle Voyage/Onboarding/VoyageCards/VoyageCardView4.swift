@@ -129,7 +129,7 @@ private func scheduleSpaceDataNotifications() {
             content.sound = UNNotificationSound.default
             
             let objDistance = i.distanceInKm
-            let speedPerSecKm = 194.444444443
+            let speedPerSecKm = AppConstants.Util.speedPerSecKm
             let secondsInFuture = (objDistance/speedPerSecKm) - 90
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: secondsInFuture, repeats: false)
 

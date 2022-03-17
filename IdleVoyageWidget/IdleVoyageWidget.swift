@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import Idle_Voyage
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -78,7 +79,7 @@ struct SimpleEntry: TimelineEntry {
 struct IdleVoyageWidgetEntryView : View {
     var entry: Provider.Entry
 //    @State var progressValue: Float = 0.0
-    let speedPerSecKm = 194.444444443
+    let speedPerSecKm = AppConstants.Util.speedPerSecKm
 
     var body: some View {
         //        Text(entry.date, style: .time)

@@ -51,8 +51,7 @@ struct HomeView: View {
 //    let speedPerSecKm = 2675000.6564657
 //    let speedPerSecKm = 194.444444444
         //PROD: USE THIS SPEED FOR SECONDS
-      let speedPerSecKm = 194.444444443
-
+    let speedPerSecKm = AppConstants.Util.speedPerSecKm
     
 //    @State var distanceTravelled: Double = 1433600000
     
@@ -63,7 +62,7 @@ struct HomeView: View {
                 VStack(alignment: .leading){
                     Group {
                         // MARK: DISTANCE
-                        Text("Distance")
+                        Text(AppConstants.Strings.Home.distance)
                             .font(.title)
                             .fontWeight(.bold)
                             .frame(alignment: .leading)
@@ -134,7 +133,7 @@ struct HomeView: View {
                     // MARK: TIME
                     Group {
                         VStack(alignment: .leading) {
-                            Text("Time")
+                            Text(AppConstants.Strings.Home.time)
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .frame(alignment: .leading)
@@ -189,7 +188,7 @@ struct HomeView: View {
                     Group {
                         // MARK: LEAVING
                         VStack(alignment: .leading) {
-                            Text("Leaving")
+                            Text(AppConstants.Strings.Home.leaving)
                                 .foregroundColor(.white)
                                 .font(.title)
                                 .fontWeight(.bold)
@@ -221,7 +220,7 @@ struct HomeView: View {
                         }
                         // MARK: LEAVING
                         VStack(alignment: .leading) {
-                            Text("Approaching")
+                            Text(AppConstants.Strings.Home.approaching)
                                 .foregroundColor(.white)
                                 .font(.title)
                                 .fontWeight(.bold)

@@ -51,6 +51,7 @@
 		0B4FE62127C468F300C94A10 /* IdleVoyageWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0B4FE61027C468F200C94A10 /* IdleVoyageWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0B4FE62A27C4849500C94A10 /* SpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F70E27879FFA00EE0B33 /* SpaceData.swift */; };
 		0B4FE62B27C4849A00C94A10 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F6FD2784F50F00EE0B33 /* Extensions.swift */; };
+		0BAB8AE327E2E96D006C3EC2 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB8AE227E2E96D006C3EC2 /* AppConstants.swift */; };
 		0BC9B09E27D00DC8006AB69A /* VoyageCardViewNotif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC9B09D27D00DC7006AB69A /* VoyageCardViewNotif.swift */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,7 @@
 		0B4FE62627C4697600C94A10 /* Idle Voyage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Idle Voyage.entitlements"; sourceTree = "<group>"; };
 		0B4FE62727C4698400C94A10 /* IdleVoyageWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IdleVoyageWidgetExtension.entitlements; sourceTree = "<group>"; };
 		0B5FBD5027C5DFD500F02DCA /* Idle-Voyage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Idle-Voyage-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0BAB8AE227E2E96D006C3EC2 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		0BC9B09D27D00DC7006AB69A /* VoyageCardViewNotif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoyageCardViewNotif.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +224,7 @@
 				0B44F70C2787955200EE0B33 /* DataController.swift */,
 				0B44F70E27879FFA00EE0B33 /* SpaceData.swift */,
 				0B4FE59F279E96D200C94A10 /* ClearBackgroundView.swift */,
+				0BAB8AE227E2E96D006C3EC2 /* AppConstants.swift */,
 			);
 			path = "Idle Voyage";
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				0B44F6F627844C5500EE0B33 /* VoyageCardView3.swift in Sources */,
 				0B44F6C62783C1B700EE0B33 /* Idle_VoyageApp.swift in Sources */,
 				0B44F6FA27844E3E00EE0B33 /* OnboardingWidgetView.swift in Sources */,
+				0BAB8AE327E2E96D006C3EC2 /* AppConstants.swift in Sources */,
 				0B4FE5B927AB8A1300C94A10 /* ProgressBarDetail.swift in Sources */,
 				0B44F6F02783E20900EE0B33 /* LoadingView.swift in Sources */,
 				0B44F71127880E2100EE0B33 /* HomeView.swift in Sources */,

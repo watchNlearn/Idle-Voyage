@@ -25,7 +25,7 @@ struct InitialView: View {
     // testing speed
 //    let speedPerSecKm = 2675000.6564657
     //PROD: USE THIS SPEED FOR SECONDS
-    let speedPerSecKm = 194.444444443
+    let speedPerSecKm = AppConstants.Util.speedPerSecKm
     var body: some View {
         // If user hasn't done onboarding
         if !finishedOnboarding {
