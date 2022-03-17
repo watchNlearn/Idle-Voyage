@@ -52,6 +52,7 @@
 		0B4FE62A27C4849500C94A10 /* SpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F70E27879FFA00EE0B33 /* SpaceData.swift */; };
 		0B4FE62B27C4849A00C94A10 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B44F6FD2784F50F00EE0B33 /* Extensions.swift */; };
 		0BAB8AE327E2E96D006C3EC2 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB8AE227E2E96D006C3EC2 /* AppConstants.swift */; };
+		0BAB8AE427E2EC72006C3EC2 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB8AE227E2E96D006C3EC2 /* AppConstants.swift */; };
 		0BC9B09E27D00DC8006AB69A /* VoyageCardViewNotif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC9B09D27D00DC7006AB69A /* VoyageCardViewNotif.swift */; };
 /* End PBXBuildFile section */
 
@@ -546,6 +547,7 @@
 				0B4FE62A27C4849500C94A10 /* SpaceData.swift in Sources */,
 				0B4FE61D27C468F300C94A10 /* IdleVoyageWidget.intentdefinition in Sources */,
 				0B4FE62B27C4849A00C94A10 /* Extensions.swift in Sources */,
+				0BAB8AE427E2EC72006C3EC2 /* AppConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
