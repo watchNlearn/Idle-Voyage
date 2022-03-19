@@ -35,7 +35,7 @@ struct InitialView: View {
         }
         // Otherwise show home
         else {
-            ShootingStarsView(starInt: 400)
+            ShootingStarsView(starInt: 500)
 
 
             HomeView()
