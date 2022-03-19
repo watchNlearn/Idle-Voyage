@@ -96,7 +96,7 @@ struct ProgressDetail: View {
             
             
         }
-        .background(StarsView(starInt: 25))
+        .background(StarsView(starInt: 40))
         .foregroundColor(.white)
         .padding()
         .background(Color.init(hex: "100b1f"))

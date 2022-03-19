@@ -121,11 +121,9 @@ struct HomeView: View {
                         }
                         .padding(.bottom, 40)
                     }
-                    .fullScreenCover(isPresented: $showDistanceDetail, content: {
+                    .sheet(isPresented: $showDistanceDetail, content: {
                         DistanceDetail()
-                            .clearModalBackground().onTapGesture {
-                                showDistanceDetail.toggle()
-                            }
+                            .clearModalBackground()
                     })
                     .onTapGesture {
                         showDistanceDetail.toggle()
@@ -176,11 +174,9 @@ struct HomeView: View {
                         }
                         .padding(.bottom, 40)
                     }
-                    .fullScreenCover(isPresented: $showTimeDetail, content: {
+                    .sheet(isPresented: $showTimeDetail, content: {
                         TimeDetail()
-                            .clearModalBackground().onTapGesture {
-                                showTimeDetail.toggle()
-                            }
+                            .clearModalBackground()
                     })
                     .onTapGesture {
                         showTimeDetail.toggle()
@@ -209,11 +205,9 @@ struct HomeView: View {
                                 .padding(.bottom, 40)
                                 .padding(.trailing, 10)
                         }
-                        .fullScreenCover(isPresented: $showLeavingDetail, content: {
+                        .sheet(isPresented: $showLeavingDetail, content: {
                             LeavingDetail()
-                                .clearModalBackground().onTapGesture {
-                                    showLeavingDetail.toggle()
-                                }
+                                .clearModalBackground()
                         })
                         .onTapGesture {
                             showLeavingDetail.toggle()
@@ -241,11 +235,9 @@ struct HomeView: View {
                                 .padding(.bottom, 20)
                                 .padding(.trailing, 10)
                         }
-                        .fullScreenCover(isPresented: $showApproachingDetail, content: {
+                        .sheet(isPresented: $showApproachingDetail, content: {
                             ApproachingDetail()
-                                .clearModalBackground().onTapGesture {
-                                    showApproachingDetail.toggle()
-                                }
+                                .clearModalBackground()
                         })
                         .onTapGesture {
                             showApproachingDetail.toggle()
@@ -329,11 +321,9 @@ struct HomeView: View {
                     .frame(width: 50)
             }
             .padding(.bottom, 35)
-            .fullScreenCover(isPresented: $showProgressDetail, content: {
+            .sheet(isPresented: $showProgressDetail, content: {
                 ProgressDetail()
-                    .clearModalBackground().onTapGesture {
-                        showProgressDetail.toggle()
-                    }
+                    .clearModalBackground()
             })
             .onTapGesture {
                 showProgressDetail.toggle()
