@@ -37,12 +37,12 @@ struct VoyageCardView2: View {
                 .fontWeight(.light)
                 
         }
-        .background(
-            StarsView(starInt: 20)
-        )
         .foregroundColor(.white)
         .padding()
         .frame(width: 300, height: 400)
+        .background(
+            StarsView(starInt: 45)
+        )
         .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "011307"), Color.init(hex: "001736"), Color.init(hex: "f8bc04")]), startPoint: .topLeading, endPoint: .bottom))
         .cornerRadius(30)
         

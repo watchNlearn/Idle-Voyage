@@ -42,12 +42,12 @@ struct VoyageCardView: View {
                 .lineLimit(4)
                 .opacity(0.7)
         }
-        .background(
-            StarsView(starInt: 20)
-        )
         .foregroundColor(.white)
         .padding()
         .frame(width: 300, height: 400)
+        .background(
+            StarsView(starInt: 45)
+        )
         .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "013026"), Color.init(hex: "133769"), Color.init(hex: "210535"), Color.init(hex: "000000")]), startPoint: .bottomLeading, endPoint: .topTrailing))
         .cornerRadius(30)
         

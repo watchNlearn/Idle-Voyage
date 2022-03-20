@@ -92,12 +92,12 @@ struct VoyageCardView4: View {
 
             
         }
-        .background(
-            StarsView(starInt: 30)
-        )
         .foregroundColor(.white)
         .padding()
         .frame(width: 300, height: 400)
+        .background(
+            StarsView(starInt: 45)
+        )
         .background(RadialGradient(colors: [ Color.init(hex: "3E54E8"),Color.init(hex: "3E66F9"),Color.init(hex: "212354"), Color.init(hex: "000000"), Color.init(hex: "000000")], center: .bottomLeading, startRadius: 0, endRadius: 400))
         
         .cornerRadius(30)

@@ -128,12 +128,12 @@ struct VoyageCardViewNotif: View {
             
                 
         }
-        .background(
-            StarsView(starInt: 20)
-        )
         .foregroundColor(.white)
         .padding()
         .frame(width: 300, height: 400)
+        .background(
+            StarsView(starInt: 45)
+        )
         .background(LinearGradient(gradient: Gradient(colors: [Color.init(hex: "1b1145"),Color.init(hex: "021f4b"), Color.init(hex: "8749bc"), Color.init(hex: "021f4b"),Color.init(hex: "1b1145")]), startPoint: .topLeading, endPoint: .bottom))
         .cornerRadius(30)
     }
