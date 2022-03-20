@@ -172,6 +172,7 @@ struct IdleVoyageWidget: Widget {
         }
         .configurationDisplayName("Idle Voyage Widget")
         .description("Choose a background for your voyage!")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
