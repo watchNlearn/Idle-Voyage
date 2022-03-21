@@ -56,7 +56,7 @@ struct OnboardingWidgetView: View {
                             .opacity(0.7)
                     }
                     VStack(alignment: .trailing) {
-                        Image(uiImage: "🚀".image()!)
+                        Image(uiImage: "🛸".image()!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 50)
@@ -73,7 +73,7 @@ struct OnboardingWidgetView: View {
             .frame(maxHeight: .infinity)
             // Bottom planets + p bar
             HStack {
-                Image(uiImage: UIImage(named: "Mercury")!)
+                Image(uiImage: "🌖".image()!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 25)
