@@ -81,8 +81,76 @@ struct IdleVoyageWidgetEntryView : View {
     var entry: Provider.Entry
 //    @State var progressValue: Float = 0.0
     let speedPerSecKm = AppConstants.Util.speedPerSecKm
-
+    @Environment(\.widgetFamily) var family
     var body: some View {
+        switch family {
+        case .systemSmall:
+            SmallWidgetView(entry: entry)
+        case .systemMedium:
+            MediumWidgetView(entry: entry)
+        case .systemLarge:
+            SmallWidgetView(entry: entry)
+        case .systemExtraLarge:
+            SmallWidgetView(entry: entry)
+        @unknown default:
+            SmallWidgetView(entry: entry)
+        }
+    }
+}
+
+@main
+struct IdleVoyageWidget: Widget {
+    let kind: String = "IdleVoyageWidget"
+
+    var body: some WidgetConfiguration {
+        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+            IdleVoyageWidgetEntryView(entry: entry)
+        }
+        .configurationDisplayName("Idle Voyage Widget")
+        .description("Choose a background for your voyage!")
+        .supportedFamilies([.systemSmall, .systemMedium])
+    }
+}
+
+//struct IdleVoyageWidget_Previews: PreviewProvider {
+//    static var previews: some View {
+//        IdleVoyageWidgetEntryView(entry: SimpleEntry(myStr: "test!", date: Date(), configuration: ConfigurationIntent()))
+//            .previewContext(WidgetPreviewContext(family: .systemSmall))
+//    }
+//}
+
+func getTimeString(interval: Int) -> String {
+    let formatter = DateComponentsFormatter()
+    formatter.allowedUnits = [.year, .day, .hour, .minute]
+    formatter.unitsStyle = .abbreviated
+
+    let formattedString = formatter.string(from: TimeInterval(interval))!
+    return formattedString
+}
+
+struct WidgetProgressBar: View {
+    var value: Float
+        
+        var body: some View {
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    Rectangle().frame(width: geometry.size.width , height: geometry.size.height)
+                        .opacity(0.3)
+                        .foregroundColor(Color(UIColor.orange))
+                    
+                    Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
+                        .foregroundColor(Color(UIColor.green))
+                        .animation(.linear)
+                }.cornerRadius(4)
+            }
+        }
+}
+// SMALL WIDGET
+struct SmallWidgetView: View {
+    var entry: Provider.Entry
+    var body: some View {
+        let speedPerSecKm = AppConstants.Util.speedPerSecKm
+
         //        Text(entry.date, style: .time)
         //        Text(entry.myStr)
         //        Text(entry.ship)
@@ -135,15 +203,17 @@ struct IdleVoyageWidgetEntryView : View {
                 Image(uiImage: getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: elapsedDistance).image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 22)
+                    .frame(height: 20)
                 WidgetProgressBar(value: progressValue).frame(maxWidth: .infinity)
                     .frame(height: 10)
                 Image(uiImage: getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: elapsedDistance).image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 22)
+                    .frame(height: 20)
             }
         }
+        .frame(maxWidth: .infinity)
+        .frame(maxHeight: .infinity)
         .foregroundColor(.white)
         .padding()
         .background(entry.background)
@@ -153,7 +223,7 @@ struct IdleVoyageWidgetEntryView : View {
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 38)
                 .frame(width: 38)
-                .padding(.trailing, 6)
+                .padding(.trailing, 8)
                 .padding(.bottom, 30)
             , alignment: .trailing)
 //        .onAppear {
@@ -162,51 +232,106 @@ struct IdleVoyageWidgetEntryView : View {
     }
 }
 
-@main
-struct IdleVoyageWidget: Widget {
-    let kind: String = "IdleVoyageWidget"
+// MEDIUM WIDGET
+struct MediumWidgetView: View {
+    var entry: Provider.Entry
+    var body: some View {
+        let speedPerSecKm = AppConstants.Util.speedPerSecKm
 
-    var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            IdleVoyageWidgetEntryView(entry: entry)
-        }
-        .configurationDisplayName("Idle Voyage Widget")
-        .description("Choose a background for your voyage!")
-        .supportedFamilies([.systemSmall, .systemMedium])
-    }
-}
-
-//struct IdleVoyageWidget_Previews: PreviewProvider {
-//    static var previews: some View {
-//        IdleVoyageWidgetEntryView(entry: SimpleEntry(myStr: "test!", date: Date(), configuration: ConfigurationIntent()))
-//            .previewContext(WidgetPreviewContext(family: .systemSmall))
-//    }
-//}
-
-func getTimeString(interval: Int) -> String {
-    let formatter = DateComponentsFormatter()
-    formatter.allowedUnits = [.year, .day, .hour, .minute]
-    formatter.unitsStyle = .abbreviated
-
-    let formattedString = formatter.string(from: TimeInterval(interval))!
-    return formattedString
-}
-
-struct WidgetProgressBar: View {
-    var value: Float
+        //        Text(entry.date, style: .time)
+        //        Text(entry.myStr)
+        //        Text(entry.ship)
+        let startDateInSec = entry.startDate
+        let currentDate = Date().timeIntervalSince1970
+        let totalElapsedTime = currentDate - startDateInSec
+        let elapsedDistance = speedPerSecKm * totalElapsedTime
         
-        var body: some View {
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    Rectangle().frame(width: geometry.size.width , height: geometry.size.height)
-                        .opacity(0.3)
-                        .foregroundColor(Color(UIColor.orange))
-                    
-                    Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
-                        .foregroundColor(Color(UIColor.green))
-                        .animation(.linear)
-                }.cornerRadius(4)
+        let nextSpaceObj = getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: elapsedDistance)
+        let lastSpaceObj = getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: elapsedDistance)
+        
+        let distanceRemaining = nextSpaceObj.distanceInKm - elapsedDistance
+        
+        let progress = 1 - (distanceRemaining/(nextSpaceObj.distanceInKm - lastSpaceObj.distanceInKm))
+        
+        let progressValue = Float(progress)
+        
+        VStack(alignment: .leading) {
+            // stats + emoji
+            HStack(alignment: .center) {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Distance")
+                                    .font(.headline)
+                                    .fixedSize()
+                                Text(elapsedDistance.formatUsingAbbrevation() + " km")
+                                    .font(Font.footnote.monospacedDigit())
+                                    .opacity(0.7)
+                                    .fixedSize()
+                                Text("Leaving")
+                                    .font(.headline)
+                                    .fixedSize()
+                                Text(lastSpaceObj.name)
+                                    .font(.footnote)
+                                    .opacity(0.7)
+                                    .fixedSize()
+                            }
+                            .padding(.trailing, 30)
+                            VStack(alignment: .leading) {
+                                Text("Time")
+                                    .font(.headline)
+                                Text(getTimeString(interval: Int(totalElapsedTime)))
+                                    .font(.footnote)
+                                    .opacity(0.7)
+                                    .fixedSize()
+                                Text("Approaching")
+                                    .font(.headline)
+                                    .fixedSize()
+                                Text(nextSpaceObj.name)
+                                    .font(.footnote)
+                                    .opacity(0.7)
+                                    .fixedSize()
+                            }
+                        }
+                        
+                    }
+                    .padding(.leading, 2)
+
+            }
+            // Bottom planets + p bar
+            HStack {
+                Image(uiImage: getLastSpaceObject(spaceObjects: spaceObjectsSorted, distance: elapsedDistance).image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 24)
+                WidgetProgressBar(value: progressValue).frame(maxWidth: .infinity)
+                    .frame(height: 12)
+                Image(uiImage: getNextSpaceObject(spaceObjects: spaceObjectsSorted, distance: elapsedDistance).image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 24)
+                let num = Double(progressValue) * 100
+                Text(String(num.rounded(toPlaces: 2)) + "%")
+                    .font(Font.headline.monospacedDigit())
+                    .foregroundColor(Color.white)
             }
         }
+        .frame(maxWidth: .infinity)
+        .frame(maxHeight: .infinity)
+        .foregroundColor(.white)
+        .padding()
+        .background(entry.background)
+        .overlay(
+            Image(uiImage: entry.ship.image()!)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 38)
+                .frame(width: 38)
+                .padding(.trailing, 15)
+                .padding(.bottom, 30)
+            , alignment: .trailing)
+//        .onAppear {
+//            print("Refreshed!")
+//        }
+    }
 }
-
