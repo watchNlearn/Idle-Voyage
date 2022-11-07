@@ -17,9 +17,7 @@ import SwiftUI
 import SwiftUI
 
 struct ApproachingDetail: View {
-    // Get out environment and users
     @Environment(\.managedObjectContext) var moc
-    // We may not even have to create a fetch request
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     var body: some View {
@@ -34,7 +32,6 @@ struct ApproachingDetail: View {
                         .frame(width: 100)
                         .padding(.trailing, 50)
 
-//                    Spacer()
                 }
                 HStack {
                     Image(uiImage: user.first!.shipPref!.image()!)
@@ -67,9 +64,7 @@ struct ApproachingDetail: View {
             StarsView(starInt: 47)
         )
         .foregroundColor(.white)
-//        .frame(maxWidth: .infinity)
         .padding()
-//        .frame(width: 300, height: 400)
         .background(Color.init(hex: "100b1f"))
         .cornerRadius(30)
         

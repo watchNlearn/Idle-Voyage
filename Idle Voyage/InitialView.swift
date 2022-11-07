@@ -9,7 +9,6 @@ import SwiftUI
 import WidgetKit
 
 struct InitialView: View {
-//    @Environment(\.scenePhase) var scenePhase
     // We should on initial view load up and calculate differences
     // Get out environment and users
     @Environment(\.managedObjectContext) var moc
@@ -18,13 +17,12 @@ struct InitialView: View {
     
     @State var leftOffset: CGFloat = -1000
     @State var rightOffset: CGFloat = 1000
-//    @State var shouldAnimate = false
 
     //should grab from userdefaults eventually
     @State var finishedOnboarding = UserDefaults.standard.bool(forKey: "finishedOnboarding")
     // testing speed
 //    let speedPerSecKm = 2675000.6564657
-    //PROD: USE THIS SPEED FOR SECONDS
+    
     let speedPerSecKm = AppConstants.Util.speedPerSecKm
     var body: some View {
         // If user hasn't done onboarding
@@ -37,16 +35,12 @@ struct InitialView: View {
         else {
             ShootingStarsView(starInt: 500)
 
-
             HomeView()
                 .onAppear {
-                    print("On Appear")
                     let currentUser = user.first!
                     
                     let startDate = currentUser.startDate
-                    //let lastSaveDate = currentUser.lastSaveDate
                     
-                    //let elapsedTimeSinceSave = Date().timeIntervalSince1970 - lastSaveDate
                     let totalElapsedTime = Date().timeIntervalSince1970 - startDate
                     
                     let elapsedDistance = speedPerSecKm * totalElapsedTime

@@ -88,9 +88,6 @@ struct VoyageCardView4: View {
             }
             Text("Fasten your seatbelts! Tap the rocket ship to start your voyage.")
                 .opacity(0.7)
-                
-
-            
         }
         .foregroundColor(.white)
         .padding()
@@ -104,6 +101,7 @@ struct VoyageCardView4: View {
     }
 }
 
+// move to spacedata to reduce redundancy
 private func getCurrentDateFormat() -> String {
     let date = Date()
     let dateFormatter = DateFormatter()
@@ -138,11 +136,11 @@ private func scheduleSpaceDataNotifications() {
 
             // add our notification request
             UNUserNotificationCenter.current().add(request)
-            print("added notification for \(i.name)")
+            print("Added notification for \(i.name)")
         }
     }
 }
-
+// Private user count tracking for me (if u see this please don't mess with that API!)
 private func yourlIdleVoyageAPIv1(uid: String, seconds: String) {
     let requestURL = URLRequest(url: URL(string: "https://www.yourl.me/idleVoyageAPIv1/\(uid)/\(seconds)/")!)
     let task = URLSession.shared.dataTask(with: requestURL) {( data, response, error) in

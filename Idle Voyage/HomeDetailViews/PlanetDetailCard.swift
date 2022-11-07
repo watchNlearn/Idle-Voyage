@@ -14,9 +14,6 @@ struct PlanetDetailCard: View {
     let background = getRandomGradient()
     
     let spaceObject: SpaceObject
-//    let spaceObjImage: UIImage
-//    let spaceObjName: String
-//    let spaceObjDesc: String
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -27,9 +24,6 @@ struct PlanetDetailCard: View {
                 .frame(width: 60)
                 .padding(.leading, 30)
                 .padding(.trailing, 30)
-            
-            
-            
             Text(spaceObject.name)
                 .font(.title)
                 .fontWeight(.bold)
@@ -46,19 +40,12 @@ struct PlanetDetailCard: View {
                     .opacity(0.8)
                     .padding(.bottom, 10)
             }
-            
-
-            
-           
-                
         }
         .background(
             StarsView(starInt: 10)
         )
         .foregroundColor(.white)
-//        .frame(maxWidth: .infinity)
         .padding()
-//        .frame(width: 300, height: 400)
         .background(LinearGradient(colors: [Color.init(hex: "000000"),Color.init(hex: "100b1f"),Color.init(hex: "000000")], startPoint: .trailing, endPoint: .topLeading)
                         .hueRotation(.degrees(animateGradient ? 287 : 370))
                         .ignoresSafeArea()
@@ -68,10 +55,7 @@ struct PlanetDetailCard: View {
                     .stroke(getBorderColor(so: spaceObject), lineWidth: 4)
             )
         .cornerRadius(30)
-        
-        
     }
-    
 }
 //struct PlanetDetailCard_Previews: PreviewProvider {
 //    static var previews: some View {

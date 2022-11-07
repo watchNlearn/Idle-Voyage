@@ -9,27 +9,8 @@ import SwiftUI
 import WidgetKit
 
 struct HomeView: View {
-    
-//    if user.isEmpty {
-//        let newUser = User(context: moc)
-//        newUser.uid = UUID()
-//        newUser.voyageStartDate = Date()
-//        // Options: rocket, satellite, ufo (default is rocket)
-//        newUser.shipPref = "rocket"
-//        newUser.unitPref = "km"
-//    newUser.leaving = "Earth"
-//    newUser.approaching = "Saturn"
-//       newUser.progress = 0.0
-//        newUser.distanceInKm = 0
-//        newUser.elapsedTime = 0
-//        newUser.speedInKm = 700000
-//        newUser.startDate = Date().timeIntervalSince1970
-//        try? moc.save()
-//    } else {
-//        print("This shouldnt be happening! User should be saved already")
-//        //print(user.first?.startDate)
-//    }
-    // Get out environment and users
+
+    // Get our environment and users
     @Environment(\.managedObjectContext) var moc
     // We may not even have to create a fetch request
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
@@ -45,14 +26,10 @@ struct HomeView: View {
     
     @State var progressValue: Float = 0.0
         
-//    let saturnDistanceInKm: Double = 1433600000 // this is saturns from the sun!
-//    let speedPerSecKm = 11666.6666667 Type '()' cannot conform to 'View'
-    // WRONG SPEED TESTING SPEED
-//    let speedPerSecKm = 2675000.6564657
-//    let speedPerSecKm = 194.444444444
+
         //PROD: USE THIS SPEED FOR SECONDS
     let speedPerSecKm = AppConstants.Util.speedPerSecKm
-    
+// Testing distance
 //    @State var distanceTravelled: Double = 1433600000
     
     var body: some View {
@@ -388,7 +365,7 @@ struct HomeView: View {
 //RadialGradient(colors: [ Color.init(hex: "3E54E8"),Color.init(hex: "3E66F9"),Color.init(hex: "212354"), Color.init(hex: "000000"), Color.init(hex: "000000")], center: .bottomLeading, startRadius: 0, endRadius: 400),
 //  Kinda made it a linear gradient below?
 //LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"), Color.init(hex: "000000"), Color.init(hex: "212354"), Color.init(hex: "3E66F9"), Color.init(hex: "3E54E8")]), startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: UnitPoint(x: 0.1, y: 0.9))
-
+// should be in spacedata
 private func getNextShip(current: String) -> String {
     if current == "🚀" {
         return "🛰️"
@@ -409,7 +386,7 @@ private func getRandomGradient() -> LinearGradient {
         LinearGradient(gradient: Gradient(colors: [Color.init(hex: "000000"), Color.init(hex: "000000"), Color.init(hex: "212354"), Color.init(hex: "3E66F9"), Color.init(hex: "3E54E8")]), startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: UnitPoint(x: 0.1, y: 0.9))]
     return gradients.randomElement()!
 }
-
+// different format time
 private func getCurrentDateFormat(atTime: Date) -> String {
     let date = atTime
     let dateFormatter = DateFormatter()

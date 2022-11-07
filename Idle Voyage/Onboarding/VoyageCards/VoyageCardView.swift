@@ -53,7 +53,7 @@ struct VoyageCardView: View {
         
     }
 }
-
+// can move to spacedata 
 private func getShipImageString() -> String {
     let ships = ["🚀","🛸","🛰️"]
     return ships.randomElement() ?? "🚀"

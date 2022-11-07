@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TimeDetail: View {
-    // Get out environment and users
+    // Get our environment and users
     @Environment(\.managedObjectContext) var moc
-    // We may not even have to create a fetch request
+    
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<User>
     
     let background = getRandomGradient()
@@ -48,8 +48,7 @@ struct TimeDetail: View {
                         .padding(.trailing, 10)
                     HStack {
                         Text(getCurrentDateFormat(atTime: user.first!.voyageStartDate!))
-//                            .font(.subheadline)
-//                            .fontWeight(.thin)
+
                             .frame(alignment: .leading)
                             .padding(.trailing, 4)
                             .cornerRadius(6)
@@ -63,9 +62,7 @@ struct TimeDetail: View {
                 
             }
         }
-//        .background(
-//            StarsView(starInt: 34)
-//        )
+
         .frame(maxWidth: .infinity)
         .foregroundColor(.white)
         .padding()
@@ -80,6 +77,7 @@ struct TimeDetail: View {
 //        TimeDetail()
 //    }
 //}
+
 private func getCurrentDateFormat(atTime: Date) -> String {
     let date = atTime
     let dateFormatter = DateFormatter()

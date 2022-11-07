@@ -50,7 +50,7 @@ func getRandomGradient() -> BackgroundObject {
  
         BackgroundObject(colors: [Color.init(hex: "000000"),Color.init(hex: "100b1f"),Color.init(hex: "000000")], start: .trailing, end: .topLeading, rotation: 287, duration: 32)
     ]
-    
+    // Force unwrap okay can never crash!!
     return backgrounds.randomElement()!
 }
 

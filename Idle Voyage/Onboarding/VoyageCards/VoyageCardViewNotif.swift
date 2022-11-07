@@ -46,14 +46,8 @@ struct VoyageCardViewNotif: View {
                                 .padding(.trailing, 20)
                         }
                         .padding(.bottom, 20)
-                     
-
                     }
                     .padding(.top, 20)
-                    
-                    
-
-                    
                 }
                 .padding(.leading, 15)
                 .padding(.trailing, 15)
@@ -94,7 +88,6 @@ struct VoyageCardViewNotif: View {
                     center.requestAuthorization(options: [.alert, .badge, .sound]) {
                         success, error in
                         if success {
-                            print("Success")
                             center.getNotificationSettings { settings in
                                 if settings.authorizationStatus == .authorized {
                                     allowNotif = true
@@ -107,7 +100,6 @@ struct VoyageCardViewNotif: View {
                         } else if let error = error {
                             print(error.localizedDescription)
                         } else {
-                            print("fail")
                             center.getNotificationSettings { settings in
                                 if settings.authorizationStatus == .authorized {
                                     allowNotif = true
@@ -120,13 +112,8 @@ struct VoyageCardViewNotif: View {
                         
                     }
                 }
-               
-                
-                
             }
             .padding()
-            
-                
         }
         .foregroundColor(.white)
         .padding()

@@ -33,6 +33,11 @@ struct SpaceShip {
     let ufo = "🛸"
     let voyager = "🛰️"
 }
+//extension SpaceObject {
+//    static let data: [SpaceObject] = [
+//        SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".image()!, desc: "You may know this place...", description: "Our home planet is the third planet from the Sun, and the only place we know of so far that’s inhabited by living things. While Earth is only the fifth largest planet in the solar system, it is the only world in our solar system with liquid water on the surface. Just slightly larger than nearby Venus, Earth is the biggest of the four planets closest to the Sun, all of which are made of rock and metal.", type: .planet)
+//    ]
+//}
 
 var spaceObjects = [SpaceObject(name: "Earth", distanceInKm: 0, image: "🌎".image()!, desc: "You may know this place...", description: "Our home planet is the third planet from the Sun, and the only place we know of so far that’s inhabited by living things. While Earth is only the fifth largest planet in the solar system, it is the only world in our solar system with liquid water on the surface. Just slightly larger than nearby Venus, Earth is the biggest of the four planets closest to the Sun, all of which are made of rock and metal.", type: .planet),
                     SpaceObject(name: "JWST", distanceInKm: 1500000, image: "🛰️".image()!, desc: "Space 🔭", description: "The James Webb Space Telescope (also called JWST) is a large, infrared-optimized space telescope. The observatory launched into space on an Ariane 5 rocket from the Guiana Space Centre in Kourou, French Guiana on December 25, 2021. After launch, the observatory was successfully unfolded and is being readied for science. Webb will find the first galaxies that formed in the early Universe, connecting the Big Bang to our own Milky Way Galaxy. Webb will peer through dusty clouds to see stars forming planetary systems, connecting the Milky Way to our own Solar System.", type: .other),

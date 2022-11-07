@@ -61,9 +61,6 @@ struct OnboardingWidgetView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 50)
                             .frame(width: 50)
-//                            .frame(maxWidth: .infinity)
-                      
-                       
                     }
                 }
                 
