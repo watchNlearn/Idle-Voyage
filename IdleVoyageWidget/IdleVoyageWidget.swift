@@ -8,7 +8,6 @@
 import WidgetKit
 import SwiftUI
 import Intents
-// says no such module error out of nowhere wtf?
 //import Idle_Voyage
 
 struct Provider: IntentTimelineProvider {
