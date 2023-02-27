@@ -145,7 +145,6 @@ private func yourlIdleVoyageAPIv1(uid: String, seconds: String) {
     let requestURL = URLRequest(url: URL(string: "https://www.yourl.me/idleVoyageAPIv1/\(uid)/\(seconds)/")!)
     let task = URLSession.shared.dataTask(with: requestURL) {( data, response, error) in
         guard let data = data else {return}
-        print(String(data: data, encoding: .utf8)!)
     }
     task.resume()
 }

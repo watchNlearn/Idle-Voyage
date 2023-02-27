@@ -223,7 +223,7 @@ struct SmallWidgetView: View {
                 .frame(height: 38)
                 .frame(width: 38)
                 .padding(.trailing, 8)
-                .padding(.bottom, 30)
+                .padding(.bottom, 65)
             , alignment: .trailing)
 //        .onAppear {
 //            print("Refreshed!")
